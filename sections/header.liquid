@@ -1,0 +1,174 @@
+{%- liquid
+  assign menu = section.settings.menu
+  assign logo = settings.logo
+  assign hide_empty = section.settings.hide_empty_collections
+-%}
+<header class="site-header" data-header{% if section.settings.hide_on_scroll %} data-hide-on-scroll{% endif %}>
+  <div class="container header">
+    <div class="header__left">
+      <button type="button" class="icon-btn header__menu-toggle" data-drawer-open="menu-drawer" aria-controls="menu-drawer" aria-expanded="false" aria-label="{{ 'header.menu' | t }}">
+        {%- render 'icon', name: 'menu' -%}
+      </button>
+      <button type="button" class="icon-btn header__search-btn" data-search-open aria-label="{{ 'header.search' | t }}">
+        {%- render 'icon', name: 'search' -%}
+      </button>
+    </div>
+
+    {%- if request.page_type == 'index' -%}<h1 class="header__brand">{%- endif -%}
+    <a class="header__logo" href="{{ routes.root_url }}">
+      {%- if logo != blank -%}
+        {{ logo | image_url: width: 480 | image_tag: alt: shop.name, widths: '240, 360, 480', sizes: '(min-width: 1200px) 140px, 100px', loading: 'eager' }}
+      {%- else -%}
+        <img src="{{ 'zayou-logo-black.png' | asset_url }}" alt="{{ shop.name | escape }}" width="454" height="127" loading="eager">
+      {%- endif -%}
+    </a>
+    {%- if request.page_type == 'index' -%}</h1>{%- endif -%}
+
+    <nav class="header__nav" aria-label="{{ 'header.main_nav' | t }}">
+      <ul class="nav" role="list" data-nav>
+        {%- for link in menu.links -%}
+          {%- liquid
+            assign skip = false
+            if section.settings.hide_home_link and link.type == 'frontpage_link'
+              assign skip = true
+            endif
+            if hide_empty and link.type == 'collection_link' and link.object.products_count == 0
+              assign skip = true
+            endif
+          -%}
+          {%- unless skip -%}
+            <li class="nav__item"{% if link.links.size > 0 %} data-nav-item{% endif %}>
+              {%- if link.links.size > 0 -%}
+                <a class="nav__link" href="{{ link.url }}"{% if link.current or link.child_current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+                <div class="nav__panel" id="nav-panel-{{ forloop.index }}">
+                  <div class="container nav__panel-grid">
+                    {%- for child in link.links -%}
+                      <div class="nav__col">
+                        <a class="nav__col-title" href="{{ child.url }}">{{ child.title }}</a>
+                        {%- if child.links.size > 0 -%}
+                          <ul role="list">
+                            {%- for grandchild in child.links -%}
+                              <li><a href="{{ grandchild.url }}">{{ grandchild.title }}</a></li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- endif -%}
+                      </div>
+                    {%- endfor -%}
+                    {%- if link.type == 'collection_link' and link.object.products_count > 0 -%}
+                      <div class="nav__feature">
+                        {%- for product in link.object.products limit: 2 -%}
+                          <a href="{{ product.url }}">
+                            <div class="media media--packshot">{{ product.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', sizes: '200px', widths: '200, 400' }}</div>
+                            {{ product.title }}
+                          </a>
+                        {%- endfor -%}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                </div>
+              {%- else -%}
+                <a class="nav__link{% if forloop.last and section.settings.last_link_muted %} nav__link--accent{% endif %}" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+              {%- endif -%}
+            </li>
+          {%- endunless -%}
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <div class="header__right">
+      <button type="button" class="header__search-field" data-search-open aria-label="{{ 'header.search' | t }}">
+        {%- render 'icon', name: 'search', class: 'icon--sm' -%}
+        <span>{{ 'header.search_placeholder' | t }}</span>
+      </button>
+      {%- if shop.customer_accounts_enabled -%}
+        <a class="icon-btn header__account" href="{{ routes.account_url }}" aria-label="{{ 'header.account' | t }}">
+          {%- render 'icon', name: 'account' -%}
+        </a>
+      {%- endif -%}
+      <a class="icon-btn" href="{{ routes.cart_url }}" data-cart-open aria-label="{{ 'header.cart' | t }}">
+        {%- render 'icon', name: 'bag' -%}
+        <span class="cart-count" data-cart-count data-count="{{ cart.item_count }}">{% if cart.item_count > 0 %}{{ cart.item_count }}{% endif %}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="drawer drawer--left" id="menu-drawer" data-drawer aria-hidden="true">
+  <button type="button" class="drawer__overlay" data-drawer-close tabindex="-1" aria-label="{{ 'general.close' | t }}"></button>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="{{ 'header.menu' | t }}" tabindex="-1">
+    <div class="drawer__head">
+      <span class="drawer__title">{{ 'header.menu' | t }}</span>
+      <button type="button" class="icon-btn" data-drawer-close aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button>
+    </div>
+    <div class="drawer__body">
+      <nav class="mnav" aria-label="{{ 'header.main_nav' | t }}">
+        {%- for link in menu.links -%}
+          {%- liquid
+            assign skip = false
+            if section.settings.hide_home_link and link.type == 'frontpage_link'
+              assign skip = true
+            endif
+            if hide_empty and link.type == 'collection_link' and link.object.products_count == 0
+              assign skip = true
+            endif
+          -%}
+          {%- unless skip -%}
+            {%- if link.links.size > 0 -%}
+              <details>
+                <summary class="mnav__row">{{ link.title }}{% render 'icon', name: 'plus', class: 'icon--sm' %}</summary>
+                <div class="mnav__sub">
+                  <a href="{{ link.url }}">{{ 'header.view_all' | t: title: link.title }}</a>
+                  {%- for child in link.links -%}
+                    <a href="{{ child.url }}">{{ child.title }}</a>
+                    {%- for grandchild in child.links -%}
+                      <a href="{{ grandchild.url }}">— {{ grandchild.title }}</a>
+                    {%- endfor -%}
+                  {%- endfor -%}
+                </div>
+              </details>
+            {%- else -%}
+              <a class="mnav__row" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}{% render 'icon', name: 'chevron-right', class: 'icon--sm' %}</a>
+            {%- endif -%}
+          {%- endunless -%}
+        {%- endfor -%}
+      </nav>
+
+      {%- if section.settings.show_size_shortcut -%}
+        <div class="mnav__sizes">
+          <p class="eyebrow muted">{{ 'sizes.title' | t }}</p>
+          {% render 'size-shortcuts', collection: section.settings.size_collection %}
+        </div>
+      {%- endif -%}
+
+      <div class="mnav__secondary">
+        {%- if shop.customer_accounts_enabled -%}
+          <a href="{{ routes.account_url }}">{% render 'icon', name: 'account', class: 'icon--sm' %}{{ 'header.account' | t }}</a>
+        {%- endif -%}
+        {%- if settings.whatsapp_number != blank -%}
+          {%- assign wa = settings.whatsapp_number | remove: ' ' | remove: '+' | remove: '-' -%}
+          <a href="https://wa.me/{{ wa }}" target="_blank" rel="noopener">{% render 'icon', name: 'whatsapp', class: 'icon--sm' %}{{ 'general.whatsapp' | t }}</a>
+        {%- endif -%}
+        {%- if settings.phone != blank -%}
+          <a href="tel:{{ settings.phone | remove: ' ' | remove: '-' }}">{% render 'icon', name: 'phone', class: 'icon--sm' %}{{ settings.phone }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "En-tête",
+  "class": "section-header",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "checkbox", "id": "hide_home_link", "label": "Masquer le lien « Accueil »", "info": "Le logo mène déjà à l'accueil.", "default": true },
+    { "type": "checkbox", "id": "hide_empty_collections", "label": "Masquer les collections vides", "info": "Évite des liens vers des pages sans produit.", "default": true },
+    { "type": "checkbox", "id": "last_link_muted", "label": "Lien final en retrait (ex. Parfums)", "default": true },
+    { "type": "checkbox", "id": "hide_on_scroll", "label": "Masquer l'en-tête en défilant vers le bas", "default": true },
+    { "type": "header", "content": "Menu mobile" },
+    { "type": "checkbox", "id": "show_size_shortcut", "label": "Afficher le raccourci « Votre pointure »", "default": true },
+    { "type": "collection", "id": "size_collection", "label": "Collection filtrée par pointure", "info": "Par défaut : tous les produits." }
+  ]
+}
+{% endschema %}

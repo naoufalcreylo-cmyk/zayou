@@ -1,0 +1,16 @@
+{%- comment -%}
+  Quick add: filled by theme.js from /products/<handle>.js (real variants and availability).
+  The customer must pick a size; nothing is added by default.
+{%- endcomment -%}
+<div class="drawer drawer--bottom" id="quick-add" data-drawer data-quick-add-dialog aria-hidden="true">
+  <button type="button" class="drawer__overlay" data-drawer-close tabindex="-1" aria-label="{{ 'general.close' | t }}"></button>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="quick-add-title" tabindex="-1">
+    <div class="drawer__head">
+      <h2 class="drawer__title" id="quick-add-title">{{ 'products.product.choose_size' | t }}</h2>
+      <button type="button" class="icon-btn" data-drawer-close aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button>
+    </div>
+    <div class="drawer__body" data-quick-add-body>
+      <p class="muted">{{ 'general.loading' | t }}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,136 @@
+{%- liquid
+  assign wa = settings.whatsapp_number | remove: ' ' | remove: '+' | remove: '-'
+-%}
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="{{ routes.root_url }}" class="footer__logo">
+          <img src="{{ 'zayou-logo-black.png' | asset_url }}" alt="{{ shop.name | escape }}" width="454" height="127" loading="lazy">
+        </a>
+        {%- if section.settings.text != blank -%}
+          <div class="muted rte">{{ section.settings.text }}</div>
+        {%- endif -%}
+        {%- render 'social-links' -%}
+      </div>
+
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'menu' -%}
+            <div class="footer__col" {{ block.shopify_attributes }}>
+              <details open>
+                <summary><h2 class="footer__title">{{ block.settings.title | default: block.settings.menu.title }}</h2>{% render 'icon', name: 'plus', class: 'icon--sm' %}</summary>
+                <ul class="footer__links" role="list">
+                  {%- for link in block.settings.menu.links -%}
+                    {%- unless link.type == 'frontpage_link' or link.type == 'collection_link' and link.object.products_count == 0 -%}
+                      <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {%- endunless -%}
+                  {%- endfor -%}
+                  {%- if block.settings.show_policies -%}
+                    {%- for policy in shop.policies -%}
+                      <li><a href="{{ policy.url }}">{{ policy.title }}</a></li>
+                    {%- endfor -%}
+                  {%- endif -%}
+                </ul>
+              </details>
+            </div>
+          {%- when 'contact' -%}
+            <div class="footer__col" {{ block.shopify_attributes }}>
+              <details open>
+                <summary><h2 class="footer__title">{{ block.settings.title }}</h2>{% render 'icon', name: 'plus', class: 'icon--sm' %}</summary>
+                <ul class="footer__links" role="list">
+                  {%- if settings.whatsapp_number != blank -%}
+                    <li><a href="https://wa.me/{{ wa }}" target="_blank" rel="noopener">{{ 'general.whatsapp' | t }} · {{ settings.whatsapp_number }}</a></li>
+                  {%- endif -%}
+                  {%- if settings.phone != blank -%}
+                    <li><a href="tel:{{ settings.phone | remove: ' ' | remove: '-' }}">{{ 'general.phone' | t }} · {{ settings.phone }}</a></li>
+                  {%- endif -%}
+                  {%- if settings.contact_email != blank -%}
+                    <li><a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a></li>
+                  {%- endif -%}
+                  {%- if block.settings.contact_page != blank -%}
+                    <li><a href="{{ block.settings.contact_page.url }}">{{ block.settings.contact_page.title }}</a></li>
+                  {%- endif -%}
+                </ul>
+              </details>
+            </div>
+          {%- when 'newsletter' -%}
+            <div class="footer__news" {{ block.shopify_attributes }}>
+              <h2 class="footer__title">{{ block.settings.title }}</h2>
+              {%- if block.settings.text != blank -%}<p class="muted">{{ block.settings.text }}</p>{%- endif -%}
+              {%- form 'customer', id: 'footer-newsletter' -%}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+                {%- if form.posted_successfully? -%}
+                  <p class="form-message form-message--success" role="status">{{ 'newsletter.success' | t }}</p>
+                {%- else -%}
+                  <div class="footer__news-form">
+                    <label for="footer-email" class="visually-hidden">{{ 'newsletter.label' | t }}</label>
+                    <input id="footer-email" type="email" name="contact[email]" autocomplete="email" required placeholder="{{ 'newsletter.label' | t }}"{% if form.errors %} aria-invalid="true" aria-describedby="footer-email-error"{% endif %}>
+                    <button type="submit" class="btn">{{ 'newsletter.submit' | t }}</button>
+                  </div>
+                  {%- if form.errors -%}
+                    <p id="footer-email-error" class="form-message form-message--error">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+                  {%- endif -%}
+                {%- endif -%}
+              {%- endform -%}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.show_wordmark -%}
+      <div class="footer__mark" aria-hidden="true">
+        <img src="{{ 'zayou-logo-black.png' | asset_url }}" alt="" width="454" height="127" loading="lazy">
+      </div>
+    {%- endif -%}
+
+    <div class="footer__bottom">
+      <span>© {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+      {%- if section.settings.payment_text != blank -%}<span>{{ section.settings.payment_text }}</span>{%- endif -%}
+      <span>{{ powered_by_link }}</span>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Pied de page",
+  "class": "section-footer",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "richtext", "id": "text", "label": "Texte de présentation", "default": "<p>Chaussures pour homme. Livraison partout au Maroc.</p>" },
+    { "type": "text", "id": "payment_text", "label": "Mention de paiement", "default": "Paiement à la livraison" },
+    { "type": "checkbox", "id": "show_wordmark", "label": "Logo pleine largeur en bas de page", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titre" },
+        { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" },
+        { "type": "checkbox", "id": "show_policies", "label": "Ajouter les politiques publiées", "default": false }
+      ]
+    },
+    {
+      "type": "contact",
+      "name": "Contact",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titre", "default": "Contact" },
+        { "type": "page", "id": "contact_page", "label": "Page contact" },
+        { "type": "paragraph", "content": "Numéros et e-mail : Paramètres du thème › Service client." }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titre", "default": "Newsletter" },
+        { "type": "text", "id": "text", "label": "Texte", "default": "Les nouveautés zayou, par e-mail." }
+      ]
+    }
+  ]
+}
+{% endschema %}

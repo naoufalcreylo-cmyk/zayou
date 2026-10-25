@@ -1,0 +1,44 @@
+{%- comment -%} Service promises. Only verified commitments belong here (no delivery times or return terms until confirmed). {%- endcomment -%}
+{%- if section.blocks.size > 0 -%}
+<section class="section services" style="--pad-top: {{ section.settings.pad_top }}px; --pad-bottom: {{ section.settings.pad_bottom }}px;" aria-label="{{ section.settings.label | escape }}">
+  <div class="container">
+    <ul class="service-list" role="list" style="--n: {{ section.blocks.size }}">
+      {%- for block in section.blocks -%}
+        <li class="service" {{ block.shopify_attributes }}>
+          {%- render 'icon', name: block.settings.icon -%}
+          <p class="service__title">{{ block.settings.title }}</p>
+          {%- if block.settings.text != blank -%}<div class="service__text">{{ block.settings.text }}</div>{%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Services",
+  "class": "section-services",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "label", "label": "Libellé (accessibilité)", "default": "Nos services" },
+    { "type": "range", "id": "pad_top", "label": "Marge haute", "min": 0, "max": 96, "step": 8, "unit": "px", "default": 40 },
+    { "type": "range", "id": "pad_bottom", "label": "Marge basse", "min": 0, "max": 96, "step": 8, "unit": "px", "default": 56 }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icône", "options": [
+          { "value": "truck", "label": "Livraison" }, { "value": "cash", "label": "Paiement" }, { "value": "chat", "label": "Conseil" },
+          { "value": "whatsapp", "label": "WhatsApp" }, { "value": "return", "label": "Échange" }, { "value": "ruler", "label": "Pointure" }
+        ], "default": "truck" },
+        { "type": "text", "id": "title", "label": "Titre", "default": "Livraison partout au Maroc" },
+        { "type": "richtext", "id": "text", "label": "Texte" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Services", "blocks": [{ "type": "service" }] }]
+}
+{% endschema %}

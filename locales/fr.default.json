@@ -1,0 +1,302 @@
+{
+  "general": {
+    "close": "Fermer",
+    "page": "Page {{ page }}",
+    "announcements": "Annonces",
+    "whatsapp": "WhatsApp",
+    "phone": "Téléphone",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "view_all": "Tout voir",
+    "back_home": "Retour à l'accueil",
+    "continue_shopping": "Continuer mes achats",
+    "loading": "Chargement…",
+    "pagination": "Pagination",
+    "share": "Partager",
+    "password_page": {
+      "title": "Bientôt",
+      "login_form_heading": "Accès à la boutique",
+      "login_form_password_label": "Mot de passe",
+      "login_form_submit": "Entrer",
+      "admin_link_html": "Vous êtes le propriétaire ? <a href=\"/admin\" class=\"link\">Connexion</a>"
+    },
+    "404": {
+      "title": "Page introuvable",
+      "subtext": "Cette page n'existe pas ou a été déplacée."
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Aller au contenu",
+    "close": "Fermer",
+    "previous_slide": "Image précédente",
+    "next_slide": "Image suivante",
+    "image_of": "Image {{ index }} sur {{ count }}",
+    "open_zoom": "Agrandir l'image {{ index }}",
+    "new_window": "S'ouvre dans une nouvelle fenêtre",
+    "scroll_left": "Faire défiler vers la gauche",
+    "scroll_right": "Faire défiler vers la droite"
+  },
+  "header": {
+    "menu": "Menu",
+    "main_nav": "Navigation principale",
+    "search": "Rechercher",
+    "search_placeholder": "Rechercher",
+    "account": "Compte",
+    "cart": "Panier",
+    "view_all": "Tout voir — {{ title }}"
+  },
+  "sizes": {
+    "title": "Votre pointure",
+    "saved": "Pointure {{ size }} mémorisée",
+    "yours": "Votre pointure",
+    "clear": "Oublier ma pointure"
+  },
+  "newsletter": {
+    "label": "Adresse e-mail",
+    "submit": "S'inscrire",
+    "success": "Merci, votre inscription est enregistrée."
+  },
+  "search": {
+    "title": "Recherche",
+    "placeholder": "Baskets, mocassins, couleur…",
+    "submit": "Rechercher",
+    "clear": "Effacer",
+    "suggestions": "Suggestions",
+    "collections": "Collections",
+    "products": "Produits",
+    "pages": "Pages",
+    "articles": "Articles",
+    "view_all": "Voir les {{ count }} résultats pour « {{ terms }} »",
+    "view_all_simple": "Voir tous les résultats",
+    "results_for": "Résultats pour « {{ terms }} »",
+    "results_count": {
+      "one": "{{ count }} résultat",
+      "other": "{{ count }} résultats"
+    },
+    "no_results": "Aucun résultat pour « {{ terms }} ».",
+    "no_results_hint": "Vérifiez l'orthographe ou essayez un terme plus général, comme « basket », « mocassin » ou une couleur.",
+    "popular": "Explorer les catégories",
+    "empty_prompt": "Que cherchez-vous ?"
+  },
+  "collections": {
+    "products_count": {
+      "zero": "Aucun produit",
+      "one": "{{ count }} produit",
+      "other": "{{ count }} produits"
+    },
+    "filters": "Filtres",
+    "filter_and_sort": "Filtrer et trier",
+    "sort": "Trier",
+    "sort_by": "Trier par",
+    "clear_all": "Tout effacer",
+    "remove_filter": "Retirer le filtre {{ filter }}",
+    "apply": "Voir {{ count }} produits",
+    "apply_simple": "Voir les produits",
+    "price_from": "De",
+    "price_to": "À",
+    "price_range": "{{ min }} – {{ max }}",
+    "in_stock_only": "En stock uniquement",
+    "size": "Pointure",
+    "size_hint": "Disponibles dans votre pointure",
+    "empty_title": "Aucun produit ne correspond",
+    "empty_text": "Retirez un filtre pour élargir la sélection.",
+    "empty_collection": "Cette collection est vide pour le moment.",
+    "load_more": "Afficher plus",
+    "showing": "{{ shown }} sur {{ total }}",
+    "density": "Affichage",
+    "density_large": "Grandes vignettes",
+    "density_small": "Petites vignettes",
+    "all": "Tout"
+  },
+  "products": {
+    "card": {
+      "quick_add": "Ajout rapide — pointure",
+      "quick_add_label": "Ajout rapide de {{ title }}",
+      "add_size": "Ajouter la pointure {{ size }} au panier",
+      "choose_size_for": "Choisir une pointure — {{ title }}",
+      "colorways": {
+        "one": "{{ count }} coloris",
+        "other": "{{ count }} coloris"
+      }
+    },
+    "product": {
+      "add_to_cart": "Ajouter au panier",
+      "choose_size": "Choisir une pointure",
+      "size_required": "Choisissez votre pointure pour continuer.",
+      "sold_out": "Épuisé",
+      "unavailable": "Indisponible",
+      "size_sold_out": "{{ size }} — épuisé",
+      "price_from": "Dès {{ price }}",
+      "sale_price": "Prix réduit",
+      "regular_price": "Prix initial",
+      "save": "Économie",
+      "color": "Couleur",
+      "colorways": "Coloris",
+      "size": "Pointure",
+      "size_guide": "Guide des pointures",
+      "your_size": "Votre pointure enregistrée",
+      "quantity": "Quantité",
+      "increase": "Augmenter la quantité",
+      "decrease": "Diminuer la quantité",
+      "description": "Description",
+      "details": "Caractéristiques",
+      "delivery": "Livraison et paiement",
+      "care": "Entretien",
+      "care_link": "Lire nos conseils d'entretien",
+      "share": "Partager",
+      "vendor": "Marque",
+      "material": "Matière",
+      "selected": "sélectionnée",
+      "view_details": "Voir la fiche produit",
+      "gallery": "Galerie d'images",
+      "zoom": "Zoom",
+      "zoom_hint": "Faites glisser pour explorer",
+      "complete_the_look": "Dans le même esprit",
+      "related": "Vous aimerez aussi",
+      "recently_viewed": "Vus récemment",
+      "other_colors": "Autres coloris de ce modèle",
+      "in_cart": "Ajouté au panier"
+    }
+  },
+  "cart": {
+    "title": "Panier",
+    "empty": "Votre panier est vide.",
+    "empty_hint": "Commencez par une catégorie :",
+    "checkout": "Commander",
+    "subtotal": "Sous-total",
+    "discounts": "Réductions",
+    "taxes_shipping": "Frais de livraison calculés à l'étape suivante.",
+    "remove": "Retirer",
+    "remove_item": "Retirer {{ title }}",
+    "quantity_for": "Quantité pour {{ title }}",
+    "added": "Ajouté au panier",
+    "error": "Une erreur est survenue. Veuillez réessayer.",
+    "count": {
+      "one": "{{ count }} article",
+      "other": "{{ count }} articles"
+    },
+    "free_shipping_remaining": "Plus que {{ amount }} pour la livraison offerte",
+    "free_shipping_reached": "Livraison offerte",
+    "note": "Note de commande",
+    "view_cart": "Voir le panier",
+    "updated": "Panier mis à jour",
+    "size": "Pointure"
+  },
+  "contact": {
+    "name": "Nom",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "message": "Message",
+    "send": "Envoyer",
+    "success": "Merci, nous vous répondons rapidement.",
+    "or": "Ou écrivez-nous directement"
+  },
+  "blogs": {
+    "read_more": "Lire l'article",
+    "back": "Tous les articles",
+    "published": "Publié le {{ date }}"
+  },
+  "customer": {
+    "account": {
+      "title": "Mon compte",
+      "details": "Mes informations",
+      "view_addresses": "Mes adresses",
+      "return": "Retour au compte",
+      "logout": "Déconnexion"
+    },
+    "orders": {
+      "title": "Mes commandes",
+      "order_number": "Commande",
+      "date": "Date",
+      "payment_status": "Paiement",
+      "fulfillment_status": "Expédition",
+      "total": "Total",
+      "none": "Vous n'avez pas encore passé de commande."
+    },
+    "order": {
+      "title": "Commande {{ name }}",
+      "date_html": "Passée le {{ date }}",
+      "cancelled_html": "Annulée le {{ date }}",
+      "product": "Produit",
+      "quantity": "Quantité",
+      "total": "Total",
+      "subtotal": "Sous-total",
+      "shipping": "Livraison",
+      "billing_address": "Adresse de facturation",
+      "shipping_address": "Adresse de livraison"
+    },
+    "login": {
+      "title": "Connexion",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "sign_in": "Se connecter",
+      "forgot_password": "Mot de passe oublié ?",
+      "new_customer": "Nouveau client ?",
+      "create_account": "Créer un compte",
+      "guest_title": "Continuer en tant qu'invité",
+      "guest_continue": "Continuer"
+    },
+    "recover_password": {
+      "title": "Réinitialiser le mot de passe",
+      "subtext": "Nous vous enverrons un e-mail pour réinitialiser votre mot de passe.",
+      "submit": "Envoyer",
+      "cancel": "Annuler",
+      "success": "Un e-mail vous a été envoyé."
+    },
+    "register": {
+      "title": "Créer un compte",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "submit": "Créer mon compte"
+    },
+    "reset_password": {
+      "title": "Nouveau mot de passe",
+      "password": "Mot de passe",
+      "password_confirm": "Confirmer le mot de passe",
+      "submit": "Enregistrer"
+    },
+    "activate_account": {
+      "title": "Activer le compte",
+      "subtext": "Créez votre mot de passe pour activer votre compte.",
+      "password": "Mot de passe",
+      "password_confirm": "Confirmer le mot de passe",
+      "submit": "Activer",
+      "cancel": "Refuser l'invitation"
+    },
+    "addresses": {
+      "title": "Mes adresses",
+      "default": "Par défaut",
+      "add_new": "Ajouter une adresse",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "delete_confirm": "Supprimer cette adresse ?",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "company": "Société",
+      "address1": "Adresse",
+      "address2": "Complément d'adresse",
+      "city": "Ville",
+      "country": "Pays",
+      "province": "Région",
+      "zip": "Code postal",
+      "phone": "Téléphone",
+      "set_default": "Définir comme adresse par défaut",
+      "update": "Enregistrer",
+      "cancel": "Annuler"
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "title": "Votre carte cadeau de {{ value }} pour {{ shop }}",
+      "subtext": "Votre carte cadeau",
+      "expired": "Expirée le {{ expiry }}",
+      "active": "Valable jusqu'au {{ expiry }}",
+      "redeem": "Utilisez ce code lors de la commande",
+      "copy_code": "Copier le code",
+      "print": "Imprimer",
+      "shop_link": "Visiter la boutique"
+    }
+  }
+}

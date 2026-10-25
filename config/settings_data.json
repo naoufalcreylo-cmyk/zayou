@@ -1,0 +1,38 @@
+{
+  "current": {
+    "logo_width": 112,
+    "logo_width_mobile": 84,
+    "color_ink": "#111111",
+    "color_background": "#FFFFFF",
+    "color_surface": "#F3F3F1",
+    "color_muted": "#6A6A66",
+    "color_line": "#E5E5E1",
+    "type_base_size": 15,
+    "heading_weight": "500",
+    "quick_add": true,
+    "card_second_image": true,
+    "card_show_colorways": true,
+    "card_show_vendor": true,
+    "hidden_vendors": "Bon Plan Maroc,BONPLAN,Bon Plan",
+    "show_discount_percent": true,
+    "size_range": "39,40,41,42,43,44,45",
+    "size_filter_param": "filter.v.option.taille",
+    "cart_type": "drawer",
+    "cart_note": "Paiement à la livraison disponible",
+    "whatsapp_number": "+212633909991",
+    "phone": "+212 644-522326",
+    "pdp_delivery_text": "<p>Livraison partout au Maroc. Paiement à la livraison.</p>",
+    "care_article": "infos/comment-entretenir-vos-chaussures-en-cuir-pour-quelles-demeurent-comme-neuves",
+    "social_instagram": "https://www.instagram.com/bonplanmaroc.ma/",
+    "social_facebook": "https://www.facebook.com/bonplanmaroc.ma",
+    "social_tiktok": "https://www.tiktok.com/@bonplanmaroc.ma",
+    "social_youtube": "https://www.youtube.com/channel/UCRkqZmwQLudklgogUthA2cQ",
+    "blocks": {
+      "easysell-cod-form": {
+        "type": "shopify://apps/easysell-cod-form/blocks/app-embed/7bfd0a95-6839-4f02-b2ee-896832dbe67e",
+        "disabled": false,
+        "settings": {}
+      }
+    }
+  }
+}

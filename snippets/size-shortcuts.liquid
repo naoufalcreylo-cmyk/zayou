@@ -1,0 +1,15 @@
+{%- comment -%}
+  Size shortcuts: links to a collection filtered by size (Search & Discovery filter on the size option).
+  The filter parameter comes from settings.size_filter_param (e.g. filter.v.option.taille). Remembers the choice in localStorage via theme.js.
+{%- endcomment -%}
+{%- liquid
+  assign target = collection | default: collections.all
+  assign target_url = target.url | default: routes.all_products_collection_url
+  assign sizes = settings.size_range | remove: ' ' | split: ','
+  assign param = settings.size_filter_param | default: 'filter.v.option.taille'
+-%}
+<ul class="size-shortcuts" role="list" data-size-shortcuts>
+  {%- for s in sizes -%}
+    <li><a class="chip-link" href="{{ target_url }}?{{ param }}={{ s }}" data-size-pick="{{ s }}">{{ s }}</a></li>
+  {%- endfor -%}
+</ul>

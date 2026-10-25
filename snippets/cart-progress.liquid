@@ -1,0 +1,20 @@
+{%- comment -%} Free-shipping progress. Only rendered when the merchant sets a threshold that matches the real shipping rates. {%- endcomment -%}
+{%- if settings.free_shipping_threshold != blank and settings.free_shipping_threshold > 0 and cart.item_count > 0 -%}
+  {%- liquid
+    assign threshold = settings.free_shipping_threshold | times: 100
+    assign remaining = threshold | minus: cart.total_price
+    assign pct = cart.total_price | times: 100 | divided_by: threshold
+    if pct > 100
+      assign pct = 100
+    endif
+  -%}
+  <div class="cart-progress">
+    {%- if remaining > 0 -%}
+      {%- assign remaining_fmt = remaining | money_without_trailing_zeros -%}
+      {{ 'cart.free_shipping_remaining' | t: amount: remaining_fmt }}
+    {%- else -%}
+      {{ 'cart.free_shipping_reached' | t }}
+    {%- endif -%}
+    <div class="cart-progress__bar" aria-hidden="true"><span style="--p: {{ pct }}%"></span></div>
+  </div>
+{%- endif -%}

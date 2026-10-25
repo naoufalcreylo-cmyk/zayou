@@ -1,0 +1,70 @@
+{%- comment -%} Visual entry points into the catalogue. Empty collections are skipped automatically. {%- endcomment -%}
+<section class="section categories" style="--pad-top: {{ section.settings.pad_top }}px; --pad-bottom: {{ section.settings.pad_bottom }}px;" aria-labelledby="cat-title-{{ section.id }}">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head__text">
+        <h2 class="h2 lower" id="cat-title-{{ section.id }}">{{ section.settings.heading }}</h2>
+      </div>
+      {%- if section.settings.link_label != blank -%}
+        <a class="link-arrow small" href="{{ section.settings.link | default: routes.collections_url }}">{{ section.settings.link_label }}{% render 'icon', name: 'arrow-right', class: 'icon--sm' %}</a>
+      {%- endif -%}
+    </div>
+    <ul class="categories__list rail" role="list" style="--n: {{ section.blocks.size }}">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign c = block.settings.collection
+          assign img = block.settings.image
+          if img == blank and block.settings.product != blank
+            assign pidx = block.settings.image_position | default: 1 | minus: 1
+            assign img = block.settings.product.media[pidx].preview_image | default: block.settings.product.featured_image
+          endif
+          if img == blank
+            assign img = c.featured_image
+          endif
+          assign label = block.settings.label | default: c.title
+        -%}
+        {%- if c != blank and c.products_count > 0 -%}
+        <li class="categories__item" {{ block.shopify_attributes }}>
+          <a class="categories__link" href="{{ c.url }}">
+            <div class="media media--packshot categories__media">
+              {%- if img != blank -%}
+                {{ img | image_url: width: 800 | image_tag: loading: 'lazy', widths: '360, 540, 800', sizes: '(min-width: 990px) 19vw, 46vw', alt: '' }}
+              {%- endif -%}
+            </div>
+            <span class="categories__label lower">{{ label }}<sup>{{ c.products_count }}</sup></span>
+          </a>
+        </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Catégories",
+  "class": "section-categories",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titre", "default": "par catégorie" },
+    { "type": "text", "id": "link_label", "label": "Texte du lien", "default": "Tout voir" },
+    { "type": "url", "id": "link", "label": "Lien" },
+    { "type": "range", "id": "pad_top", "label": "Marge haute", "min": 0, "max": 96, "step": 8, "unit": "px", "default": 56 },
+    { "type": "range", "id": "pad_bottom", "label": "Marge basse", "min": 0, "max": 96, "step": 8, "unit": "px", "default": 40 }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Catégorie",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "text", "id": "label", "label": "Libellé", "info": "Par défaut : titre de la collection." },
+        { "type": "product", "id": "product", "label": "Photo : produit", "info": "Photo principale du produit choisi." },
+        { "type": "range", "id": "image_position", "label": "Numéro de la photo du produit", "min": 1, "max": 10, "step": 1, "default": 1 },
+        { "type": "image_picker", "id": "image", "label": "Ou : image" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Catégories", "blocks": [{ "type": "category" }, { "type": "category" }, { "type": "category" }] }]
+}
+{% endschema %}

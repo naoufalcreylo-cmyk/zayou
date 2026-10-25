@@ -1,0 +1,8 @@
+{%- comment -%} Category chips from the main menu (empty collections skipped). {%- endcomment -%}
+<div class="cart-empty__links">
+  {%- for link in linklists['main-menu'].links -%}
+    {%- unless link.type == 'frontpage_link' or link.type == 'collection_link' and link.object.products_count == 0 -%}
+      <a class="chip-link" href="{{ link.url }}">{{ link.title }}</a>
+    {%- endunless -%}
+  {%- endfor -%}
+</div>

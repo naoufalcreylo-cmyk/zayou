@@ -1,0 +1,105 @@
+{%- comment -%}
+  Product card.
+  - product (required), loading ('eager'|'lazy'), sizes (img sizes attr), show_quick_add (bool, default settings.quick_add)
+  Sizes come from the variant option named Taille / Pointure(s); colourways from metafields zayou.colorway / zayou.siblings,
+  falling back to the generated colorway-data map. Nothing here is invented: no rating, no stock count.
+{%- endcomment -%}
+{%- liquid
+  assign loading = loading | default: 'lazy'
+  assign img_sizes = sizes | default: '(min-width: 1200px) 23vw, (min-width: 750px) 31vw, 46vw'
+  assign quick = show_quick_add | default: settings.quick_add
+  assign first_image = product.featured_media.preview_image | default: product.featured_image
+  assign second_image = null
+  if settings.card_second_image and product.media.size > 1
+    assign second_image = product.media[1].preview_image
+  endif
+
+  assign size_index = null
+  for option in product.options_with_values
+    assign oname = option.name | downcase
+    if oname contains 'taille' or oname contains 'pointure' or oname contains 'size'
+      assign size_index = forloop.index0
+      break
+    endif
+  endfor
+
+  assign way_label = product.metafields.zayou.colorway.value
+  assign way_hex = ''
+  assign way_siblings = product.metafields.zayou.siblings.value
+  assign way_count = 0
+  if way_siblings != blank
+    assign way_count = way_siblings.size
+  else
+    capture way_raw
+      render 'colorway-data', handle: product.handle
+    endcapture
+    assign way_parts = way_raw | strip | split: '~'
+    if way_label == blank
+      assign way_label = way_parts[0]
+    endif
+    assign way_hex = way_parts[2] | split: ','
+    assign way_sibling_handles = way_parts[3] | split: ','
+    assign way_count = way_sibling_handles.size
+  endif
+
+  assign hidden_vendors = settings.hidden_vendors | downcase | split: ','
+  assign show_vendor = false
+  if settings.card_show_vendor
+    assign show_vendor = true
+    assign v = product.vendor | downcase
+    for hv in hidden_vendors
+      assign hv_clean = hv | strip
+      if hv_clean == v
+        assign show_vendor = false
+      endif
+    endfor
+  endif
+-%}
+<article class="card" data-product-card data-handle="{{ product.handle }}">
+  <div class="card__visual">
+  <a class="card__media" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+    <div class="media media--packshot">
+      {%- if first_image -%}
+        {{ first_image | image_url: width: 900 | image_tag: loading: loading, sizes: img_sizes, widths: '360, 540, 720, 900', alt: product.title }}
+        {%- if second_image -%}
+          {{ second_image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: img_sizes, widths: '360, 540, 720, 900', alt: '' }}
+        {%- endif -%}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+  </a>
+  {%- unless product.available -%}
+    <span class="card__badge">{{ 'products.product.sold_out' | t }}</span>
+  {%- endunless -%}
+
+  {%- if quick and product.available and size_index != null -%}
+    <div class="card__sizes" role="group" aria-label="{{ 'products.card.quick_add_label' | t: title: product.title | escape }}">
+      <span class="card__sizes-label" aria-hidden="true">{{ 'products.card.quick_add' | t }}</span>
+      {%- for variant in product.variants -%}
+        {%- assign size_value = variant.options[size_index] -%}
+        <button type="button" class="size-chip" data-quick-add="{{ variant.id }}" data-size="{{ size_value | escape }}"{% unless variant.available %} disabled{% endunless %} aria-label="{{ 'products.card.add_size' | t: size: size_value | escape }}{% unless variant.available %} — {{ 'products.product.sold_out' | t }}{% endunless %}">{{ size_value }}</button>
+      {%- endfor -%}
+    </div>
+    <button type="button" class="card__quick" data-quick-open="{{ product.handle }}" aria-label="{{ 'products.card.choose_size_for' | t: title: product.title | escape }}">
+      {%- render 'icon', name: 'plus', class: 'icon--sm' -%}
+    </button>
+  {%- endif -%}
+  </div>
+
+  <div class="card__body">
+    {%- if show_vendor -%}<span class="small muted">{{ product.vendor }}</span>{%- endif -%}
+    <a class="card__title" href="{{ product.url }}">{{ product.title }}</a>
+    <div class="card__meta">
+      {%- render 'price', product: product, compact: true -%}
+      {%- if settings.card_show_colorways and way_count > 1 -%}
+        <span class="card__ways" title="{{ 'products.card.colorways' | t: count: way_count }}">
+          {%- if way_hex.size > 0 and way_hex[0] != blank -%}
+            <span class="swatch{% if way_hex.size > 1 %} swatch--duo{% endif %}" style="--sw: {{ way_hex[0] }};{% if way_hex.size > 1 %} --sw2: {{ way_hex[1] }};{% endif %}"></span>
+          {%- endif -%}
+          {{ 'products.card.colorways' | t: count: way_count }}
+        </span>
+      {%- endif -%}
+    </div>
+  </div>
+</article>

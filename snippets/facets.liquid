@@ -1,0 +1,144 @@
+{%- comment -%}
+  Toolbar + active filters + filter drawer for collection and search pages.
+  - results: collection or search object (both expose filters, sort_options, sort_by)
+  - results_count, base_url, section_id
+  Only filters configured in Search & Discovery are shown. The size filter is detected by its label (Taille / Pointure).
+{%- endcomment -%}
+{%- liquid
+  assign sort_by = results.sort_by | default: results.default_sort_by
+  assign active_count = 0
+  assign size_filter = null
+  for filter in results.filters
+    assign label_dc = filter.label | downcase
+    if size_filter == null
+      if label_dc contains 'taille' or label_dc contains 'pointure' or label_dc contains 'size'
+        assign size_filter = filter
+      endif
+    endif
+    if filter.type == 'price_range'
+      if filter.min_value.value != null or filter.max_value.value != null
+        assign active_count = active_count | plus: 1
+      endif
+    else
+      assign active_count = active_count | plus: filter.active_values.size
+    endif
+  endfor
+-%}
+<div class="toolbar" data-toolbar>
+  <div class="container toolbar__inner">
+    <button type="button" class="toolbar__btn" data-drawer-open="filter-drawer" aria-controls="filter-drawer" aria-expanded="false">
+      {%- render 'icon', name: 'filter', class: 'icon--sm' -%}
+      <span class="toolbar__btn-label-m">{{ 'collections.filter_and_sort' | t }}</span>
+      <span class="toolbar__btn-label-d">{{ 'collections.filters' | t }}</span>
+      {%- if active_count > 0 -%}<span class="toolbar__count">{{ active_count }}</span>{%- endif -%}
+    </button>
+
+    {%- if size_filter -%}
+      <div class="toolbar__sizes" role="group" aria-label="{{ 'collections.size' | t }}">
+        {%- for value in size_filter.values -%}
+          <a class="chip-link toolbar__size{% if value.active %} is-active{% endif %}" href="{% if value.active %}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}" data-facet-link data-size-value="{{ value.label | escape }}"{% if value.active %} aria-current="true"{% endif %}{% if value.count == 0 and value.active == false %} aria-disabled="true" tabindex="-1"{% endif %}>{{ value.label }}</a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    <div class="toolbar__end">
+      <p class="toolbar__total small muted" data-results-count>{{ 'collections.products_count' | t: count: results_count }}</p>
+      <div class="toolbar__sort">
+        <label for="sort-{{ section_id }}" class="visually-hidden">{{ 'collections.sort_by' | t }}</label>
+        <select id="sort-{{ section_id }}" class="toolbar__select" data-sort>
+          {%- for option in results.sort_options -%}
+            <option value="{{ option.value }}"{% if option.value == sort_by %} selected{% endif %}>{{ option.name }}</option>
+          {%- endfor -%}
+        </select>
+      </div>
+      <div class="toolbar__density" role="group" aria-label="{{ 'collections.density' | t }}">
+        <button type="button" class="icon-btn" data-density="large" aria-pressed="false" aria-label="{{ 'collections.density_large' | t }}">{% render 'icon', name: 'grid-2', class: 'icon--sm' %}</button>
+        <button type="button" class="icon-btn" data-density="small" aria-pressed="true" aria-label="{{ 'collections.density_small' | t }}">{% render 'icon', name: 'grid-4', class: 'icon--sm' %}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- if active_count > 0 -%}
+  <div class="container active-filters" data-active-filters>
+    {%- for filter in results.filters -%}
+      {%- if filter.type == 'price_range' -%}
+        {%- if filter.min_value.value != null or filter.max_value.value != null -%}
+          {%- assign pmin = filter.min_value.value | default: 0 | money_without_trailing_zeros -%}
+          {%- assign pmax = filter.max_value.value | default: filter.range_max | money_without_trailing_zeros -%}
+          <a class="pill" href="{{ filter.url_to_remove }}" data-facet-link>
+            {{ 'collections.price_range' | t: min: pmin, max: pmax }}
+            <span class="visually-hidden">{{ 'collections.remove_filter' | t: filter: filter.label }}</span>{% render 'icon', name: 'close', class: 'icon--sm' %}
+          </a>
+        {%- endif -%}
+      {%- else -%}
+        {%- for value in filter.active_values -%}
+          <a class="pill" href="{{ value.url_to_remove }}" data-facet-link>
+            {%- assign fl = filter.label | downcase -%}
+            {%- if fl contains 'taille' or fl contains 'pointure' -%}{{ 'collections.size' | t }} {{ value.label }}{%- else -%}{{ value.label }}{%- endif -%}
+            <span class="visually-hidden">{{ 'collections.remove_filter' | t: filter: value.label }}</span>{% render 'icon', name: 'close', class: 'icon--sm' %}
+          </a>
+        {%- endfor -%}
+      {%- endif -%}
+    {%- endfor -%}
+    <a class="link small" href="{{ base_url }}{% if results.terms %}?q={{ results.terms | url_encode }}{% endif %}" data-facet-link>{{ 'collections.clear_all' | t }}</a>
+  </div>
+{%- endif -%}
+
+<div class="drawer drawer--right" id="filter-drawer" data-drawer aria-hidden="true">
+  <button type="button" class="drawer__overlay" data-drawer-close tabindex="-1" aria-label="{{ 'general.close' | t }}"></button>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="filter-drawer-title" tabindex="-1">
+    <div class="drawer__head">
+      <h2 class="drawer__title" id="filter-drawer-title">{{ 'collections.filter_and_sort' | t }}</h2>
+      <button type="button" class="icon-btn" data-drawer-close aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button>
+    </div>
+    <form id="facets-form" class="drawer__body facets" action="{{ base_url }}" method="get" data-facets-form>
+      {%- if results.terms -%}<input type="hidden" name="q" value="{{ results.terms | escape }}">{%- endif -%}
+      <fieldset class="facet facet--sort">
+        <legend class="facet__title">{{ 'collections.sort_by' | t }}</legend>
+        <div class="facet__options">
+          {%- for option in results.sort_options -%}
+            <label class="check"><input type="radio" name="sort_by" value="{{ option.value }}" form="facets-form"{% if option.value == sort_by %} checked{% endif %}>{{ option.name }}</label>
+          {%- endfor -%}
+        </div>
+      </fieldset>
+      {%- for filter in results.filters -%}
+        {%- assign fl = filter.label | downcase -%}
+        <details class="facet" id="facet-{{ filter.param_name | handle }}"{% if forloop.index <= 3 or filter.active_values.size > 0 %} open{% endif %}>
+          <summary class="facet__title">
+            <span>{%- if fl contains 'taille' or fl contains 'pointure' -%}{{ 'collections.size' | t }}{%- else -%}{{ filter.label }}{%- endif -%}</span>
+            {% render 'icon', name: 'plus', class: 'icon--sm' %}
+          </summary>
+          {%- case filter.type -%}
+            {%- when 'price_range' -%}
+              <div class="facet__price">
+                <div class="field">
+                  <label for="pmin-{{ section_id }}">{{ 'collections.price_from' | t }}</label>
+                  <input class="input" id="pmin-{{ section_id }}" type="number" inputmode="numeric" name="{{ filter.min_value.param_name }}" min="0" max="{{ filter.range_max | divided_by: 100 }}" placeholder="0"{% if filter.min_value.value %} value="{{ filter.min_value.value | divided_by: 100 }}"{% endif %}>
+                </div>
+                <div class="field">
+                  <label for="pmax-{{ section_id }}">{{ 'collections.price_to' | t }}</label>
+                  <input class="input" id="pmax-{{ section_id }}" type="number" inputmode="numeric" name="{{ filter.max_value.param_name }}" min="0" max="{{ filter.range_max | divided_by: 100 }}" placeholder="{{ filter.range_max | divided_by: 100 }}"{% if filter.max_value.value %} value="{{ filter.max_value.value | divided_by: 100 }}"{% endif %}>
+                </div>
+              </div>
+            {%- else -%}
+              <div class="facet__options{% if fl contains 'taille' or fl contains 'pointure' %} facet__options--sizes{% endif %}">
+                {%- for value in filter.values -%}
+                  {%- assign vid = filter.param_name | append: '-' | append: value.value | handle -%}
+                  <label class="check{% if value.count == 0 and value.active == false %} is-empty{% endif %}" for="f-{{ vid }}">
+                    <input type="checkbox" id="f-{{ vid }}" name="{{ value.param_name }}" value="{{ value.value | escape }}"{% if value.active %} checked{% endif %}{% if value.count == 0 and value.active == false %} disabled{% endif %}>
+                    <span>{{ value.label }}</span>
+                    <span class="muted small">({{ value.count }})</span>
+                  </label>
+                {%- endfor -%}
+              </div>
+          {%- endcase -%}
+        </details>
+      {%- endfor -%}
+    </form>
+    <div class="drawer__foot facets__foot">
+      <a class="btn btn--ghost" href="{{ base_url }}{% if results.terms %}?q={{ results.terms | url_encode }}{% endif %}" data-facet-link>{{ 'collections.clear_all' | t }}</a>
+      <button type="submit" form="facets-form" class="btn" data-drawer-close data-facets-apply>{{ 'collections.apply' | t: count: results_count }}</button>
+    </div>
+  </div>
+</div>

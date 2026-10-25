@@ -1,0 +1,61 @@
+{%- liquid
+  assign img = section.settings.image
+  if img == blank and section.settings.product != blank
+    assign idx = section.settings.image_position | minus: 1
+    assign img = section.settings.product.media[idx].preview_image | default: section.settings.product.featured_image
+  endif
+  assign img_mobile = section.settings.image_mobile | default: img
+-%}
+<section class="hero hero--{{ section.settings.layout }}" aria-labelledby="hero-title-{{ section.id }}">
+  <div class="hero__media{% if section.settings.layout == 'split' %} media media--packshot{% endif %}">
+    {%- if img != blank -%}
+      {%- if img_mobile != img -%}
+        <picture>
+          <source media="(max-width: 749px)" srcset="{{ img_mobile | image_url: width: 750 }} 750w, {{ img_mobile | image_url: width: 1100 }} 1100w" sizes="100vw">
+          {{ img | image_url: width: 2000 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 990px) 60vw, 100vw', widths: '750, 1100, 1500, 2000', alt: section.settings.image_alt }}
+        </picture>
+      {%- else -%}
+        {{ img | image_url: width: 2000 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 990px) 60vw, 100vw', widths: '750, 1100, 1500, 2000', alt: section.settings.image_alt }}
+      {%- endif -%}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+  <div class="hero__text container">
+    {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+    <h2 class="h-display{% if section.settings.lowercase %} lower{% endif %}" id="hero-title-{{ section.id }}">{{ section.settings.heading }}</h2>
+    {%- if section.settings.text != blank -%}<div class="hero__lede">{{ section.settings.text }}</div>{%- endif -%}
+    <div class="hero__ctas">
+      {%- if section.settings.button_label != blank -%}
+        <a class="btn btn--lg{% if section.settings.layout == 'cover' %} btn--light{% endif %}" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label }}{% render 'icon', name: 'arrow-right', class: 'icon--sm' %}</a>
+      {%- endif -%}
+      {%- if section.settings.button2_label != blank -%}
+        <a class="btn btn--lg btn--ghost" href="{{ section.settings.button2_link | default: routes.all_products_collection_url }}">{{ section.settings.button2_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "class": "section-hero",
+  "settings": [
+    { "type": "select", "id": "layout", "label": "Mise en page", "options": [ { "value": "split", "label": "Photo produit + texte" }, { "value": "cover", "label": "Photo plein cadre" } ], "default": "split", "info": "« Plein cadre » convient à une photo d'ambiance ; « Photo produit » aux photos sur fond blanc." },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "image_picker", "id": "image_mobile", "label": "Image mobile (facultatif)" },
+    { "type": "product", "id": "product", "label": "Ou : photo d'un produit", "info": "Utilisé si aucune image n'est choisie." },
+    { "type": "range", "id": "image_position", "label": "Numéro de la photo du produit", "min": 1, "max": 10, "step": 1, "default": 1 },
+    { "type": "text", "id": "image_alt", "label": "Texte alternatif de l'image" },
+    { "type": "text", "id": "eyebrow", "label": "Surtitre" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "bien chaussé, tous les jours." },
+    { "type": "checkbox", "id": "lowercase", "label": "Titre en minuscules (comme le logo)", "default": true },
+    { "type": "richtext", "id": "text", "label": "Texte", "default": "<p>Baskets, mocassins, bottines et sandales pour homme. Livraison partout au Maroc, paiement à la livraison.</p>" },
+    { "type": "text", "id": "button_label", "label": "Bouton principal", "default": "Découvrir les baskets" },
+    { "type": "url", "id": "button_link", "label": "Lien du bouton principal" },
+    { "type": "text", "id": "button2_label", "label": "Bouton secondaire" },
+    { "type": "url", "id": "button2_link", "label": "Lien du bouton secondaire" }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}

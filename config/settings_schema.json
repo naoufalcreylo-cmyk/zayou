@@ -1,0 +1,87 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "ZAYOU",
+    "theme_version": "1.0.0",
+    "theme_author": "ZAYOU",
+    "theme_documentation_url": "https://zayou-5.myshopify.com",
+    "theme_support_url": "https://zayou-5.myshopify.com/pages/contact"
+  },
+  {
+    "name": "Logo",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo", "info": "Laisser vide pour utiliser le logo zayou fourni avec le thème." },
+      { "type": "range", "id": "logo_width", "label": "Largeur du logo (ordinateur)", "min": 80, "max": 200, "step": 4, "unit": "px", "default": 112 },
+      { "type": "range", "id": "logo_width_mobile", "label": "Largeur du logo (mobile)", "min": 64, "max": 140, "step": 4, "unit": "px", "default": 84 },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon", "info": "32 × 32 px, PNG." }
+    ]
+  },
+  {
+    "name": "Couleurs",
+    "settings": [
+      { "type": "color", "id": "color_ink", "label": "Encre (texte, boutons)", "default": "#111111" },
+      { "type": "color", "id": "color_background", "label": "Fond", "default": "#FFFFFF" },
+      { "type": "color", "id": "color_surface", "label": "Fond des photos produit", "info": "Les photos sur fond blanc se fondent dans cette teinte.", "default": "#F3F3F1" },
+      { "type": "color", "id": "color_muted", "label": "Texte secondaire", "default": "#6A6A66" },
+      { "type": "color", "id": "color_line", "label": "Filets", "default": "#E5E5E1" }
+    ]
+  },
+  {
+    "name": "Typographie",
+    "settings": [
+      { "type": "paragraph", "content": "Police : Instrument Sans (licence SIL Open Font License), incluse dans le thème." },
+      { "type": "range", "id": "type_base_size", "label": "Taille du texte", "min": 14, "max": 17, "step": 1, "unit": "px", "default": 15 },
+      { "type": "select", "id": "heading_weight", "label": "Graisse des titres", "options": [ { "value": "500", "label": "Medium" }, { "value": "600", "label": "Semi-bold" } ], "default": "500" }
+    ]
+  },
+  {
+    "name": "Fiches produit (cartes)",
+    "settings": [
+      { "type": "checkbox", "id": "quick_add", "label": "Ajout rapide avec choix de pointure", "info": "Aucune pointure n'est ajoutée par défaut : le client choisit toujours.", "default": true },
+      { "type": "checkbox", "id": "card_second_image", "label": "Deuxième photo au survol", "default": true },
+      { "type": "checkbox", "id": "card_show_colorways", "label": "Afficher le nombre de coloris", "default": true },
+      { "type": "checkbox", "id": "card_show_vendor", "label": "Afficher la marque", "default": true },
+      { "type": "text", "id": "hidden_vendors", "label": "Marques à ne pas afficher", "info": "Séparées par des virgules (ex. noms de fournisseurs).", "default": "Bon Plan Maroc,BONPLAN,Bon Plan" },
+      { "type": "checkbox", "id": "show_discount_percent", "label": "Afficher le pourcentage de remise (fiche produit)", "info": "Calculé à partir du prix barré réel.", "default": true }
+    ]
+  },
+  {
+    "name": "Pointures",
+    "settings": [
+      { "type": "text", "id": "size_range", "label": "Pointures proposées dans les raccourcis", "default": "39,40,41,42,43,44,45" },
+      { "type": "text", "id": "size_filter_param", "label": "Paramètre du filtre pointure", "info": "Nom du filtre Search & Discovery sur l'option de taille. « filter.v.option.taille » pour l'option « Taille », « filter.v.option.pointure » si l'option est renommée « Pointure ».", "default": "filter.v.option.taille" },
+      { "type": "page", "id": "size_guide_page", "label": "Page « Guide des pointures »", "info": "Le lien n'apparaît que si une page est choisie. Utiliser uniquement des mesures vérifiées." }
+    ]
+  },
+  {
+    "name": "Panier et commande",
+    "settings": [
+      { "type": "select", "id": "cart_type", "label": "Panier", "options": [ { "value": "drawer", "label": "Tiroir" }, { "value": "page", "label": "Page" } ], "default": "drawer" },
+      { "type": "number", "id": "free_shipping_threshold", "label": "Seuil de livraison offerte (DH)", "info": "Laisser vide pour masquer la barre de progression. À renseigner uniquement s'il correspond aux tarifs réels d'expédition." },
+      { "type": "text", "id": "cart_note", "label": "Mention sous le bouton de commande", "default": "Paiement à la livraison disponible" },
+      { "type": "text", "id": "app_buy_selector", "label": "Sélecteur du bouton de commande de l'application", "info": "Bouton ajouté par l'application de paiement à la livraison (EasySell). Il est bloqué tant qu'aucune pointure n'est choisie.", "default": "#es-popup-button, [id^='es-popup-button'], .es-sticky, .es-popup-button-product" }
+    ]
+  },
+  {
+    "name": "Service client",
+    "settings": [
+      { "type": "text", "id": "whatsapp_number", "label": "Numéro WhatsApp", "default": "+212633909991" },
+      { "type": "text", "id": "phone", "label": "Téléphone", "default": "+212 644-522326" },
+      { "type": "text", "id": "contact_email", "label": "E-mail" },
+      { "type": "page", "id": "delivery_page", "label": "Page livraison et échanges", "info": "Affichée sur la fiche produit si renseignée." },
+      { "type": "richtext", "id": "pdp_delivery_text", "label": "Texte livraison (fiche produit)", "default": "<p>Livraison partout au Maroc. Paiement à la livraison.</p>" },
+      { "type": "article", "id": "care_article", "label": "Article « Entretien »", "info": "Lien affiché dans l'onglet Entretien de la fiche produit." }
+    ]
+  },
+  {
+    "name": "Réseaux sociaux",
+    "settings": [
+      { "type": "paragraph", "content": "Les comptes actuellement liés sur la boutique sont ceux de Bon Plan Maroc. Remplacer par les comptes zayou dès qu'ils existent." },
+      { "type": "url", "id": "social_instagram", "label": "Instagram" },
+      { "type": "url", "id": "social_facebook", "label": "Facebook" },
+      { "type": "url", "id": "social_tiktok", "label": "TikTok" },
+      { "type": "url", "id": "social_youtube", "label": "YouTube" },
+      { "type": "url", "id": "social_pinterest", "label": "Pinterest" }
+    ]
+  }
+]

@@ -1,0 +1,44 @@
+<div class="drawer drawer--right" id="cart-drawer" data-drawer data-cart-drawer aria-hidden="true">
+  <button type="button" class="drawer__overlay" data-drawer-close tabindex="-1" aria-label="{{ 'general.close' | t }}"></button>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="cart-drawer-title" tabindex="-1">
+    <div class="drawer__head">
+      <h2 class="drawer__title" id="cart-drawer-title">{{ 'cart.title' | t }}{% if cart.item_count > 0 %} <span class="muted">({{ cart.item_count }})</span>{% endif %}</h2>
+      <button type="button" class="icon-btn" data-drawer-close aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button>
+    </div>
+    <div class="drawer__body" data-cart-body>
+      {%- if cart.item_count > 0 -%}
+        {% render 'cart-progress' %}
+        {% render 'cart-lines' %}
+      {%- else -%}
+        <div class="cart-empty">
+          <p>{{ 'cart.empty' | t }}</p>
+          {%- if section.settings.empty_menu.links.size > 0 -%}
+            <p class="small muted">{{ 'cart.empty_hint' | t }}</p>
+            <div class="cart-empty__links">
+              {%- for link in section.settings.empty_menu.links -%}
+                {%- unless link.type == 'frontpage_link' or link.type == 'collection_link' and link.object.products_count == 0 -%}
+                  <a class="chip-link" href="{{ link.url }}">{{ link.title }}</a>
+                {%- endunless -%}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+    {%- if cart.item_count > 0 -%}
+      <div class="drawer__foot">
+        {% render 'cart-summary', form_id: 'cart-drawer-form' %}
+        <p class="cart-note"><a href="{{ routes.cart_url }}">{{ 'cart.view_cart' | t }}</a></p>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Tiroir panier",
+  "settings": [
+    { "type": "link_list", "id": "empty_menu", "label": "Liens du panier vide", "default": "main-menu" }
+  ]
+}
+{% endschema %}

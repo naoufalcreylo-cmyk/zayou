@@ -1,0 +1,18 @@
+{
+  "type": "footer",
+  "name": "Pied de page",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": { "text": "<p>Chaussures pour homme. Livraison partout au Maroc.</p>", "payment_text": "Paiement à la livraison", "show_wordmark": true },
+      "blocks": {
+        "shop": { "type": "menu", "settings": { "title": "Boutique", "menu": "main-menu", "show_policies": false } },
+        "help": { "type": "menu", "settings": { "title": "Informations", "menu": "footer", "show_policies": true } },
+        "contact": { "type": "contact", "settings": { "title": "Contact", "contact_page": "contact" } },
+        "news": { "type": "newsletter", "settings": { "title": "Newsletter", "text": "Les nouveautés zayou, par e-mail." } }
+      },
+      "block_order": ["shop", "help", "contact", "news"]
+    }
+  },
+  "order": ["footer"]
+}

@@ -1,0 +1,34 @@
+{%- comment -%}
+  Shopify product recommendations (Search & Discovery). "related" = automatic; "complementary" = pairs set by the merchant.
+  Rendered empty first, then filled by theme.js through the Section Rendering API.
+{%- endcomment -%}
+<div class="recos" data-recos data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.limit }}&intent={{ section.settings.intent }}"{% if recommendations.performed == false or recommendations.products_count == 0 %} hidden{% endif %}>
+  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+    <div class="container">
+      <div class="section-head">
+        <h2 class="h2 lower">{{ section.settings.heading }}</h2>
+        <div class="rail-nav" data-rail-nav="recos-{{ section.id }}">
+          <button type="button" data-rail-prev aria-label="{{ 'accessibility.scroll_left' | t }}" disabled>{% render 'icon', name: 'arrow-left', class: 'icon--sm' %}</button>
+          <button type="button" data-rail-next aria-label="{{ 'accessibility.scroll_right' | t }}">{% render 'icon', name: 'arrow-right', class: 'icon--sm' %}</button>
+        </div>
+      </div>
+      <ul class="rail product-rail__list recos__list" id="recos-{{ section.id }}" role="list">
+        {%- for product in recommendations.products -%}
+          <li>{% render 'product-card', product: product, sizes: '(min-width: 990px) 23vw, (min-width: 750px) 40vw, 72vw' %}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Recommandations",
+  "class": "section-recos",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titre", "default": "vous aimerez aussi" },
+    { "type": "select", "id": "intent", "label": "Type", "options": [ { "value": "related", "label": "Produits similaires (automatique)" }, { "value": "complementary", "label": "Produits complémentaires (à configurer dans Search & Discovery)" } ], "default": "related" },
+    { "type": "range", "id": "limit", "label": "Nombre de produits", "min": 4, "max": 12, "step": 1, "default": 8 }
+  ]
+}
+{% endschema %}

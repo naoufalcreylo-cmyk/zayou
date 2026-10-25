@@ -1,0 +1,48 @@
+{%- comment -%} Breadcrumbs for collection, product and article pages. Collection context comes from the URL when present. {%- endcomment -%}
+<nav class="breadcrumbs" aria-label="Fil d'Ariane">
+  <ol>
+    <li><a href="{{ routes.root_url }}">{{ shop.name }}</a></li>
+    {%- case request.page_type -%}
+      {%- when 'collection' -%}
+        <li><span aria-current="page">{{ collection.title }}</span></li>
+      {%- when 'product' -%}
+        {%- liquid
+          assign crumb = collection
+          if crumb == blank
+            for c in product.collections
+              unless c.handle == 'frontpage' or c.handle == 'all'
+                assign crumb = c
+                break
+              endunless
+            endfor
+          endif
+        -%}
+        {%- if crumb != blank -%}<li><a href="{{ crumb.url }}">{{ crumb.title }}</a></li>{%- endif -%}
+        <li><span aria-current="page">{{ product.title }}</span></li>
+      {%- when 'article' -%}
+        <li><a href="{{ blog.url }}">{{ blog.title }}</a></li>
+        <li><span aria-current="page">{{ article.title }}</span></li>
+      {%- when 'blog' -%}
+        <li><span aria-current="page">{{ blog.title }}</span></li>
+      {%- else -%}
+        <li><span aria-current="page">{{ page_title }}</span></li>
+    {%- endcase -%}
+  </ol>
+</nav>
+{%- if request.page_type == 'product' or request.page_type == 'collection' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": {{ shop.name | json }}, "item": {{ request.origin | append: routes.root_url | json }} }
+        {%- if request.page_type == 'collection' -%},
+          { "@type": "ListItem", "position": 2, "name": {{ collection.title | json }}, "item": {{ request.origin | append: collection.url | json }} }
+        {%- elsif crumb != blank -%},
+          { "@type": "ListItem", "position": 2, "name": {{ crumb.title | json }}, "item": {{ request.origin | append: crumb.url | json }} },
+          { "@type": "ListItem", "position": 3, "name": {{ product.title | json }}, "item": {{ request.origin | append: product.url | json }} }
+        {%- endif %}
+      ]
+    }
+  </script>
+{%- endif -%}

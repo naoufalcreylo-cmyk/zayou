@@ -1,0 +1,29 @@
+<div class="drawer search-dialog" id="search-dialog" data-drawer data-search-dialog aria-hidden="true">
+  <button type="button" class="drawer__overlay" data-drawer-close tabindex="-1" aria-label="{{ 'general.close' | t }}"></button>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="{{ 'search.title' | t }}" tabindex="-1">
+    <div class="container">
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search-form" data-predictive-form>
+        {%- render 'icon', name: 'search' -%}
+        <label for="search-dialog-input" class="visually-hidden">{{ 'search.title' | t }}</label>
+        <input id="search-dialog-input" class="search-form__input" type="search" name="q" value="{{ search.terms | escape }}"
+          placeholder="{{ 'search.placeholder' | t }}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+          role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="predictive-results" data-predictive-input>
+        <input type="hidden" name="options[prefix]" value="last">
+        <button type="reset" class="link small" data-predictive-reset hidden>{{ 'search.clear' | t }}</button>
+        <button type="button" class="icon-btn" data-drawer-close aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button>
+      </form>
+      <div id="predictive-results" class="predictive" data-predictive-results aria-live="polite">
+        <div data-predictive-empty>
+          <p class="predictive__title">{{ 'search.popular' | t }}</p>
+          <div class="cart-empty__links">
+            {%- for link in linklists['main-menu'].links -%}
+              {%- unless link.type == 'frontpage_link' or link.type == 'collection_link' and link.object.products_count == 0 -%}
+                <a class="chip-link" href="{{ link.url }}">{{ link.title }}</a>
+              {%- endunless -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

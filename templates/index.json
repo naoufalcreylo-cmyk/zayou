@@ -1,0 +1,93 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "layout": "split",
+        "product": "crest-tabac",
+        "image_position": 4,
+        "image_alt": "Les cinq coloris de la basket Crest alignés",
+        "eyebrow": "",
+        "heading": "bien chaussé, tous les jours.",
+        "lowercase": true,
+        "text": "<p>Baskets, mocassins, bottines et sandales pour homme. Livraison partout au Maroc, paiement à la livraison.</p>",
+        "button_label": "Découvrir les baskets",
+        "button_link": "shopify://collections/baskets-homme",
+        "button2_label": "Mocassins",
+        "button2_link": "shopify://collections/mocassins-homme"
+      }
+    },
+    "categories": {
+      "type": "category-tiles",
+      "settings": { "heading": "par catégorie", "link_label": "", "pad_top": 48, "pad_bottom": 24 },
+      "blocks": {
+        "c1": { "type": "category", "settings": { "collection": "baskets-homme", "label": "baskets", "product": "basket-homme-0013-cuir-tabac" } },
+        "c2": { "type": "category", "settings": { "collection": "mocassins-homme", "label": "mocassins", "product": "mocassins-souples-en-daim-5", "image_position": 2 } },
+        "c3": { "type": "category", "settings": { "collection": "bottines-homme", "label": "bottines", "product": "bottine-homme-002-cuir-tabac" } },
+        "c4": { "type": "category", "settings": { "collection": "sandales-homme", "label": "sandales", "product": "013-sandales-homme-en-cuir-noir" } },
+        "c5": { "type": "category", "settings": { "collection": "sabot-homme", "label": "sabots", "product": "sabot-pantoufle-marron-001" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4", "c5"]
+    },
+    "selection": {
+      "type": "product-rail",
+      "settings": {
+        "eyebrow": "",
+        "heading": "la sélection",
+        "text": "",
+        "products": ["crest-tabac", "nomad-gris", "basket-homme-0013-cuir-tabac", "bottine-homme-002-cuir-tabac", "eclipse-beige", "mocassins-souples-en-cuir-1", "streamline-noir", "zenith-blanche"],
+        "limit": 8,
+        "grid_desktop": false,
+        "cols_desktop": "4",
+        "link_label": "Toutes les baskets",
+        "link": "shopify://collections/baskets-homme",
+        "pad_top": 40,
+        "pad_bottom": 56
+      }
+    },
+    "spotlight": {
+      "type": "model-spotlight",
+      "settings": {
+        "product": "crest-tabac",
+        "eyebrow": "Un modèle, toute la gamme",
+        "heading": "crest",
+        "text": "<p>Basket basse Broski à semelle blanche contrastée. Choisissez votre coloris.</p>",
+        "lineup_position": 4,
+        "pad_top": 56,
+        "pad_bottom": 56
+      }
+    },
+    "moments": {
+      "type": "editorial-moments",
+      "settings": { "heading": "du lundi au dimanche.", "text": "", "pad_top": 56, "pad_bottom": 56 },
+      "blocks": {
+        "m1": { "type": "moment", "settings": { "product": "basket-homme-006-daim-tabac", "image_position": 2, "image_alt": "Baskets en daim tabac portées", "title": "en semaine", "text": "Une basket en cuir ou en daim, pour tous les jours.", "link_label": "Les baskets", "link": "shopify://collections/baskets-homme" } },
+        "m2": { "type": "moment", "settings": { "product": "mocassins-souples-en-cuir-1", "image_position": 1, "image_alt": "Mocassins souples en cuir noir portés", "title": "le soir", "text": "Le mocassin souple, pour sortir.", "link_label": "Les mocassins", "link": "shopify://collections/mocassins-homme" } },
+        "m3": { "type": "moment", "settings": { "product": "sandales-en-cuir-noir", "image_position": 2, "image_alt": "Sandales en cuir noir portées", "title": "le week-end", "text": "Sandales en cuir ou en daim.", "link_label": "Les sandales", "link": "shopify://collections/sandales-homme" } },
+        "m4": { "type": "moment", "settings": { "product": "sabot-pantoufle-marron-001", "image_position": 1, "image_alt": "Sabot pantoufle marron", "title": "à la maison", "text": "Le sabot pantoufle.", "link_label": "Les sabots", "link": "shopify://collections/sabot-homme" } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4"]
+    },
+    "size_finder": {
+      "type": "size-finder",
+      "settings": {
+        "heading": "votre pointure, d'abord.",
+        "text": "<p>Choisissez votre pointure : la boutique n'affiche que les modèles disponibles dans cette taille. Elle sera repérée sur chaque fiche produit.</p>",
+        "in_stock": true,
+        "pad_top": 48,
+        "pad_bottom": 48
+      }
+    },
+    "services": {
+      "type": "service-strip",
+      "settings": { "label": "Nos services", "pad_top": 32, "pad_bottom": 64 },
+      "blocks": {
+        "s1": { "type": "service", "settings": { "icon": "truck", "title": "Livraison partout au Maroc", "text": "" } },
+        "s2": { "type": "service", "settings": { "icon": "cash", "title": "Paiement à la livraison", "text": "<p>Vous réglez à la réception de votre commande.</p>" } },
+        "s3": { "type": "service", "settings": { "icon": "whatsapp", "title": "Une question ?", "text": "<p>Écrivez-nous sur <a href=\"https://wa.me/212633909991\">WhatsApp</a>.</p>" } }
+      },
+      "block_order": ["s1", "s2", "s3"]
+    }
+  },
+  "order": ["hero", "categories", "selection", "spotlight", "moments", "size_finder", "services"]
+}
