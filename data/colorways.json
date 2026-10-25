@@ -1,0 +1,2113 @@
+{
+ "sandales-en-100-cuir": {
+  "model": "Sandales 001",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "sandales-en-100-cuir",
+   "sandales-en-cuir-marron",
+   "sandales-en-cuir-tabac-1",
+   "001-sandales-en-cuir-marron",
+   "sandales-en-cuir-gris"
+  ]
+ },
+ "mocassins-souples-en-daim-bleu-marine": {
+  "model": "Mocassins souples",
+  "label": "Bleu marine",
+  "material": "Daim",
+  "hex": [
+   "#1f2c44"
+  ],
+  "siblings": [
+   "mocassins-souples-en-daim-bleu-marine",
+   "mocassins-souples-en-daim-3",
+   "mocassins-souples-en-daim-8",
+   "mocassins-souples-en-cuir"
+  ]
+ },
+ "mocassins-souples-en-daim-3": {
+  "model": "Mocassins souples",
+  "label": null,
+  "material": "Daim",
+  "hex": [],
+  "siblings": [
+   "mocassins-souples-en-daim-bleu-marine",
+   "mocassins-souples-en-daim-3",
+   "mocassins-souples-en-daim-8",
+   "mocassins-souples-en-cuir"
+  ]
+ },
+ "basket-04": {
+  "model": "Basket Daim Vert",
+  "label": "Vert",
+  "material": "Daim",
+  "hex": [
+   "#5f6b45"
+  ],
+  "siblings": []
+ },
+ "basket-homme-005-cuir-blanc": {
+  "model": "Basket Homme 004",
+  "label": "Blanc",
+  "material": "Cuir",
+  "hex": [
+   "#f3f2ee"
+  ],
+  "siblings": [
+   "basket-homme-005-cuir-blanc",
+   "basket-homme-004-cuir-blanc",
+   "basket-homme-004-nubuck-gris-1",
+   "basket-homme-004-nubuck-gris",
+   "basket-homme-004-daim-tabac",
+   "basket-homme-004-cuir-blanc-marron"
+  ]
+ },
+ "basket-homme-012-cuir-noir": {
+  "model": "Basket Homme 012",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": []
+ },
+ "basket-homme-007-cuir-blanc": {
+  "model": "Basket Homme 007",
+  "label": "Blanc",
+  "material": null,
+  "hex": [
+   "#f3f2ee"
+  ],
+  "siblings": [
+   "basket-homme-007-cuir-blanc",
+   "basket-homme-007-cuir-noir",
+   "basket-homme-001-cuir-noir-sb"
+  ]
+ },
+ "basket-homme-006-daim-tabac": {
+  "model": "Basket Homme 006",
+  "label": "Tabac",
+  "material": "Daim",
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": [
+   "basket-homme-006-daim-tabac",
+   "basket-homme-006-cuir-noir",
+   "basket-homme-006-cuir-marron",
+   "basket-homme-006-nubuck-gris",
+   "basket-homme-006-nubuck-beige",
+   "basket-homme-006-cuir-blanc-1",
+   "basket-homme-006-nubuck-gris-1",
+   "basket-homme-006-nubuck-tabac",
+   "basket-homme-006-daim-gris",
+   "basket-homme-006-cuir-gris-st",
+   "basket-homme-006-daim-noir-1",
+   "basket-homme-006-daim-noir-st",
+   "basket-homme-006-cuir-noir-sn"
+  ]
+ },
+ "basket-homme-006-cuir-noir": {
+  "model": "Basket Homme 006",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "basket-homme-006-daim-tabac",
+   "basket-homme-006-cuir-noir",
+   "basket-homme-006-cuir-marron",
+   "basket-homme-006-nubuck-gris",
+   "basket-homme-006-nubuck-beige",
+   "basket-homme-006-cuir-blanc-1",
+   "basket-homme-006-nubuck-gris-1",
+   "basket-homme-006-nubuck-tabac",
+   "basket-homme-006-daim-gris",
+   "basket-homme-006-cuir-gris-st",
+   "basket-homme-006-daim-noir-1",
+   "basket-homme-006-daim-noir-st",
+   "basket-homme-006-cuir-noir-sn"
+  ]
+ },
+ "basket-homme-006-cuir-marron": {
+  "model": "Basket Homme 006",
+  "label": "Marron",
+  "material": "Cuir",
+  "hex": [
+   "#5b3a26"
+  ],
+  "siblings": [
+   "basket-homme-006-daim-tabac",
+   "basket-homme-006-cuir-noir",
+   "basket-homme-006-cuir-marron",
+   "basket-homme-006-nubuck-gris",
+   "basket-homme-006-nubuck-beige",
+   "basket-homme-006-cuir-blanc-1",
+   "basket-homme-006-nubuck-gris-1",
+   "basket-homme-006-nubuck-tabac",
+   "basket-homme-006-daim-gris",
+   "basket-homme-006-cuir-gris-st",
+   "basket-homme-006-daim-noir-1",
+   "basket-homme-006-daim-noir-st",
+   "basket-homme-006-cuir-noir-sn"
+  ]
+ },
+ "basket-homme-006-nubuck-gris": {
+  "model": "Basket Homme 006",
+  "label": "Gris",
+  "material": "Nubuck",
+  "hex": [
+   "#8e8d89"
+  ],
+  "siblings": [
+   "basket-homme-006-daim-tabac",
+   "basket-homme-006-cuir-noir",
+   "basket-homme-006-cuir-marron",
+   "basket-homme-006-nubuck-gris",
+   "basket-homme-006-nubuck-beige",
+   "basket-homme-006-cuir-blanc-1",
+   "basket-homme-006-nubuck-gris-1",
+   "basket-homme-006-nubuck-tabac",
+   "basket-homme-006-daim-gris",
+   "basket-homme-006-cuir-gris-st",
+   "basket-homme-006-daim-noir-1",
+   "basket-homme-006-daim-noir-st",
+   "basket-homme-006-cuir-noir-sn"
+  ]
+ },
+ "basket-homme-006-nubuck-beige": {
+  "model": "Basket Homme 006",
+  "label": "Beige",
+  "material": "Nubuck",
+  "hex": [
+   "#cdb995"
+  ],
+  "siblings": [
+   "basket-homme-006-daim-tabac",
+   "basket-homme-006-cuir-noir",
+   "basket-homme-006-cuir-marron",
+   "basket-homme-006-nubuck-gris",
+   "basket-homme-006-nubuck-beige",
+   "basket-homme-006-cuir-blanc-1",
+   "basket-homme-006-nubuck-gris-1",
+   "basket-homme-006-nubuck-tabac",
+   "basket-homme-006-daim-gris",
+   "basket-homme-006-cuir-gris-st",
+   "basket-homme-006-daim-noir-1",
+   "basket-homme-006-daim-noir-st",
+   "basket-homme-006-cuir-noir-sn"
+  ]
+ },
+ "basket-homme-006-cuir-blanc-1": {
+  "model": "Basket Homme 006",
+  "label": "Blanc",
+  "material": "Cuir",
+  "hex": [
+   "#f3f2ee"
+  ],
+  "siblings": [
+   "basket-homme-006-daim-tabac",
+   "basket-homme-006-cuir-noir",
+   "basket-homme-006-cuir-marron",
+   "basket-homme-006-nubuck-gris",
+   "basket-homme-006-nubuck-beige",
+   "basket-homme-006-cuir-blanc-1",
+   "basket-homme-006-nubuck-gris-1",
+   "basket-homme-006-nubuck-tabac",
+   "basket-homme-006-daim-gris",
+   "basket-homme-006-cuir-gris-st",
+   "basket-homme-006-daim-noir-1",
+   "basket-homme-006-daim-noir-st",
+   "basket-homme-006-cuir-noir-sn"
+  ]
+ },
+ "basket-homme-006-nubuck-gris-1": {
+  "model": "Basket Homme 006",
+  "label": "Gris",
+  "material": "Nubuck",
+  "hex": [
+   "#8e8d89"
+  ],
+  "siblings": [
+   "basket-homme-006-daim-tabac",
+   "basket-homme-006-cuir-noir",
+   "basket-homme-006-cuir-marron",
+   "basket-homme-006-nubuck-gris",
+   "basket-homme-006-nubuck-beige",
+   "basket-homme-006-cuir-blanc-1",
+   "basket-homme-006-nubuck-gris-1",
+   "basket-homme-006-nubuck-tabac",
+   "basket-homme-006-daim-gris",
+   "basket-homme-006-cuir-gris-st",
+   "basket-homme-006-daim-noir-1",
+   "basket-homme-006-daim-noir-st",
+   "basket-homme-006-cuir-noir-sn"
+  ]
+ },
+ "basket-homme-004-cuir-blanc": {
+  "model": "Basket Homme 004",
+  "label": "Blanc",
+  "material": "Cuir",
+  "hex": [
+   "#f3f2ee"
+  ],
+  "siblings": [
+   "basket-homme-005-cuir-blanc",
+   "basket-homme-004-cuir-blanc",
+   "basket-homme-004-nubuck-gris-1",
+   "basket-homme-004-nubuck-gris",
+   "basket-homme-004-daim-tabac",
+   "basket-homme-004-cuir-blanc-marron"
+  ]
+ },
+ "basket-homme-004-nubuck-gris-1": {
+  "model": "Basket Homme 004",
+  "label": "Gris",
+  "material": "Nubuck",
+  "hex": [
+   "#8e8d89"
+  ],
+  "siblings": [
+   "basket-homme-005-cuir-blanc",
+   "basket-homme-004-cuir-blanc",
+   "basket-homme-004-nubuck-gris-1",
+   "basket-homme-004-nubuck-gris",
+   "basket-homme-004-daim-tabac",
+   "basket-homme-004-cuir-blanc-marron"
+  ]
+ },
+ "basket-homme-018-cuir-noir": {
+  "model": "Basket Homme 018",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": []
+ },
+ "basket-homme-023-cuir-marron": {
+  "model": "Basket Homme 024",
+  "label": "Marron",
+  "material": "Cuir",
+  "hex": [
+   "#5b3a26"
+  ],
+  "siblings": []
+ },
+ "basket-homme-007-cuir-noir": {
+  "model": "Basket Homme 007",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "basket-homme-007-cuir-blanc",
+   "basket-homme-007-cuir-noir",
+   "basket-homme-001-cuir-noir-sb"
+  ]
+ },
+ "basket-homme-006-nubuck-tabac": {
+  "model": "Basket Homme 006",
+  "label": "Tabac",
+  "material": "Nubuck",
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": [
+   "basket-homme-006-daim-tabac",
+   "basket-homme-006-cuir-noir",
+   "basket-homme-006-cuir-marron",
+   "basket-homme-006-nubuck-gris",
+   "basket-homme-006-nubuck-beige",
+   "basket-homme-006-cuir-blanc-1",
+   "basket-homme-006-nubuck-gris-1",
+   "basket-homme-006-nubuck-tabac",
+   "basket-homme-006-daim-gris",
+   "basket-homme-006-cuir-gris-st",
+   "basket-homme-006-daim-noir-1",
+   "basket-homme-006-daim-noir-st",
+   "basket-homme-006-cuir-noir-sn"
+  ]
+ },
+ "basket-homme-006-daim-gris": {
+  "model": "Basket Homme 006",
+  "label": "Gris",
+  "material": "Daim",
+  "hex": [
+   "#8e8d89"
+  ],
+  "siblings": [
+   "basket-homme-006-daim-tabac",
+   "basket-homme-006-cuir-noir",
+   "basket-homme-006-cuir-marron",
+   "basket-homme-006-nubuck-gris",
+   "basket-homme-006-nubuck-beige",
+   "basket-homme-006-cuir-blanc-1",
+   "basket-homme-006-nubuck-gris-1",
+   "basket-homme-006-nubuck-tabac",
+   "basket-homme-006-daim-gris",
+   "basket-homme-006-cuir-gris-st",
+   "basket-homme-006-daim-noir-1",
+   "basket-homme-006-daim-noir-st",
+   "basket-homme-006-cuir-noir-sn"
+  ]
+ },
+ "sandales-en-cuir-noir": {
+  "model": "Sandales 002",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "sandales-en-cuir-noir",
+   "sandales-en-cuir-beige"
+  ]
+ },
+ "sandales-en-cuir-beige": {
+  "model": "Sandales 002",
+  "label": "Beige",
+  "material": "Daim",
+  "hex": [
+   "#cdb995"
+  ],
+  "siblings": [
+   "sandales-en-cuir-noir",
+   "sandales-en-cuir-beige"
+  ]
+ },
+ "sandales-en-cuir-marron": {
+  "model": "Sandales 001",
+  "label": "Tabac",
+  "material": "Daim",
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": [
+   "sandales-en-100-cuir",
+   "sandales-en-cuir-marron",
+   "sandales-en-cuir-tabac-1",
+   "001-sandales-en-cuir-marron",
+   "sandales-en-cuir-gris"
+  ]
+ },
+ "sandales-en-cuir-tabac-1": {
+  "model": "Sandales 001",
+  "label": "Tabac clair",
+  "material": "Daim",
+  "hex": [
+   "#b27d4c"
+  ],
+  "siblings": [
+   "sandales-en-100-cuir",
+   "sandales-en-cuir-marron",
+   "sandales-en-cuir-tabac-1",
+   "001-sandales-en-cuir-marron",
+   "sandales-en-cuir-gris"
+  ]
+ },
+ "mocassins-souples-en-daim-5": {
+  "model": "Mocassins souples 001",
+  "label": "Gris foncé",
+  "material": "Daim",
+  "hex": [
+   "#4b4b4a"
+  ],
+  "siblings": [
+   "mocassins-souples-en-daim-5",
+   "mocassins-souples-en-daim-6",
+   "copie-de-mocassins-souples-en-daim-bleu",
+   "mocassins-souples-en-daim-7",
+   "mocassins-souples-en-cuir-1",
+   "mocassins-souples-en-daim-9"
+  ]
+ },
+ "mocassins-souples-en-daim-6": {
+  "model": "Mocassins souples 001",
+  "label": "Marron",
+  "material": "Cuir",
+  "hex": [
+   "#5b3a26"
+  ],
+  "siblings": [
+   "mocassins-souples-en-daim-5",
+   "mocassins-souples-en-daim-6",
+   "copie-de-mocassins-souples-en-daim-bleu",
+   "mocassins-souples-en-daim-7",
+   "mocassins-souples-en-cuir-1",
+   "mocassins-souples-en-daim-9"
+  ]
+ },
+ "copie-de-mocassins-souples-en-daim-bleu": {
+  "model": "Mocassins souples 001",
+  "label": "Bleu",
+  "material": "Daim",
+  "hex": [
+   "#30496b"
+  ],
+  "siblings": [
+   "mocassins-souples-en-daim-5",
+   "mocassins-souples-en-daim-6",
+   "copie-de-mocassins-souples-en-daim-bleu",
+   "mocassins-souples-en-daim-7",
+   "mocassins-souples-en-cuir-1",
+   "mocassins-souples-en-daim-9"
+  ]
+ },
+ "mocassins-souples-en-daim-7": {
+  "model": "Mocassins souples 001",
+  "label": "Tabac",
+  "material": "Daim",
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": [
+   "mocassins-souples-en-daim-5",
+   "mocassins-souples-en-daim-6",
+   "copie-de-mocassins-souples-en-daim-bleu",
+   "mocassins-souples-en-daim-7",
+   "mocassins-souples-en-cuir-1",
+   "mocassins-souples-en-daim-9"
+  ]
+ },
+ "mocassins-souples-en-daim-8": {
+  "model": "Mocassins souples",
+  "label": null,
+  "material": "Cuir",
+  "hex": [],
+  "siblings": [
+   "mocassins-souples-en-daim-bleu-marine",
+   "mocassins-souples-en-daim-3",
+   "mocassins-souples-en-daim-8",
+   "mocassins-souples-en-cuir"
+  ]
+ },
+ "mocassins-souples-en-cuir": {
+  "model": "Mocassins souples",
+  "label": null,
+  "material": "Cuir",
+  "hex": [],
+  "siblings": [
+   "mocassins-souples-en-daim-bleu-marine",
+   "mocassins-souples-en-daim-3",
+   "mocassins-souples-en-daim-8",
+   "mocassins-souples-en-cuir"
+  ]
+ },
+ "mocassins-souples-en-cuir-1": {
+  "model": "Mocassins souples 001",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "mocassins-souples-en-daim-5",
+   "mocassins-souples-en-daim-6",
+   "copie-de-mocassins-souples-en-daim-bleu",
+   "mocassins-souples-en-daim-7",
+   "mocassins-souples-en-cuir-1",
+   "mocassins-souples-en-daim-9"
+  ]
+ },
+ "mocassins-souples-en-daim-9": {
+  "model": "Mocassins souples 001",
+  "label": "Beige",
+  "material": "Daim",
+  "hex": [
+   "#cdb995"
+  ],
+  "siblings": [
+   "mocassins-souples-en-daim-5",
+   "mocassins-souples-en-daim-6",
+   "copie-de-mocassins-souples-en-daim-bleu",
+   "mocassins-souples-en-daim-7",
+   "mocassins-souples-en-cuir-1",
+   "mocassins-souples-en-daim-9"
+  ]
+ },
+ "sandales-en-cuir-marron-007": {
+  "model": "Sandales 007",
+  "label": "Tabac clair",
+  "material": "Daim",
+  "hex": [
+   "#b27d4c"
+  ],
+  "siblings": [
+   "sandales-en-cuir-marron-007",
+   "sandales-en-cuir-marron-7",
+   "sandales-en-cuir-noir-007",
+   "sandales-en-daim-gris-007"
+  ]
+ },
+ "basket-homme-004-nubuck-gris": {
+  "model": "Basket Homme 004",
+  "label": "Gris",
+  "material": "Nubuck",
+  "hex": [
+   "#8e8d89"
+  ],
+  "siblings": [
+   "basket-homme-005-cuir-blanc",
+   "basket-homme-004-cuir-blanc",
+   "basket-homme-004-nubuck-gris-1",
+   "basket-homme-004-nubuck-gris",
+   "basket-homme-004-daim-tabac",
+   "basket-homme-004-cuir-blanc-marron"
+  ]
+ },
+ "bonplan-911": {
+  "model": "BONPLAN 911",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "sandales-en-cuir-marron-7": {
+  "model": "Sandales 007",
+  "label": "Tabac",
+  "material": "Daim",
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": [
+   "sandales-en-cuir-marron-007",
+   "sandales-en-cuir-marron-7",
+   "sandales-en-cuir-noir-007",
+   "sandales-en-daim-gris-007"
+  ]
+ },
+ "sandales-en-cuir-noir-007": {
+  "model": "Sandales 007",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "sandales-en-cuir-marron-007",
+   "sandales-en-cuir-marron-7",
+   "sandales-en-cuir-noir-007",
+   "sandales-en-daim-gris-007"
+  ]
+ },
+ "premium-leather-tabac-008": {
+  "model": "Sandales 008",
+  "label": "Tabac",
+  "material": "Daim",
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": [
+   "premium-leather-tabac-008",
+   "premium-leather-noir-008",
+   "sandales-en-daim-tabac-008",
+   "copie-de-sandales-en-daim-gris-008"
+  ]
+ },
+ "premium-leather-noir-008": {
+  "model": "Sandales 008",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "premium-leather-tabac-008",
+   "premium-leather-noir-008",
+   "sandales-en-daim-tabac-008",
+   "copie-de-sandales-en-daim-gris-008"
+  ]
+ },
+ "l-coste-simple-cuir-blanc-1": {
+  "model": "L@coste simple",
+  "label": "Blanc",
+  "material": "Cuir",
+  "hex": [
+   "#f3f2ee"
+  ],
+  "siblings": [
+   "l-coste-simple-cuir-blanc-1",
+   "l-coste-simple-cuir-noir"
+  ]
+ },
+ "mocassins-souple-noir": {
+  "model": "Mocassins souples 002",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": []
+ },
+ "chaussure-de-ville-premium": {
+  "model": "Chaussure de ville premium",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "basket-homme-006-cuir-gris-st": {
+  "model": "Basket Homme 006",
+  "label": "Gris",
+  "material": "Nubuck",
+  "hex": [
+   "#8e8d89"
+  ],
+  "siblings": [
+   "basket-homme-006-daim-tabac",
+   "basket-homme-006-cuir-noir",
+   "basket-homme-006-cuir-marron",
+   "basket-homme-006-nubuck-gris",
+   "basket-homme-006-nubuck-beige",
+   "basket-homme-006-cuir-blanc-1",
+   "basket-homme-006-nubuck-gris-1",
+   "basket-homme-006-nubuck-tabac",
+   "basket-homme-006-daim-gris",
+   "basket-homme-006-cuir-gris-st",
+   "basket-homme-006-daim-noir-1",
+   "basket-homme-006-daim-noir-st",
+   "basket-homme-006-cuir-noir-sn"
+  ]
+ },
+ "basket-homme-006-daim-noir-1": {
+  "model": "Basket Homme 006",
+  "label": "Noir",
+  "material": "Nubuck",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "basket-homme-006-daim-tabac",
+   "basket-homme-006-cuir-noir",
+   "basket-homme-006-cuir-marron",
+   "basket-homme-006-nubuck-gris",
+   "basket-homme-006-nubuck-beige",
+   "basket-homme-006-cuir-blanc-1",
+   "basket-homme-006-nubuck-gris-1",
+   "basket-homme-006-nubuck-tabac",
+   "basket-homme-006-daim-gris",
+   "basket-homme-006-cuir-gris-st",
+   "basket-homme-006-daim-noir-1",
+   "basket-homme-006-daim-noir-st",
+   "basket-homme-006-cuir-noir-sn"
+  ]
+ },
+ "basket-homme-006-daim-noir-st": {
+  "model": "Basket Homme 006",
+  "label": "Noir",
+  "material": "Nubuck",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "basket-homme-006-daim-tabac",
+   "basket-homme-006-cuir-noir",
+   "basket-homme-006-cuir-marron",
+   "basket-homme-006-nubuck-gris",
+   "basket-homme-006-nubuck-beige",
+   "basket-homme-006-cuir-blanc-1",
+   "basket-homme-006-nubuck-gris-1",
+   "basket-homme-006-nubuck-tabac",
+   "basket-homme-006-daim-gris",
+   "basket-homme-006-cuir-gris-st",
+   "basket-homme-006-daim-noir-1",
+   "basket-homme-006-daim-noir-st",
+   "basket-homme-006-cuir-noir-sn"
+  ]
+ },
+ "basket-homme-006-cuir-noir-sn": {
+  "model": "Basket Homme 006",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "basket-homme-006-daim-tabac",
+   "basket-homme-006-cuir-noir",
+   "basket-homme-006-cuir-marron",
+   "basket-homme-006-nubuck-gris",
+   "basket-homme-006-nubuck-beige",
+   "basket-homme-006-cuir-blanc-1",
+   "basket-homme-006-nubuck-gris-1",
+   "basket-homme-006-nubuck-tabac",
+   "basket-homme-006-daim-gris",
+   "basket-homme-006-cuir-gris-st",
+   "basket-homme-006-daim-noir-1",
+   "basket-homme-006-daim-noir-st",
+   "basket-homme-006-cuir-noir-sn"
+  ]
+ },
+ "basket-homme-001-cuir-noir-sb": {
+  "model": "Basket Homme 007",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "basket-homme-007-cuir-blanc",
+   "basket-homme-007-cuir-noir",
+   "basket-homme-001-cuir-noir-sb"
+  ]
+ },
+ "basket-homme-005-cuir-blanc-1": {
+  "model": "Basket Homme 005",
+  "label": "Blanc",
+  "material": "Cuir",
+  "hex": [
+   "#f3f2ee"
+  ],
+  "siblings": [
+   "basket-homme-005-cuir-blanc-1",
+   "basket-homme-005-cuir-noir",
+   "basket-homme-005-nubuck-gris-1",
+   "basket-homme-005-daim-tabac",
+   "basket-homme-005-cuir-blanc-st",
+   "basket-homme-005-cuir-tabac",
+   "basket-homme-005-nubuck-beige"
+  ]
+ },
+ "basket-homme-005-cuir-noir": {
+  "model": "Basket Homme 005",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "basket-homme-005-cuir-blanc-1",
+   "basket-homme-005-cuir-noir",
+   "basket-homme-005-nubuck-gris-1",
+   "basket-homme-005-daim-tabac",
+   "basket-homme-005-cuir-blanc-st",
+   "basket-homme-005-cuir-tabac",
+   "basket-homme-005-nubuck-beige"
+  ]
+ },
+ "basket-homme-005-nubuck-gris-1": {
+  "model": "Basket Homme 005",
+  "label": "Gris",
+  "material": "Nubuck",
+  "hex": [
+   "#8e8d89"
+  ],
+  "siblings": [
+   "basket-homme-005-cuir-blanc-1",
+   "basket-homme-005-cuir-noir",
+   "basket-homme-005-nubuck-gris-1",
+   "basket-homme-005-daim-tabac",
+   "basket-homme-005-cuir-blanc-st",
+   "basket-homme-005-cuir-tabac",
+   "basket-homme-005-nubuck-beige"
+  ]
+ },
+ "basket-homme-005-daim-tabac": {
+  "model": "Basket Homme 005",
+  "label": "Tabac clair",
+  "material": "Nubuck",
+  "hex": [
+   "#b27d4c"
+  ],
+  "siblings": [
+   "basket-homme-005-cuir-blanc-1",
+   "basket-homme-005-cuir-noir",
+   "basket-homme-005-nubuck-gris-1",
+   "basket-homme-005-daim-tabac",
+   "basket-homme-005-cuir-blanc-st",
+   "basket-homme-005-cuir-tabac",
+   "basket-homme-005-nubuck-beige"
+  ]
+ },
+ "basket-homme-005-cuir-blanc-st": {
+  "model": "Basket Homme 005",
+  "label": "Blanc",
+  "material": "Cuir",
+  "hex": [
+   "#f3f2ee"
+  ],
+  "siblings": [
+   "basket-homme-005-cuir-blanc-1",
+   "basket-homme-005-cuir-noir",
+   "basket-homme-005-nubuck-gris-1",
+   "basket-homme-005-daim-tabac",
+   "basket-homme-005-cuir-blanc-st",
+   "basket-homme-005-cuir-tabac",
+   "basket-homme-005-nubuck-beige"
+  ]
+ },
+ "basket-homme-009-cuir-marron": {
+  "model": "Basket Homme 009",
+  "label": "Marron",
+  "material": "Cuir",
+  "hex": [
+   "#5b3a26"
+  ],
+  "siblings": [
+   "basket-homme-009-cuir-marron",
+   "basket-homme-009-daim-tabac",
+   "basket-homme-009-cuir-marron-1"
+  ]
+ },
+ "basket-homme-009-daim-tabac": {
+  "model": "Basket Homme 009",
+  "label": "Tabac",
+  "material": "Daim",
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": [
+   "basket-homme-009-cuir-marron",
+   "basket-homme-009-daim-tabac",
+   "basket-homme-009-cuir-marron-1"
+  ]
+ },
+ "basket-homme-010-daim-tabac": {
+  "model": "Basket Homme 010",
+  "label": "Tabac",
+  "material": "Daim",
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": []
+ },
+ "basket-homme-011-cuir-noir": {
+  "model": "Basket Homme 011",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": []
+ },
+ "sabot-pantoufle-noir-001": {
+  "model": "Sabot pantoufle 001",
+  "label": "Noir",
+  "material": null,
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "sabot-pantoufle-noir-001",
+   "sabot-pantoufle-marron-001",
+   "sabot-pantoufle-gris-001",
+   "sabot-pantoufle-bleu-001"
+  ]
+ },
+ "sabot-pantoufle-marron-001": {
+  "model": "Sabot pantoufle 001",
+  "label": "Marron",
+  "material": null,
+  "hex": [
+   "#5b3a26"
+  ],
+  "siblings": [
+   "sabot-pantoufle-noir-001",
+   "sabot-pantoufle-marron-001",
+   "sabot-pantoufle-gris-001",
+   "sabot-pantoufle-bleu-001"
+  ]
+ },
+ "sabot-pantoufle-gris-001": {
+  "model": "Sabot pantoufle 001",
+  "label": "Gris",
+  "material": null,
+  "hex": [
+   "#8e8d89"
+  ],
+  "siblings": [
+   "sabot-pantoufle-noir-001",
+   "sabot-pantoufle-marron-001",
+   "sabot-pantoufle-gris-001",
+   "sabot-pantoufle-bleu-001"
+  ]
+ },
+ "sabot-pantoufle-bleu-001": {
+  "model": "Sabot pantoufle 001",
+  "label": "Bleu",
+  "material": null,
+  "hex": [
+   "#30496b"
+  ],
+  "siblings": [
+   "sabot-pantoufle-noir-001",
+   "sabot-pantoufle-marron-001",
+   "sabot-pantoufle-gris-001",
+   "sabot-pantoufle-bleu-001"
+  ]
+ },
+ "basket-homme-020-cuir-noir": {
+  "model": "Basket Homme 020",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": []
+ },
+ "basket-homme-021-cuir-marron": {
+  "model": "Basket Homme 021",
+  "label": "Marron",
+  "material": "Nubuck",
+  "hex": [
+   "#5b3a26"
+  ],
+  "siblings": [
+   "basket-homme-021-cuir-marron",
+   "basket-homme-021-cuir-bleu",
+   "basket-homme-021-cuir-noir",
+   "basket-homme-021-cuir-tabac"
+  ]
+ },
+ "basket-homme-021-cuir-bleu": {
+  "model": "Basket Homme 021",
+  "label": "Bleu",
+  "material": "Nubuck",
+  "hex": [
+   "#30496b"
+  ],
+  "siblings": [
+   "basket-homme-021-cuir-marron",
+   "basket-homme-021-cuir-bleu",
+   "basket-homme-021-cuir-noir",
+   "basket-homme-021-cuir-tabac"
+  ]
+ },
+ "basket-homme-021-cuir-noir": {
+  "model": "Basket Homme 021",
+  "label": "Noir",
+  "material": "Nubuck",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "basket-homme-021-cuir-marron",
+   "basket-homme-021-cuir-bleu",
+   "basket-homme-021-cuir-noir",
+   "basket-homme-021-cuir-tabac"
+  ]
+ },
+ "basket-homme-021-cuir-tabac": {
+  "model": "Basket Homme 021",
+  "label": "Tabac",
+  "material": "Nubuck",
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": [
+   "basket-homme-021-cuir-marron",
+   "basket-homme-021-cuir-bleu",
+   "basket-homme-021-cuir-noir",
+   "basket-homme-021-cuir-tabac"
+  ]
+ },
+ "basket-homme-005-cuir-tabac": {
+  "model": "Basket Homme 005",
+  "label": "Tabac",
+  "material": "Nubuck",
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": [
+   "basket-homme-005-cuir-blanc-1",
+   "basket-homme-005-cuir-noir",
+   "basket-homme-005-nubuck-gris-1",
+   "basket-homme-005-daim-tabac",
+   "basket-homme-005-cuir-blanc-st",
+   "basket-homme-005-cuir-tabac",
+   "basket-homme-005-nubuck-beige"
+  ]
+ },
+ "basket-homme-022-cuir-gris": {
+  "model": "Basket Homme 022",
+  "label": "Gris",
+  "material": "Nubuck",
+  "hex": [
+   "#8e8d89"
+  ],
+  "siblings": [
+   "basket-homme-022-cuir-gris",
+   "basket-homme-022-cuir-noir-1"
+  ]
+ },
+ "basket-homme-022-cuir-noir-1": {
+  "model": "Basket Homme 022",
+  "label": "Noir",
+  "material": "Nubuck",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "basket-homme-022-cuir-gris",
+   "basket-homme-022-cuir-noir-1"
+  ]
+ },
+ "basket-homme-009-cuir-marron-1": {
+  "model": "Basket Homme 009",
+  "label": "Marron clair",
+  "material": "Cuir",
+  "hex": [
+   "#8d6242"
+  ],
+  "siblings": [
+   "basket-homme-009-cuir-marron",
+   "basket-homme-009-daim-tabac",
+   "basket-homme-009-cuir-marron-1"
+  ]
+ },
+ "basket-homme-023-cuir-blanc": {
+  "model": "Basket Homme 023",
+  "label": "Blanc",
+  "material": "Cuir",
+  "hex": [
+   "#f3f2ee"
+  ],
+  "siblings": []
+ },
+ "sandales-homme-009-daim-tabac": {
+  "model": "Sandales 009",
+  "label": "Tabac",
+  "material": "Daim",
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": [
+   "sandales-homme-009-daim-tabac",
+   "sandales-homme-009-cuir-noir",
+   "sandales-homme-009-daim-bleu",
+   "sandales-homme-009-daim-noir",
+   "sandales-homme-009-cuir-marron-1",
+   "sandales-homme-009-cuir-daim-noir"
+  ]
+ },
+ "sandales-homme-009-cuir-noir": {
+  "model": "Sandales 009",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "sandales-homme-009-daim-tabac",
+   "sandales-homme-009-cuir-noir",
+   "sandales-homme-009-daim-bleu",
+   "sandales-homme-009-daim-noir",
+   "sandales-homme-009-cuir-marron-1",
+   "sandales-homme-009-cuir-daim-noir"
+  ]
+ },
+ "sandales-homme-010-cuir-noir": {
+  "model": "Sandales 010",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "sandales-homme-010-cuir-noir",
+   "sandales-homme-010-cuir-bleu",
+   "sandales-homme-010-cuir-marron"
+  ]
+ },
+ "sandales-homme-009-daim-bleu": {
+  "model": "Sandales 009",
+  "label": "Bleu",
+  "material": "Daim",
+  "hex": [
+   "#30496b"
+  ],
+  "siblings": [
+   "sandales-homme-009-daim-tabac",
+   "sandales-homme-009-cuir-noir",
+   "sandales-homme-009-daim-bleu",
+   "sandales-homme-009-daim-noir",
+   "sandales-homme-009-cuir-marron-1",
+   "sandales-homme-009-cuir-daim-noir"
+  ]
+ },
+ "sandales-homme-009-daim-noir": {
+  "model": "Sandales 009",
+  "label": "Noir",
+  "material": "Daim",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "sandales-homme-009-daim-tabac",
+   "sandales-homme-009-cuir-noir",
+   "sandales-homme-009-daim-bleu",
+   "sandales-homme-009-daim-noir",
+   "sandales-homme-009-cuir-marron-1",
+   "sandales-homme-009-cuir-daim-noir"
+  ]
+ },
+ "sandales-homme-009-cuir-marron-1": {
+  "model": "Sandales 009",
+  "label": "Marron clair",
+  "material": "Cuir",
+  "hex": [
+   "#8d6242"
+  ],
+  "siblings": [
+   "sandales-homme-009-daim-tabac",
+   "sandales-homme-009-cuir-noir",
+   "sandales-homme-009-daim-bleu",
+   "sandales-homme-009-daim-noir",
+   "sandales-homme-009-cuir-marron-1",
+   "sandales-homme-009-cuir-daim-noir"
+  ]
+ },
+ "sandales-homme-009-cuir-daim-noir": {
+  "model": "Sandales 009",
+  "label": "Noir",
+  "material": "Cuir et daim",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "sandales-homme-009-daim-tabac",
+   "sandales-homme-009-cuir-noir",
+   "sandales-homme-009-daim-bleu",
+   "sandales-homme-009-daim-noir",
+   "sandales-homme-009-cuir-marron-1",
+   "sandales-homme-009-cuir-daim-noir"
+  ]
+ },
+ "001-sandales-en-cuir-marron": {
+  "model": "Sandales 001",
+  "label": "Marron",
+  "material": "Cuir",
+  "hex": [
+   "#5b3a26"
+  ],
+  "siblings": [
+   "sandales-en-100-cuir",
+   "sandales-en-cuir-marron",
+   "sandales-en-cuir-tabac-1",
+   "001-sandales-en-cuir-marron",
+   "sandales-en-cuir-gris"
+  ]
+ },
+ "sandales-homme-010-cuir-bleu": {
+  "model": "Sandales 010",
+  "label": "Bleu",
+  "material": "Cuir",
+  "hex": [
+   "#30496b"
+  ],
+  "siblings": [
+   "sandales-homme-010-cuir-noir",
+   "sandales-homme-010-cuir-bleu",
+   "sandales-homme-010-cuir-marron"
+  ]
+ },
+ "sandales-homme-010-cuir-marron": {
+  "model": "Sandales 010",
+  "label": "Marron",
+  "material": "Cuir",
+  "hex": [
+   "#5b3a26"
+  ],
+  "siblings": [
+   "sandales-homme-010-cuir-noir",
+   "sandales-homme-010-cuir-bleu",
+   "sandales-homme-010-cuir-marron"
+  ]
+ },
+ "sandales-en-daim-tabac-008": {
+  "model": "Sandales 008",
+  "label": "Tabac clair",
+  "material": "Daim",
+  "hex": [
+   "#b27d4c"
+  ],
+  "siblings": [
+   "premium-leather-tabac-008",
+   "premium-leather-noir-008",
+   "sandales-en-daim-tabac-008",
+   "copie-de-sandales-en-daim-gris-008"
+  ]
+ },
+ "copie-de-sandales-en-daim-gris-008": {
+  "model": "Sandales 008",
+  "label": "Gris",
+  "material": "Daim",
+  "hex": [
+   "#8e8d89"
+  ],
+  "siblings": [
+   "premium-leather-tabac-008",
+   "premium-leather-noir-008",
+   "sandales-en-daim-tabac-008",
+   "copie-de-sandales-en-daim-gris-008"
+  ]
+ },
+ "sandales-en-daim-gris-007": {
+  "model": "Sandales 007",
+  "label": "Gris",
+  "material": "Daim",
+  "hex": [
+   "#8e8d89"
+  ],
+  "siblings": [
+   "sandales-en-cuir-marron-007",
+   "sandales-en-cuir-marron-7",
+   "sandales-en-cuir-noir-007",
+   "sandales-en-daim-gris-007"
+  ]
+ },
+ "sandales-en-daim-gris-011": {
+  "model": "Sandales 011",
+  "label": "Gris clair",
+  "material": "Daim",
+  "hex": [
+   "#b9b8b3"
+  ],
+  "siblings": [
+   "sandales-en-daim-gris-011",
+   "sandales-en-cuir-noir-011",
+   "sandales-en-daim-gris-fonce-011"
+  ]
+ },
+ "sandales-en-cuir-noir-011": {
+  "model": "Sandales 011",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "sandales-en-daim-gris-011",
+   "sandales-en-cuir-noir-011",
+   "sandales-en-daim-gris-fonce-011"
+  ]
+ },
+ "sandales-en-daim-gris-fonce-011": {
+  "model": "Sandales 011",
+  "label": "Marron / gris foncé",
+  "material": null,
+  "hex": [
+   "#5a5148"
+  ],
+  "siblings": [
+   "sandales-en-daim-gris-011",
+   "sandales-en-cuir-noir-011",
+   "sandales-en-daim-gris-fonce-011"
+  ]
+ },
+ "012-sandales-en-cuir-marron": {
+  "model": "Sandales 012",
+  "label": "Marron",
+  "material": "Cuir",
+  "hex": [
+   "#5b3a26"
+  ],
+  "siblings": [
+   "012-sandales-en-cuir-marron",
+   "012-sandales-en-cuir-noir"
+  ]
+ },
+ "012-sandales-en-cuir-noir": {
+  "model": "Sandales 012",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "012-sandales-en-cuir-marron",
+   "012-sandales-en-cuir-noir"
+  ]
+ },
+ "sandales-en-cuir-gris": {
+  "model": "Sandales 001",
+  "label": "Beige",
+  "material": "Daim",
+  "hex": [
+   "#cdb995"
+  ],
+  "siblings": [
+   "sandales-en-100-cuir",
+   "sandales-en-cuir-marron",
+   "sandales-en-cuir-tabac-1",
+   "001-sandales-en-cuir-marron",
+   "sandales-en-cuir-gris"
+  ]
+ },
+ "basket-homme-020-cuir-blanc": {
+  "model": "Basket Homme 030",
+  "label": "Blanc",
+  "material": "Cuir",
+  "hex": [
+   "#f3f2ee"
+  ],
+  "siblings": []
+ },
+ "basket-homme-en-cuir-blanc-simple-007": {
+  "model": "Basket Homme 007 Simple",
+  "label": "Blanc",
+  "material": null,
+  "hex": [
+   "#f3f2ee"
+  ],
+  "siblings": []
+ },
+ "basket-homme-042-cuir-blanc-tabac": {
+  "model": "Basket Homme 042",
+  "label": "Blanc / Tabac",
+  "material": "Cuir",
+  "hex": [
+   "#f3f2ee",
+   "#8a5a32"
+  ],
+  "siblings": [
+   "basket-homme-042-cuir-blanc-tabac",
+   "basket-homme-042-cuir-blanc-bleu"
+  ]
+ },
+ "basket-homme-042-cuir-blanc-bleu": {
+  "model": "Basket Homme 042",
+  "label": "Blanc / Bleu",
+  "material": "Cuir",
+  "hex": [
+   "#f3f2ee",
+   "#30496b"
+  ],
+  "siblings": [
+   "basket-homme-042-cuir-blanc-tabac",
+   "basket-homme-042-cuir-blanc-bleu"
+  ]
+ },
+ "l-coste-simple-cuir-noir": {
+  "model": "L@coste simple",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "l-coste-simple-cuir-blanc-1",
+   "l-coste-simple-cuir-noir"
+  ]
+ },
+ "basket-homme-004-daim-tabac": {
+  "model": "Basket Homme 004",
+  "label": "Tabac",
+  "material": "Daim",
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": [
+   "basket-homme-005-cuir-blanc",
+   "basket-homme-004-cuir-blanc",
+   "basket-homme-004-nubuck-gris-1",
+   "basket-homme-004-nubuck-gris",
+   "basket-homme-004-daim-tabac",
+   "basket-homme-004-cuir-blanc-marron"
+  ]
+ },
+ "basket-homme-004-cuir-blanc-marron": {
+  "model": "Basket Homme 004",
+  "label": "Blanc / Marron",
+  "material": "Cuir",
+  "hex": [
+   "#f3f2ee",
+   "#5b3a26"
+  ],
+  "siblings": [
+   "basket-homme-005-cuir-blanc",
+   "basket-homme-004-cuir-blanc",
+   "basket-homme-004-nubuck-gris-1",
+   "basket-homme-004-nubuck-gris",
+   "basket-homme-004-daim-tabac",
+   "basket-homme-004-cuir-blanc-marron"
+  ]
+ },
+ "013-sandales-homme-en-daim-marron": {
+  "model": "Sandales 013",
+  "label": "Gris foncé",
+  "material": "Daim",
+  "hex": [
+   "#4b4b4a"
+  ],
+  "siblings": [
+   "013-sandales-homme-en-daim-marron",
+   "013-sandales-homme-en-cuir-noir"
+  ]
+ },
+ "013-sandales-homme-en-cuir-noir": {
+  "model": "Sandales 013",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "013-sandales-homme-en-daim-marron",
+   "013-sandales-homme-en-cuir-noir"
+  ]
+ },
+ "basket-homme-005-nubuck-beige": {
+  "model": "Basket Homme 005",
+  "label": "Beige",
+  "material": "Nubuck",
+  "hex": [
+   "#cdb995"
+  ],
+  "siblings": [
+   "basket-homme-005-cuir-blanc-1",
+   "basket-homme-005-cuir-noir",
+   "basket-homme-005-nubuck-gris-1",
+   "basket-homme-005-daim-tabac",
+   "basket-homme-005-cuir-blanc-st",
+   "basket-homme-005-cuir-tabac",
+   "basket-homme-005-nubuck-beige"
+  ]
+ },
+ "zenith-blanche": {
+  "model": "Zenith",
+  "label": "Blanc",
+  "material": null,
+  "hex": [
+   "#f3f2ee"
+  ],
+  "siblings": []
+ },
+ "terra-beige": {
+  "model": "Terra",
+  "label": "Beige",
+  "material": null,
+  "hex": [
+   "#cdb995"
+  ],
+  "siblings": []
+ },
+ "streamline-noir": {
+  "model": "Streamline",
+  "label": "Noir",
+  "material": null,
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "streamline-noir",
+   "streamline-blanc"
+  ]
+ },
+ "streamline-blanc": {
+  "model": "Streamline",
+  "label": "Blanc",
+  "material": null,
+  "hex": [
+   "#f3f2ee"
+  ],
+  "siblings": [
+   "streamline-noir",
+   "streamline-blanc"
+  ]
+ },
+ "pure-minimaliste-en-blanc-casse": {
+  "model": "Pure",
+  "label": "Blanc cassé",
+  "material": null,
+  "hex": [
+   "#ebe5d6"
+  ],
+  "siblings": []
+ },
+ "nomad-gris": {
+  "model": "Nomad",
+  "label": "Gris",
+  "material": null,
+  "hex": [
+   "#8e8d89"
+  ],
+  "siblings": [
+   "nomad-gris",
+   "nomad-beige"
+  ]
+ },
+ "nomad-beige": {
+  "model": "Nomad",
+  "label": "Beige",
+  "material": null,
+  "hex": [
+   "#cdb995"
+  ],
+  "siblings": [
+   "nomad-gris",
+   "nomad-beige"
+  ]
+ },
+ "eclipse-vert": {
+  "model": "Eclipse",
+  "label": "Vert",
+  "material": null,
+  "hex": [
+   "#5f6b45"
+  ],
+  "siblings": [
+   "eclipse-vert",
+   "eclipse-bleu",
+   "eclipse-beige"
+  ]
+ },
+ "eclipse-bleu": {
+  "model": "Eclipse",
+  "label": "Bleu",
+  "material": null,
+  "hex": [
+   "#30496b"
+  ],
+  "siblings": [
+   "eclipse-vert",
+   "eclipse-bleu",
+   "eclipse-beige"
+  ]
+ },
+ "eclipse-beige": {
+  "model": "Eclipse",
+  "label": "Beige",
+  "material": null,
+  "hex": [
+   "#cdb995"
+  ],
+  "siblings": [
+   "eclipse-vert",
+   "eclipse-bleu",
+   "eclipse-beige"
+  ]
+ },
+ "crest-bleu": {
+  "model": "Crest",
+  "label": "Bleu",
+  "material": null,
+  "hex": [
+   "#30496b"
+  ],
+  "siblings": [
+   "crest-bleu",
+   "crest-cuir-noir",
+   "crest-kaki",
+   "crest-marron",
+   "crest-tabac"
+  ]
+ },
+ "crest-cuir-noir": {
+  "model": "Crest",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "crest-bleu",
+   "crest-cuir-noir",
+   "crest-kaki",
+   "crest-marron",
+   "crest-tabac"
+  ]
+ },
+ "crest-kaki": {
+  "model": "Crest",
+  "label": "Kaki",
+  "material": null,
+  "hex": [
+   "#6f6a4b"
+  ],
+  "siblings": [
+   "crest-bleu",
+   "crest-cuir-noir",
+   "crest-kaki",
+   "crest-marron",
+   "crest-tabac"
+  ]
+ },
+ "crest-marron": {
+  "model": "Crest",
+  "label": "Marron",
+  "material": null,
+  "hex": [
+   "#5b3a26"
+  ],
+  "siblings": [
+   "crest-bleu",
+   "crest-cuir-noir",
+   "crest-kaki",
+   "crest-marron",
+   "crest-tabac"
+  ]
+ },
+ "crest-tabac": {
+  "model": "Crest",
+  "label": "Tabac",
+  "material": null,
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": [
+   "crest-bleu",
+   "crest-cuir-noir",
+   "crest-kaki",
+   "crest-marron",
+   "crest-tabac"
+  ]
+ },
+ "ice-blanche": {
+  "model": "Ice",
+  "label": "Blanc",
+  "material": null,
+  "hex": [
+   "#f3f2ee"
+  ],
+  "siblings": []
+ },
+ "bottine-homme-001-cuir-noir-1": {
+  "model": "Bottine Homme 001",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": []
+ },
+ "bottine-homme-002-cuir-noir-1": {
+  "model": "Bottine Homme 002",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "bottine-homme-002-cuir-noir-1",
+   "bottine-homme-002-cuir-tabac"
+  ]
+ },
+ "bottine-homme-002-cuir-tabac": {
+  "model": "Bottine Homme 002",
+  "label": "Tabac",
+  "material": "Cuir",
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": [
+   "bottine-homme-002-cuir-noir-1",
+   "bottine-homme-002-cuir-tabac"
+  ]
+ },
+ "basket-homme-0010-nubuck-noir": {
+  "model": "Basket Homme 0010",
+  "label": "Gris",
+  "material": null,
+  "hex": [
+   "#8e8d89"
+  ],
+  "siblings": [
+   "basket-homme-0010-nubuck-noir",
+   "basket-homme-0010-tabac",
+   "basket-homme-0010-noir"
+  ]
+ },
+ "basket-homme-0010-tabac": {
+  "model": "Basket Homme 0010",
+  "label": "Tabac",
+  "material": null,
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": [
+   "basket-homme-0010-nubuck-noir",
+   "basket-homme-0010-tabac",
+   "basket-homme-0010-noir"
+  ]
+ },
+ "basket-homme-0010-noir": {
+  "model": "Basket Homme 0010",
+  "label": "Noir",
+  "material": null,
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "basket-homme-0010-nubuck-noir",
+   "basket-homme-0010-tabac",
+   "basket-homme-0010-noir"
+  ]
+ },
+ "basket-homme-0011-cuir-blanc": {
+  "model": "Basket Homme 0011",
+  "label": "Blanc",
+  "material": "Cuir",
+  "hex": [
+   "#f3f2ee"
+  ],
+  "siblings": [
+   "basket-homme-0011-cuir-blanc",
+   "basket-homme-0011-cuir-noir"
+  ]
+ },
+ "basket-homme-0011-cuir-noir": {
+  "model": "Basket Homme 0011",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "basket-homme-0011-cuir-blanc",
+   "basket-homme-0011-cuir-noir"
+  ]
+ },
+ "basket-homme-0012-cuir-noir": {
+  "model": "Basket Homme 0012",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "basket-homme-0012-cuir-noir",
+   "basket-homme-0012-nubuck-beige",
+   "basket-homme-0012-cuir-tabac",
+   "basket-homme-0012-daim-gris-b",
+   "basket-homme-0012-daim-gris"
+  ]
+ },
+ "basket-homme-0012-nubuck-beige": {
+  "model": "Basket Homme 0012",
+  "label": "Beige",
+  "material": "Daim",
+  "hex": [
+   "#cdb995"
+  ],
+  "siblings": [
+   "basket-homme-0012-cuir-noir",
+   "basket-homme-0012-nubuck-beige",
+   "basket-homme-0012-cuir-tabac",
+   "basket-homme-0012-daim-gris-b",
+   "basket-homme-0012-daim-gris"
+  ]
+ },
+ "basket-homme-0012-cuir-tabac": {
+  "model": "Basket Homme 0012",
+  "label": "Tabac",
+  "material": "Cuir",
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": [
+   "basket-homme-0012-cuir-noir",
+   "basket-homme-0012-nubuck-beige",
+   "basket-homme-0012-cuir-tabac",
+   "basket-homme-0012-daim-gris-b",
+   "basket-homme-0012-daim-gris"
+  ]
+ },
+ "basket-homme-0012-daim-gris-b": {
+  "model": "Basket Homme 0012",
+  "label": "Gris",
+  "material": "Daim",
+  "hex": [
+   "#8e8d89"
+  ],
+  "siblings": [
+   "basket-homme-0012-cuir-noir",
+   "basket-homme-0012-nubuck-beige",
+   "basket-homme-0012-cuir-tabac",
+   "basket-homme-0012-daim-gris-b",
+   "basket-homme-0012-daim-gris"
+  ]
+ },
+ "basket-homme-0012-daim-gris": {
+  "model": "Basket Homme 0012",
+  "label": "Gris",
+  "material": "Daim",
+  "hex": [
+   "#8e8d89"
+  ],
+  "siblings": [
+   "basket-homme-0012-cuir-noir",
+   "basket-homme-0012-nubuck-beige",
+   "basket-homme-0012-cuir-tabac",
+   "basket-homme-0012-daim-gris-b",
+   "basket-homme-0012-daim-gris"
+  ]
+ },
+ "basket-homme-0013-cuir-noir": {
+  "model": "Basket Homme 0013",
+  "label": "Noir",
+  "material": "Cuir",
+  "hex": [
+   "#161616"
+  ],
+  "siblings": [
+   "basket-homme-0013-cuir-noir",
+   "basket-homme-0013-cuir-tabac"
+  ]
+ },
+ "basket-homme-0013-cuir-tabac": {
+  "model": "Basket Homme 0013",
+  "label": "Tabac",
+  "material": "Cuir",
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": [
+   "basket-homme-0013-cuir-noir",
+   "basket-homme-0013-cuir-tabac"
+  ]
+ },
+ "basket-homme-0014-cuir-tabac": {
+  "model": "Basket Homme 0014",
+  "label": "Tabac",
+  "material": "Cuir",
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": [
+   "basket-homme-0014-cuir-tabac",
+   "basket-homme-0014-cuir-noir"
+  ]
+ },
+ "basket-homme-0014-cuir-noir": {
+  "model": "Basket Homme 0014",
+  "label": "Bleu",
+  "material": "Cuir",
+  "hex": [
+   "#30496b"
+  ],
+  "siblings": [
+   "basket-homme-0014-cuir-tabac",
+   "basket-homme-0014-cuir-noir"
+  ]
+ },
+ "basket-homme-0015-tabac": {
+  "model": "Basket Homme 0015",
+  "label": "Tabac",
+  "material": null,
+  "hex": [
+   "#8a5a32"
+  ],
+  "siblings": []
+ },
+ "basket-homme-0016-bleu": {
+  "model": "Basket Homme 0016",
+  "label": "Bleu",
+  "material": null,
+  "hex": [
+   "#30496b"
+  ],
+  "siblings": []
+ },
+ "basket-homme-0017-noir": {
+  "model": "Basket Homme 0017",
+  "label": "Noir",
+  "material": null,
+  "hex": [
+   "#161616"
+  ],
+  "siblings": []
+ },
+ "ramz-lattafa-silver": {
+  "model": "Ramz Lattafa Silver",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "al-nashama-caprice-100-ml": {
+  "model": "Al Nashama Caprice 100 ML",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "ameer-al-arab-imperium-100-ml": {
+  "model": "Ameer Al Arab Imperium 100 ML",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "asad-100-ml": {
+  "model": "Asad 100 ML",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "asad-zanzibar-100-ml": {
+  "model": "Asad Zanzibar 100 ML",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "kingdom-for-men": {
+  "model": "Kingdom For Men",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "qaed-al-fursan-90-ml": {
+  "model": "Qaed Al Fursan 90 ML",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "ameer-al-oudh": {
+  "model": "Ameer Al Oudh",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "rave-now": {
+  "model": "Rave Now",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "khamrah-100-ml": {
+  "model": "Khamrah 100 ML",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "khamrah-qahwa-100-ml": {
+  "model": "Khamrah Qahwa 100 ML",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "ajayeb-dubai-100-ml": {
+  "model": "Ajayeb Dubai 100 ML",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "badee-al-oud-oud-for-glory": {
+  "model": "Badee Al Oud – Oud for glory",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "confidential-private-gold-100-ml": {
+  "model": "Confidential Private Gold 100 ML",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "fakhar-lattafa-extrait": {
+  "model": "Fakhar Lattafa Extrait",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "yes-i-am-the-king-le-parfum-intense": {
+  "model": "YES I AM THE KING LE PARFUM INTENSE 100 ML",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "cedre-ambre": {
+  "model": "CÈDRE AMBRÉ",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "mpf-adore-the-soul-edp-100ml-for-men": {
+  "model": "MPF Adore The Soul EDP 100ML For Men",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "mpf-thrive-in-red-edp-100ml-for-men": {
+  "model": "MPF Thrive In Red EDP 100ML For Men",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "eau-de-parfum-otoori-vital-oud-unisex-100-ml": {
+  "model": "Vital Oud, Unisex, 100 ml",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "eau-de-parfum-otoori-santal-noir-unisex-100-ml": {
+  "model": "Santal Noir, Unisex, 100 ml",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "eternal-oud-100-ml": {
+  "model": "Eternal Oud 100 ML",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "liquid-brun-100-ml": {
+  "model": "Liquid Brun 100 ML",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "sultry-woods-100-ml": {
+  "model": "SULTRY WOODS 100 ML",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "royal-blend-nero": {
+  "model": "ROYAL BLEND NERO",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "royal-blend": {
+  "model": "ROYAL BLEND",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "9pm-by-afnan": {
+  "model": "9PM BY AFNAN",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ },
+ "supermacy-in-heaven": {
+  "model": "SUPERMACY IN HEAVEN",
+  "label": null,
+  "material": null,
+  "hex": [],
+  "siblings": []
+ }
+}

@@ -1,0 +1,10 @@
+node_modules/
+# third-party app code and raw copies of the live store pages: kept locally only
+research/easysell/
+research/easysell-config.json
+research/*.html
+research/*.txt
+research/img/
+research/montage*.png*
+research/imglist.txt
+*.log

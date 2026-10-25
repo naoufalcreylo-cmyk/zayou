@@ -1,0 +1,16 @@
+<article class="container" style="max-width: 860px;">
+  {%- render 'breadcrumbs' -%}
+  <header class="page-head">
+    <h1 class="h1">{{ article.title }}</h1>
+    <p class="small muted">{{ article.published_at | time_tag: format: 'date' }}</p>
+  </header>
+  {%- if article.image -%}
+    <div class="media media--landscape article-hero">{{ article.image | image_url: width: 1600 | image_tag: loading: 'eager', widths: '600, 900, 1200, 1600', sizes: '(min-width: 900px) 860px, 100vw', alt: article.image.alt }}</div>
+  {%- endif -%}
+  <div class="rte page-body">{{ article.content }}</div>
+  <p class="page-body"><a class="link-arrow" href="{{ blog.url }}">{% render 'icon', name: 'arrow-left', class: 'icon--sm' %}{{ 'blogs.back' | t }}</a></p>
+</article>
+
+{% schema %}
+{ "name": "Article", "settings": [] }
+{% endschema %}

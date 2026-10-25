@@ -1,0 +1,69 @@
+{%- comment -%} Editorial: real worn photos (or supplied images), each leading to its category. The first block is shown large. {%- endcomment -%}
+<section class="section moments" style="--pad-top: {{ section.settings.pad_top }}px; --pad-bottom: {{ section.settings.pad_bottom }}px;" aria-labelledby="mom-title-{{ section.id }}">
+  <div class="container">
+    <div class="moments__head">
+      <h2 class="h-display lower moments__title" id="mom-title-{{ section.id }}">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div class="moments__lede">{{ section.settings.text }}</div>{%- endif -%}
+    </div>
+    <div class="moments__grid">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign img = block.settings.image
+          if img == blank and block.settings.product != blank
+            assign idx = block.settings.image_position | minus: 1
+            assign img = block.settings.product.media[idx].preview_image | default: block.settings.product.featured_image
+          endif
+          assign url = block.settings.link | default: block.settings.product.url
+        -%}
+        <article class="moment{% if forloop.first %} moment--lead{% endif %}" {{ block.shopify_attributes }}>
+          <a class="moment__link" href="{{ url }}">
+            <div class="media media--portrait moment__media">
+              {%- if img != blank -%}
+                {{ img | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '480, 720, 1000, 1400', sizes: '(min-width: 990px) 45vw, 90vw', alt: block.settings.image_alt }}
+              {%- else -%}
+                {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            </div>
+            <div class="moment__text">
+              <span class="moment__index" aria-hidden="true">{{ forloop.index | prepend: '0' }}</span>
+              <h3 class="h3 lower">{{ block.settings.title }}</h3>
+              {%- if block.settings.text != blank -%}<p class="muted">{{ block.settings.text }}</p>{%- endif -%}
+              {%- if block.settings.link_label != blank -%}<span class="link-arrow small">{{ block.settings.link_label }}{% render 'icon', name: 'arrow-right', class: 'icon--sm' %}</span>{%- endif -%}
+            </div>
+          </a>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Éditorial",
+  "class": "section-moments",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titre", "default": "du lundi au dimanche." },
+    { "type": "richtext", "id": "text", "label": "Texte" },
+    { "type": "range", "id": "pad_top", "label": "Marge haute", "min": 0, "max": 96, "step": 8, "unit": "px", "default": 56 },
+    { "type": "range", "id": "pad_bottom", "label": "Marge basse", "min": 0, "max": 96, "step": 8, "unit": "px", "default": 56 }
+  ],
+  "blocks": [
+    {
+      "type": "moment",
+      "name": "Moment",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "product", "id": "product", "label": "Ou : photo d'un produit" },
+        { "type": "range", "id": "image_position", "label": "Numéro de la photo", "min": 1, "max": 10, "step": 1, "default": 1 },
+        { "type": "text", "id": "image_alt", "label": "Texte alternatif" },
+        { "type": "text", "id": "title", "label": "Titre", "default": "en semaine" },
+        { "type": "text", "id": "text", "label": "Texte" },
+        { "type": "text", "id": "link_label", "label": "Texte du lien", "default": "Voir" },
+        { "type": "url", "id": "link", "label": "Lien" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Éditorial", "blocks": [{ "type": "moment" }, { "type": "moment" }, { "type": "moment" }] }]
+}
+{% endschema %}

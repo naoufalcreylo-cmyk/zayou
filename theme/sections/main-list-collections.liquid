@@ -1,0 +1,19 @@
+<div class="container">
+  <header class="page-head"><h1 class="h1 lower">{{ 'collections.all' | t }}</h1></header>
+  <ul class="grid page-body" role="list" style="list-style:none;padding:0;--cols-desktop:4">
+    {%- for collection in collections -%}
+      {%- if collection.products_count > 0 and collection.handle != 'frontpage' -%}
+        <li>
+          <a class="categories__link" href="{{ collection.url }}">
+            <div class="media media--packshot">{%- if collection.featured_image -%}{{ collection.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '350, 700', sizes: '(min-width: 990px) 23vw, 46vw', alt: '' }}{%- endif -%}</div>
+            <span class="categories__label lower">{{ collection.title }}<sup>{{ collection.products_count }}</sup></span>
+          </a>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</div>
+
+{% schema %}
+{ "name": "Liste des collections", "settings": [] }
+{% endschema %}

@@ -1,0 +1,34 @@
+{%- comment -%}
+  Price from real Shopify data. Accepts product or variant. A compare-at price is shown only when it is higher than the price.
+  compact: hides the saving pill (cards). show_from: "dès" when variant prices differ.
+{%- endcomment -%}
+{%- liquid
+  if variant
+    assign p = variant.price
+    assign c = variant.compare_at_price
+    assign available = variant.available
+  else
+    assign p = product.price
+    assign c = product.compare_at_price
+    assign available = product.available
+  endif
+  assign on_sale = false
+  if c and c > p
+    assign on_sale = true
+  endif
+-%}
+<span class="price{% unless available %} price--sold-out{% endunless %}" data-price>
+  {%- if product.price_varies and variant == null -%}
+    {%- assign p_fmt = p | money_without_trailing_zeros -%}
+    <span>{{ 'products.product.price_from' | t: price: p_fmt }}</span>
+  {%- else -%}
+    <span>{%- if on_sale -%}<span class="visually-hidden">{{ 'products.product.sale_price' | t }} </span>{%- endif -%}{{ p | money_without_trailing_zeros }}</span>
+  {%- endif -%}
+  {%- if on_sale -%}
+    <s><span class="visually-hidden">{{ 'products.product.regular_price' | t }} </span>{{ c | money_without_trailing_zeros }}</s>
+    {%- if settings.show_discount_percent and compact != true -%}
+      {%- assign saving = c | minus: p | times: 100 | divided_by: c | floor -%}
+      <span class="price__save">−{{ saving }}&nbsp;%</span>
+    {%- endif -%}
+  {%- endif -%}
+</span>

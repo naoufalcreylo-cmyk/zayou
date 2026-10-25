@@ -1,0 +1,10 @@
+<div class="container empty-state" style="padding-block: 72px 96px;">
+  <h1 class="h1 lower">{{ 'general.404.title' | t }}</h1>
+  <p class="muted">{{ 'general.404.subtext' | t }}</p>
+  {% render 'menu-chips' %}
+  <a class="btn" href="{{ routes.root_url }}">{{ 'general.back_home' | t }}</a>
+</div>
+
+{% schema %}
+{ "name": "404", "settings": [] }
+{% endschema %}

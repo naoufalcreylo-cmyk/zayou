@@ -1,0 +1,104 @@
+{%- comment -%}
+  One model, all its colourways (real sibling products). Picking a colour swaps the photo, name, price and link client-side;
+  every value is rendered from the sibling product itself.
+{%- endcomment -%}
+{%- liquid
+  assign base = section.settings.product
+  assign handles = ''
+  if base != blank
+    assign meta_siblings = base.metafields.zayou.siblings.value
+    if meta_siblings != blank
+      for s in meta_siblings
+        assign handles = handles | append: s.handle | append: ','
+      endfor
+    else
+      capture way_raw
+        render 'colorway-data', handle: base.handle
+      endcapture
+      assign way_parts = way_raw | strip | split: '~'
+      assign handles = way_parts[3]
+    endif
+    if handles == blank
+      assign handles = base.handle
+    endif
+  endif
+  assign handle_list = handles | split: ','
+  assign lineup = section.settings.lineup_image
+  if lineup == blank and base != blank and section.settings.lineup_position > 0
+    assign li = section.settings.lineup_position | minus: 1
+    assign lineup = base.media[li].preview_image
+  endif
+-%}
+{%- if base != blank -%}
+<section class="section spotlight" style="--pad-top: {{ section.settings.pad_top }}px; --pad-bottom: {{ section.settings.pad_bottom }}px;" aria-labelledby="spot-title-{{ section.id }}" data-spotlight>
+  <div class="container spotlight__grid">
+    <div class="spotlight__intro">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow muted">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="h1 lower" id="spot-title-{{ section.id }}">
+        {{- section.settings.heading | default: base.vendor -}}
+      </h2>
+      <p class="spotlight__count">{{ 'products.card.colorways' | t: count: handle_list.size }}</p>
+      {%- if section.settings.text != blank -%}<div class="muted spotlight__text">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if lineup != blank -%}
+        <div class="media media--packshot media--landscape spotlight__lineup">
+          {{ lineup | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '500, 750, 1000', sizes: '(min-width: 990px) 30vw, 90vw', alt: '' }}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="spotlight__stage">
+      {%- for h in handle_list -%}
+        {%- assign p = all_products[h] -%}
+        {%- if p != blank and p.featured_image -%}
+          {%- capture w_raw -%}{% render 'colorway-data', handle: p.handle %}{%- endcapture -%}
+          {%- assign w = w_raw | strip | split: '~' -%}
+          <figure class="spotlight__panel" id="spot-{{ section.id }}-{{ forloop.index }}" data-spot-panel="{{ forloop.index }}"{% unless p.handle == base.handle %} hidden{% endunless %}>
+            <a href="{{ p.url }}" class="media media--packshot spotlight__media" aria-label="{{ p.title | escape }}">
+              {{ p.featured_image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1400', sizes: '(min-width: 990px) 55vw, 100vw', alt: p.title }}
+            </a>
+            <figcaption class="spotlight__caption">
+              <span>
+                <a class="spotlight__name" href="{{ p.url }}">{{ p.title }}</a>
+                {%- if w[1] != blank -%}<span class="small muted"> · {{ w[1] }}</span>{%- endif -%}
+              </span>
+              {%- render 'price', product: p, compact: true -%}
+            </figcaption>
+          </figure>
+        {%- endif -%}
+      {%- endfor -%}
+      <div class="spotlight__swatches" role="tablist" aria-label="{{ 'products.product.colorways' | t }}">
+        {%- for h in handle_list -%}
+          {%- assign p = all_products[h] -%}
+          {%- if p != blank and p.featured_image -%}
+            {%- capture w_raw -%}{% render 'colorway-data', handle: p.handle %}{%- endcapture -%}
+            {%- assign w = w_raw | strip | split: '~' -%}
+            {%- assign label = p.metafields.zayou.colorway.value | default: w[0] | default: p.title -%}
+            <button type="button" role="tab" class="spotlight__swatch" data-spot-tab="{{ forloop.index }}" aria-controls="spot-{{ section.id }}-{{ forloop.index }}" aria-selected="{% if p.handle == base.handle %}true{% else %}false{% endif %}"{% unless p.available %} data-soldout{% endunless %}>
+              <span class="media media--packshot">{{ p.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', widths: '80, 160', sizes: '64px', alt: '' }}</span>
+              <span class="spotlight__swatch-label">{{ label }}</span>
+            </button>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Modèle en vedette",
+  "class": "section-spotlight",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Produit (un coloris du modèle)" },
+    { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "Un modèle" },
+    { "type": "text", "id": "heading", "label": "Titre", "info": "Par défaut : la marque du produit." },
+    { "type": "richtext", "id": "text", "label": "Texte" },
+    { "type": "image_picker", "id": "lineup_image", "label": "Image de la gamme" },
+    { "type": "range", "id": "lineup_position", "label": "Ou : numéro de la photo du produit (0 = aucune)", "min": 0, "max": 10, "step": 1, "default": 0 },
+    { "type": "range", "id": "pad_top", "label": "Marge haute", "min": 0, "max": 96, "step": 8, "unit": "px", "default": 56 },
+    { "type": "range", "id": "pad_bottom", "label": "Marge basse", "min": 0, "max": 96, "step": 8, "unit": "px", "default": 56 }
+  ],
+  "presets": [{ "name": "Modèle en vedette" }]
+}
+{% endschema %}

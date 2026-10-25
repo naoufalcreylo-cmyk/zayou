@@ -1,0 +1,43 @@
+{%- comment -%}
+  Size-first shopping: pick a size, land on the catalogue filtered to that size and in stock.
+  Requires the size filter to be enabled in Search & Discovery (see docs). The choice is remembered for product pages.
+{%- endcomment -%}
+{%- liquid
+  assign target = section.settings.collection | default: collections.all
+  assign target_url = target.url | default: routes.all_products_collection_url
+  assign sizes = settings.size_range | remove: ' ' | split: ','
+  assign param = settings.size_filter_param | default: 'filter.v.option.taille'
+-%}
+<section class="section size-finder" style="--pad-top: {{ section.settings.pad_top }}px; --pad-bottom: {{ section.settings.pad_bottom }}px;" aria-labelledby="sf-title-{{ section.id }}">
+  <div class="container size-finder__inner">
+    <div class="size-finder__text">
+      <h2 class="h1 lower" id="sf-title-{{ section.id }}">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div class="muted">{{ section.settings.text }}</div>{%- endif -%}
+      <p class="small muted size-finder__saved" data-size-saved hidden>
+        <span data-size-saved-text></span>
+        <button type="button" class="link" data-size-forget>{{ 'sizes.clear' | t }}</button>
+      </p>
+    </div>
+    <ul class="size-finder__list" role="list" data-size-shortcuts>
+      {%- for s in sizes -%}
+        <li><a class="size-finder__size" href="{{ target_url }}?{{ param }}={{ s }}{% if section.settings.in_stock %}&filter.v.availability=1{% endif %}" data-size-pick="{{ s }}" aria-label="{{ 'collections.size' | t }} {{ s }}">{{ s }}</a></li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Votre pointure",
+  "class": "section-size-finder",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titre", "default": "votre pointure, d'abord." },
+    { "type": "richtext", "id": "text", "label": "Texte", "default": "<p>Choisissez votre pointure : la boutique n'affiche que les modèles disponibles dans cette taille. Elle sera repérée sur chaque fiche produit.</p>" },
+    { "type": "collection", "id": "collection", "label": "Collection filtrée", "info": "Par défaut : tous les produits." },
+    { "type": "checkbox", "id": "in_stock", "label": "Uniquement les pointures en stock", "default": true },
+    { "type": "range", "id": "pad_top", "label": "Marge haute", "min": 0, "max": 96, "step": 8, "unit": "px", "default": 48 },
+    { "type": "range", "id": "pad_bottom", "label": "Marge basse", "min": 0, "max": 96, "step": 8, "unit": "px", "default": 48 }
+  ],
+  "presets": [{ "name": "Votre pointure" }]
+}
+{% endschema %}

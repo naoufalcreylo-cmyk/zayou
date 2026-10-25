@@ -1,0 +1,28 @@
+{%- layout none -%}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ 'gift_cards.issued.subtext' | t }} — {{ shop.name }}</title>
+    {% render 'css-variables' %}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ content_for_header }}
+  </head>
+  <body>
+    <main class="container" style="max-width: 560px; padding-block: 64px; display: grid; gap: 20px; text-align: center; justify-items: center;">
+      <img src="{{ 'zayou-logo-black.png' | asset_url }}" alt="{{ shop.name | escape }}" width="182" height="51">
+      {%- assign value = gift_card.initial_value | money_without_trailing_zeros -%}
+      <h1 class="h2">{{ 'gift_cards.issued.title' | t: value: value, shop: shop.name }}</h1>
+      <p class="h1">{{ gift_card.balance | money_without_trailing_zeros }}</p>
+      {%- if gift_card.expired -%}<p class="muted">{{ 'gift_cards.issued.expired' | t: expiry: gift_card.expires_on }}</p>{%- elsif gift_card.expires_on -%}<p class="muted">{{ 'gift_cards.issued.active' | t: expiry: gift_card.expires_on }}</p>{%- endif -%}
+      <p>{{ 'gift_cards.issued.redeem' | t }}</p>
+      <p style="font-size: 22px; font-weight: 600; letter-spacing: .08em; padding: 12px 20px; border: 1px dashed var(--line-strong);">{{ gift_card.code | format_code }}</p>
+      {%- if gift_card.pass_url -%}<a href="{{ gift_card.pass_url }}"><img src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="Apple Wallet" loading="lazy"></a>{%- endif -%}
+      <div style="display: flex; gap: 10px;">
+        <button class="btn btn--ghost" type="button" onclick="window.print()">{{ 'gift_cards.issued.print' | t }}</button>
+        <a class="btn" href="{{ shop.url }}">{{ 'gift_cards.issued.shop_link' | t }}</a>
+      </div>
+    </main>
+  </body>
+</html>

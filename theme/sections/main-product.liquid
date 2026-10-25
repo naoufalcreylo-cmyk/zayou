@@ -1,0 +1,291 @@
+{%- liquid
+  assign current_variant = product.selected_variant
+  if product.has_only_default_variant
+    assign current_variant = product.first_available_variant | default: product.variants.first
+  endif
+
+  assign size_index = null
+  for option in product.options_with_values
+    assign oname = option.name | downcase
+    if oname contains 'taille' or oname contains 'pointure' or oname contains 'size'
+      assign size_index = forloop.index0
+      break
+    endif
+  endfor
+  if size_index == null and product.has_only_default_variant == false and product.options.size == 1
+    assign size_index = 0
+  endif
+  if current_variant == null and product.variants.size == 1
+    assign current_variant = product.variants.first
+  endif
+
+  assign way_label = product.metafields.zayou.colorway.value
+  assign way_material = product.metafields.zayou.material.value
+  assign sibling_handles = ''
+  assign meta_siblings = product.metafields.zayou.siblings.value
+  if meta_siblings != blank
+    for s in meta_siblings
+      assign sibling_handles = sibling_handles | append: s.handle | append: ','
+    endfor
+  endif
+  capture way_raw
+    render 'colorway-data', handle: product.handle
+  endcapture
+  assign way_parts = way_raw | strip | split: '~'
+  if way_label == blank
+    assign way_label = way_parts[0]
+  endif
+  if way_material == blank
+    assign way_material = way_parts[1]
+  endif
+  if sibling_handles == blank
+    assign sibling_handles = way_parts[3]
+  endif
+  assign sibling_list = sibling_handles | split: ','
+
+  assign hidden_vendors = settings.hidden_vendors | downcase | split: ','
+  assign show_vendor = true
+  assign v = product.vendor | downcase
+  for hv in hidden_vendors
+    assign hv_clean = hv | strip
+    if hv_clean == v
+      assign show_vendor = false
+    endif
+  endfor
+
+  assign media_count = product.media.size
+-%}
+
+<div class="pdp" data-product data-section-id="{{ section.id }}" data-product-handle="{{ product.handle }}" data-has-sizes="{% if size_index != null %}true{% else %}false{% endif %}">
+  <div class="container">
+    {%- render 'breadcrumbs' -%}
+  </div>
+
+  <div class="container pdp__grid">
+    {%- comment -%} Gallery {%- endcomment -%}
+    <div class="pdp__gallery" data-gallery aria-label="{{ 'products.product.gallery' | t }}" role="region">
+      <ul class="pdp__track" role="list" data-gallery-track>
+        {%- for media in product.media -%}
+          <li class="pdp__slide{% if forloop.first %} pdp__slide--lead{% endif %}" data-media-id="{{ media.id }}" id="media-{{ section.id }}-{{ forloop.index }}">
+            {%- if media.media_type == 'image' -%}
+              <button type="button" class="pdp__zoom-btn media media--packshot" data-zoom-open="{{ forloop.index0 }}" aria-label="{{ 'accessibility.open_zoom' | t: index: forloop.index }}">
+                {%- liquid
+                  if forloop.first
+                    assign img_loading = 'eager'
+                    assign img_priority = 'high'
+                  else
+                    assign img_loading = 'lazy'
+                    assign img_priority = 'auto'
+                  endif
+                -%}
+                {{ media.preview_image | image_url: width: 1600 | image_tag: loading: img_loading, fetchpriority: img_priority, widths: '500, 750, 1000, 1300, 1600', sizes: '(min-width: 990px) 30vw, 100vw', alt: media.alt | default: product.title }}
+              </button>
+            {%- else -%}
+              <div class="media">{{ media | media_tag: image_size: '1200x' }}</div>
+            {%- endif -%}
+          </li>
+        {%- else -%}
+          <li class="pdp__slide pdp__slide--lead"><div class="media">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}</div></li>
+        {%- endfor -%}
+      </ul>
+      {%- if media_count > 1 -%}
+        <div class="pdp__dots" aria-hidden="true">
+          {%- for media in product.media -%}<span class="pdp__dot{% if forloop.first %} is-active{% endif %}"></span>{%- endfor -%}
+        </div>
+        <p class="pdp__counter small" aria-live="polite" data-gallery-counter>1 / {{ media_count }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Purchase column {%- endcomment -%}
+    <div class="pdp__info">
+      <div class="pdp__sticky">
+        <header class="pdp__head">
+          {%- if show_vendor and product.vendor != blank -%}<p class="eyebrow muted">{{ product.vendor }}</p>{%- endif -%}
+          <h1 class="pdp__title">{{ product.title }}</h1>
+          <div class="pdp__price" data-price-wrap>
+            {%- if current_variant -%}
+              {%- render 'price', variant: current_variant, product: product -%}
+            {%- else -%}
+              {%- render 'price', product: product -%}
+            {%- endif -%}
+          </div>
+        </header>
+
+        {%- if sibling_list.size > 1 or way_label != blank -%}
+          <div class="pdp__colors">
+            <p class="pdp__label">
+              {{ 'products.product.color' | t }}{% if way_label != blank %} : <strong>{{ way_label }}</strong>{% endif %}
+              {%- if way_material != blank -%}<span class="muted"> · {{ way_material }}</span>{%- endif -%}
+            </p>
+            {%- if sibling_list.size > 1 -%}
+              <ul class="pdp__ways" role="list" aria-label="{{ 'products.product.other_colors' | t }}">
+                {%- for h in sibling_list -%}
+                  {%- assign sib = all_products[h] -%}
+                  {%- if sib != blank and sib.featured_image -%}
+                    <li>
+                      <a class="pdp__way{% if sib.handle == product.handle %} is-current{% endif %}{% unless sib.available %} is-soldout{% endunless %}" href="{{ sib.url }}" data-sibling-link title="{{ sib.title | escape }}"{% if sib.handle == product.handle %} aria-current="true"{% endif %}>
+                        <span class="media media--packshot">{{ sib.featured_image | image_url: width: 180 | image_tag: loading: 'lazy', widths: '90, 180', sizes: '64px', alt: sib.title }}</span>
+                      </a>
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- unless product.has_only_default_variant -%}
+          <fieldset class="pdp__sizes" data-size-fieldset{% if size_index == null %} data-generic-options{% endif %}>
+            <div class="pdp__sizes-head">
+              <legend class="pdp__label" id="size-legend-{{ section.id }}">
+                {%- if size_index != null -%}{{ 'products.product.size' | t }}{%- else -%}{{ product.options.first }}{%- endif -%}
+                <span class="pdp__selected" data-selected-size>{% if current_variant and size_index != null %} : <strong>{{ current_variant.options[size_index] }}</strong>{% endif %}</span>
+              </legend>
+              {%- if settings.size_guide_page != blank and size_index != null -%}
+                <button type="button" class="link small" data-drawer-open="size-guide" aria-controls="size-guide">{% render 'icon', name: 'ruler', class: 'icon--sm' %} {{ 'products.product.size_guide' | t }}</button>
+              {%- endif -%}
+            </div>
+            <div class="pdp__size-grid" role="radiogroup" aria-labelledby="size-legend-{{ section.id }}" aria-describedby="size-error-{{ section.id }}">
+              {%- for variant in product.variants -%}
+                {%- assign value = variant.options[0] -%}
+                {%- if size_index != null -%}{%- assign value = variant.options[size_index] -%}{%- endif -%}
+                <div class="pdp__size">
+                  <input type="radio" class="visually-hidden" id="size-{{ section.id }}-{{ variant.id }}" name="size-{{ section.id }}" value="{{ variant.id }}" data-size-input data-size="{{ value | escape }}"
+                    {% if current_variant.id == variant.id %}checked{% endif %}{% unless variant.available %} disabled aria-describedby="soldout-{{ variant.id }}"{% endunless %}>
+                  <label for="size-{{ section.id }}-{{ variant.id }}" class="size-btn{% unless variant.available %} is-unavailable{% endunless %}" data-size-label="{{ value | escape }}">
+                    {{ value }}
+                    {%- unless variant.available -%}<span class="visually-hidden" id="soldout-{{ variant.id }}"> — {{ 'products.product.sold_out' | t }}</span>{%- endunless -%}
+                  </label>
+                </div>
+              {%- endfor -%}
+            </div>
+            <p class="pdp__size-error" id="size-error-{{ section.id }}" role="alert" data-size-error hidden>{{ 'products.product.size_required' | t }}</p>
+            <p class="pdp__size-mine small muted" data-size-mine hidden></p>
+          </fieldset>
+        {%- endunless -%}
+
+        <div class="pdp__buy" data-buy-wrap>
+          {%- form 'product', product, id: 'product-form-main', class: 'pdp__form', novalidate: 'novalidate', data-product-form: 'main' -%}
+            <input type="hidden" name="id" {% if current_variant %}value="{{ current_variant.id }}"{% endif %} data-variant-input>
+            <input type="hidden" name="quantity" value="1">
+            <button type="submit" name="add" class="btn btn--lg btn--block pdp__add" data-add-button{% unless product.available %} disabled{% endunless %}>
+              {%- if product.available -%}{{ 'products.product.add_to_cart' | t }}{%- else -%}{{ 'products.product.sold_out' | t }}{%- endif -%}
+            </button>
+          {%- endform -%}
+          <p class="pdp__form-msg small" data-form-msg role="status" hidden></p>
+          {%- for block in section.blocks -%}
+            {%- if block.type == '@app' -%}<div class="pdp__app">{% render block %}</div>{%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        {%- if settings.pdp_delivery_text != blank or settings.whatsapp_number != blank -%}
+          <ul class="pdp__services" role="list">
+            {%- if settings.pdp_delivery_text != blank -%}
+              <li>{% render 'icon', name: 'truck', class: 'icon--sm' %}<div>{{ settings.pdp_delivery_text }}</div></li>
+            {%- endif -%}
+            {%- if settings.whatsapp_number != blank -%}
+              {%- assign wa = settings.whatsapp_number | remove: ' ' | remove: '+' | remove: '-' -%}
+              {%- capture wa_text -%}{{ product.title }} — {{ shop.url }}{{ product.url }}{%- endcapture -%}
+              <li>{% render 'icon', name: 'whatsapp', class: 'icon--sm' %}<div><a href="https://wa.me/{{ wa }}?text={{ wa_text | url_encode }}" target="_blank" rel="noopener">{{ section.settings.whatsapp_label }}</a></div></li>
+            {%- endif -%}
+          </ul>
+        {%- endif -%}
+
+        <div class="pdp__accordions">
+          {%- if product.description != blank -%}
+            <details class="acc" open>
+              <summary class="acc__title">{{ 'products.product.description' | t }}{% render 'icon', name: 'plus', class: 'icon--sm' %}</summary>
+              <div class="acc__body rte">{{ product.description }}</div>
+            </details>
+          {%- endif -%}
+          {%- if settings.delivery_page != blank -%}
+            <details class="acc">
+              <summary class="acc__title">{{ 'products.product.delivery' | t }}{% render 'icon', name: 'plus', class: 'icon--sm' %}</summary>
+              <div class="acc__body rte">{{ settings.delivery_page.content }}</div>
+            </details>
+          {%- endif -%}
+          {%- if settings.care_article != blank and size_index != null -%}
+            <details class="acc">
+              <summary class="acc__title">{{ 'products.product.care' | t }}{% render 'icon', name: 'plus', class: 'icon--sm' %}</summary>
+              <div class="acc__body rte">
+                <p>{{ settings.care_article.excerpt_or_content | strip_html | truncatewords: 40 }}</p>
+                <p><a href="{{ settings.care_article.url }}">{{ 'products.product.care_link' | t }}</a></p>
+              </div>
+            </details>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} Mobile purchase bar: appears once the main button is out of view; yields to an app sticky button. {%- endcomment -%}
+  {%- if product.available and section.settings.sticky_bar -%}
+    <div class="buybar" data-buybar hidden>
+      <div class="buybar__info">
+        <span class="buybar__title">{{ product.title }}</span>
+        <span class="small" data-buybar-meta>{{ product.price | money_without_trailing_zeros }}</span>
+      </div>
+      <button type="button" class="btn buybar__btn" data-buybar-btn>{{ 'products.product.choose_size' | t }}</button>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Zoom dialog {%- endcomment -%}
+  <div class="drawer zoom" id="zoom-{{ section.id }}" data-drawer data-zoom aria-hidden="true">
+    <div class="drawer__panel zoom__panel" role="dialog" aria-modal="true" aria-label="{{ 'products.product.zoom' | t }}" tabindex="-1">
+      <button type="button" class="icon-btn zoom__close" data-drawer-close aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button>
+      <ul class="zoom__list" role="list">
+        {%- for media in product.media -%}
+          {%- if media.media_type == 'image' -%}
+            <li class="zoom__item" data-zoom-item>
+              <img src="{{ media.preview_image | image_url: width: 2400 }}" alt="{{ media.alt | default: product.title | escape }}" width="{{ media.preview_image.width }}" height="{{ media.preview_image.height }}" loading="lazy" data-zoom-img>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+
+  {%- if settings.size_guide_page != blank -%}
+    <div class="drawer drawer--right" id="size-guide" data-drawer aria-hidden="true">
+      <button type="button" class="drawer__overlay" data-drawer-close tabindex="-1" aria-label="{{ 'general.close' | t }}"></button>
+      <div class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="size-guide-title" tabindex="-1">
+        <div class="drawer__head">
+          <h2 class="drawer__title" id="size-guide-title">{{ settings.size_guide_page.title }}</h2>
+          <button type="button" class="icon-btn" data-drawer-close aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button>
+        </div>
+        <div class="drawer__body rte">{{ settings.size_guide_page.content }}</div>
+      </div>
+    </div>
+  {%- endif -%}
+
+  <script type="application/json" data-product-json>
+    {
+      "id": {{ product.id }},
+      "handle": {{ product.handle | json }},
+      "title": {{ product.title | json }},
+      "sizeIndex": {% if size_index != null %}{{ size_index }}{% else %}null{% endif %},
+      "variants": [
+        {%- for variant in product.variants -%}
+          { "id": {{ variant.id }}, "available": {{ variant.available }}, "price": {{ variant.price }}, "compare": {{ variant.compare_at_price | default: 0 }}, "options": {{ variant.options | json }} }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+  <script type="application/ld+json">{{ product | structured_data }}</script>
+</div>
+
+<script src="{{ 'product.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Fiche produit",
+  "class": "section-main-product",
+  "settings": [
+    { "type": "checkbox", "id": "sticky_bar", "label": "Barre d'achat mobile", "info": "Masquée automatiquement si une application affiche déjà son propre bouton fixe.", "default": true },
+    { "type": "text", "id": "whatsapp_label", "label": "Lien WhatsApp", "default": "Une question sur ce modèle ? WhatsApp" }
+  ],
+  "blocks": [
+    { "type": "@app" }
+  ]
+}
+{% endschema %}

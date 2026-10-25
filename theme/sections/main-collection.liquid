@@ -1,0 +1,79 @@
+{%- liquid
+  assign per_page = section.settings.per_page
+-%}
+<div class="collection" data-collection data-section-id="{{ section.id }}">
+  <div class="container">
+    {%- render 'breadcrumbs' -%}
+    <header class="collection__head">
+      <h1 class="h1 lower">{{ collection.title }}</h1>
+      <p class="muted collection__count">{{ 'collections.products_count' | t: count: collection.all_products_count }}</p>
+    </header>
+  </div>
+
+  {%- paginate collection.products by per_page -%}
+    <div data-collection-results>
+      {%- render 'facets', results: collection, results_count: collection.products_count, base_url: collection.url, section_id: section.id -%}
+
+      <div class="container collection__body">
+        {%- if collection.products.size > 0 -%}
+          <ul class="grid product-grid" role="list" data-product-grid style="--cols-desktop: {{ section.settings.cols_desktop }}">
+            {%- for product in collection.products -%}
+              {%- liquid
+                assign loading = 'lazy'
+                if forloop.index <= 4 and paginate.current_page == 1
+                  assign loading = 'eager'
+                endif
+              -%}
+              <li>{% render 'product-card', product: product, loading: loading %}</li>
+            {%- endfor -%}
+          </ul>
+          {%- if paginate.next -%}
+            <div class="collection__more" data-load-more-wrap>
+              {%- assign shown = paginate.current_offset | plus: collection.products.size -%}
+              <p class="small muted" data-shown-count>{{ 'collections.showing' | t: shown: shown, total: paginate.items }}</p>
+              <a class="btn btn--ghost" href="{{ paginate.next.url }}" data-load-more>{{ 'collections.load_more' | t }}</a>
+            </div>
+          {%- endif -%}
+          {%- if paginate.pages > 1 -%}
+            <noscript>{% render 'pagination', paginate: paginate %}</noscript>
+          {%- endif -%}
+        {%- elsif collection.all_products_count > 0 -%}
+          <div class="empty-state">
+            <h2 class="h3">{{ 'collections.empty_title' | t }}</h2>
+            <p class="muted">{{ 'collections.empty_text' | t }}</p>
+            <a class="btn" href="{{ collection.url }}" data-facet-link>{{ 'collections.clear_all' | t }}</a>
+          </div>
+        {%- else -%}
+          <div class="empty-state">
+            <p>{{ 'collections.empty_collection' | t }}</p>
+            <a class="btn" href="{{ routes.all_products_collection_url }}">{{ 'general.continue_shopping' | t }}</a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endpaginate -%}
+
+  {%- if section.settings.show_description and collection.description != blank -%}
+    <div class="container collection__about">
+      <details class="collection__desc">
+        <summary class="link-arrow">{{ 'products.product.description' | t }} — {{ collection.title }}{% render 'icon', name: 'plus', class: 'icon--sm' %}</summary>
+        <div class="rte muted">{{ collection.description }}</div>
+      </details>
+    </div>
+  {%- endif -%}
+</div>
+
+<p class="visually-hidden" aria-live="polite" data-results-live></p>
+<script src="{{ 'collection.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Collection",
+  "class": "section-main-collection",
+  "settings": [
+    { "type": "range", "id": "per_page", "label": "Produits par page", "min": 12, "max": 48, "step": 4, "default": 24 },
+    { "type": "select", "id": "cols_desktop", "label": "Colonnes (ordinateur)", "options": [ { "value": "3", "label": "3" }, { "value": "4", "label": "4" } ], "default": "4" },
+    { "type": "checkbox", "id": "show_description", "label": "Afficher la description sous la grille", "default": true }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,7 @@
+{
+  "sections": {
+    "main": { "type": "main-product", "settings": { "sticky_bar": true, "whatsapp_label": "Une question sur ce modèle ? WhatsApp" }, "blocks": {}, "block_order": [] },
+    "recos": { "type": "product-recommendations", "settings": { "heading": "vous aimerez aussi", "intent": "related", "limit": 8 } }
+  },
+  "order": ["main", "recos"]
+}

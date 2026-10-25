@@ -1,0 +1,26 @@
+<div class="container section cart-page" style="--pad-top: 24px;" data-cart-page>
+  <h1 class="h1 lower">{{ 'cart.title' | t }}</h1>
+  {%- if cart.item_count > 0 -%}
+    <div class="cart-page__grid">
+      <div>
+        {% render 'cart-progress' %}
+        {% render 'cart-lines' %}
+      </div>
+      <aside class="cart-page__summary">
+        {% render 'cart-summary', form_id: 'cart-page-form' %}
+      </aside>
+    </div>
+  {%- else -%}
+    <div class="empty-state">
+      <p>{{ 'cart.empty' | t }}</p>
+      <a class="btn" href="{{ routes.all_products_collection_url }}">{{ 'general.continue_shopping' | t }}</a>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Panier",
+  "settings": []
+}
+{% endschema %}

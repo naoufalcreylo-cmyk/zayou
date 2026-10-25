@@ -1,0 +1,53 @@
+{%- comment -%} Cart line items shared by the drawer and the cart page. Quantity changes go through theme.js (cart/change.js by line key). {%- endcomment -%}
+<ul class="cart-lines" role="list">
+  {%- for item in cart.items -%}
+    {%- liquid
+      capture way_raw
+        render 'colorway-data', handle: item.product.handle
+      endcapture
+      assign way_label = item.product.metafields.zayou.colorway.value | default: way_raw | strip | split: '~' | first
+      assign line_image = item.variant.featured_image | default: item.product.featured_image
+    -%}
+    <li class="cart-line" data-cart-line="{{ item.key }}" data-line="{{ forloop.index }}">
+      <a class="cart-line__media" href="{{ item.url }}" tabindex="-1" aria-hidden="true">
+        <div class="media media--packshot">
+          {%- if line_image -%}{{ line_image | image_url: width: 240 | image_tag: loading: 'lazy', widths: '120, 240', sizes: '84px', alt: '' }}{%- endif -%}
+        </div>
+      </a>
+      <div class="cart-line__info">
+        <a class="cart-line__title" href="{{ item.url }}">{{ item.product.title }}</a>
+        <div class="cart-line__opts">
+          {%- unless item.product.has_only_default_variant -%}
+            {%- for option in item.options_with_values -%}
+              {%- assign oname = option.name | downcase -%}
+              <span>{% if oname contains 'taille' or oname contains 'pointure' %}{{ 'cart.size' | t }}{% else %}{{ option.name }}{% endif %} : {{ option.value }}</span>{% unless forloop.last %} · {% endunless %}
+            {%- endfor -%}
+          {%- endunless -%}
+          {%- if way_label != blank %} · <span>{{ way_label }}</span>{%- endif -%}
+        </div>
+        {%- for property in item.properties -%}
+          {%- assign first_char = property.first | slice: 0 -%}
+          {%- if property.last != blank and first_char != '_' -%}
+            <div class="cart-line__opts">{{ property.first }} : {{ property.last }}</div>
+          {%- endif -%}
+        {%- endfor -%}
+        <div class="cart-line__row">
+          <div class="qty">
+            <button type="button" data-qty-change="-1" aria-label="{{ 'products.product.decrease' | t }}"{% if item.quantity <= 1 %} disabled{% endif %}>{% render 'icon', name: 'minus', class: 'icon--sm' %}</button>
+            <input type="number" inputmode="numeric" min="0" value="{{ item.quantity }}" data-qty-input aria-label="{{ 'cart.quantity_for' | t: title: item.product.title | escape }}">
+            <button type="button" data-qty-change="1" aria-label="{{ 'products.product.increase' | t }}">{% render 'icon', name: 'plus', class: 'icon--sm' %}</button>
+          </div>
+          <span class="price">
+            {%- if item.original_line_price > item.final_line_price -%}<s>{{ item.original_line_price | money_without_trailing_zeros }}</s>{%- endif -%}
+            <span>{{ item.final_line_price | money_without_trailing_zeros }}</span>
+          </span>
+        </div>
+        <div><button type="button" class="link cart-line__remove" data-line-remove aria-label="{{ 'cart.remove_item' | t: title: item.product.title | escape }}">{{ 'cart.remove' | t }}</button></div>
+        {%- for discount in item.line_level_discount_allocations -%}
+          <div class="cart-line__opts">{{ discount.discount_application.title }} (−{{ discount.amount | money_without_trailing_zeros }})</div>
+        {%- endfor -%}
+      </div>
+      <p class="cart-line__error" data-line-error hidden role="alert"></p>
+    </li>
+  {%- endfor -%}
+</ul>
