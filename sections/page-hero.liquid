@@ -1,0 +1,58 @@
+{%- liquid
+  assign img = section.settings.image
+  if img == blank and section.settings.product != blank
+    assign idx = section.settings.image_position | minus: 1
+    assign img = section.settings.product.media[idx].preview_image | default: section.settings.product.featured_image
+  endif
+  assign title = section.settings.title | default: page.title
+-%}
+<header class="page-hero{% if img != blank %} page-hero--image{% endif %}">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Fil d'Ariane">
+      <ol><li><a href="{{ routes.root_url }}">{{ shop.name }}</a></li><li><span aria-current="page">{{ page.title | default: title }}</span></li></ol>
+    </nav>
+    <div class="page-hero__grid">
+      <div class="page-hero__text">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow muted">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        <h1 class="h-display lower">{{ title }}</h1>
+        {%- if section.settings.intro != blank -%}<div class="page-hero__intro">{{ section.settings.intro }}</div>{%- endif -%}
+        {%- if section.blocks.size > 0 -%}
+          <nav class="page-hero__toc" aria-label="{{ 'general.on_this_page' | t }}">
+            {%- for block in section.blocks -%}
+              <a class="chip-link" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+            {%- endfor -%}
+          </nav>
+        {%- endif -%}
+      </div>
+      {%- if img != blank -%}
+        <div class="page-hero__visual media media--tile media--photo">
+          {{ img | image_url: width: 1200 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '400, 600, 900, 1200', sizes: '(min-width: 990px) 40vw, 92vw', alt: section.settings.image_alt }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "En-tête de page",
+  "class": "section-page-hero",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Surtitre" },
+    { "type": "text", "id": "title", "label": "Titre (par défaut : titre de la page)" },
+    { "type": "richtext", "id": "intro", "label": "Introduction" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "product", "id": "product", "label": "Ou : photo d'un produit" },
+    { "type": "range", "id": "image_position", "label": "Numéro de la photo", "min": 1, "max": 10, "step": 1, "default": 1 },
+    { "type": "text", "id": "image_alt", "label": "Texte alternatif" }
+  ],
+  "blocks": [
+    { "type": "anchor", "name": "Lien de sommaire", "settings": [
+      { "type": "text", "id": "label", "label": "Libellé" },
+      { "type": "text", "id": "link", "label": "Lien ou ancre (#…)" }
+    ] }
+  ],
+  "presets": [{ "name": "En-tête de page" }]
+}
+{% endschema %}

@@ -1,0 +1,73 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "Guide",
+        "title": "trouver sa pointure",
+        "intro": "<p>Nos modèles sont proposés du 39 au 45 selon les catégories. Mesurez votre pied en cinq minutes, puis vérifiez les pointures disponibles avant de commander.</p>",
+        "product": "basket-homme-0012-cuir-tabac",
+        "image_position": 2,
+        "image_alt": "Paire de baskets en cuir tabac vue de dessus"
+      },
+      "blocks": {
+        "a1": { "type": "anchor", "settings": { "label": "Mesurer son pied", "link": "#mesurer" } },
+        "a2": { "type": "anchor", "settings": { "label": "Pointures par catégorie", "link": "#pointures" } },
+        "a3": { "type": "anchor", "settings": { "label": "Bien choisir", "link": "#choisir" } }
+      },
+      "block_order": ["a1", "a2", "a3"]
+    },
+    "measure": {
+      "type": "content-steps",
+      "settings": { "anchor": "mesurer", "eyebrow": "Étape par étape", "heading": "mesurer son pied", "text": "<p>Il vous faut une feuille A4, un crayon et une règle. Mesurez les deux pieds : ils ont rarement exactement la même longueur.</p>", "columns": true, "surface": true, "pad_top": 48, "pad_bottom": 48 },
+      "blocks": {
+        "m1": { "type": "step", "settings": { "title": "Posez la feuille contre un mur", "text": "<p>Sur un sol dur, le bord court de la feuille collé au mur.</p>" } },
+        "m2": { "type": "step", "settings": { "title": "Talon contre le mur, debout", "text": "<p>Pied à plat sur la feuille, le poids réparti sur les deux jambes, avec les chaussettes que vous porterez.</p>" } },
+        "m3": { "type": "step", "settings": { "title": "Marquez l'orteil le plus long", "text": "<p>Crayon bien vertical. Ce n'est pas toujours le gros orteil.</p>" } },
+        "m4": { "type": "step", "settings": { "title": "Mesurez en centimètres", "text": "<p>Du bord de la feuille au trait. Gardez la plus grande des deux mesures, prise de préférence en fin de journée.</p>" } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4"]
+    },
+    "sizes": {
+      "type": "size-availability",
+      "settings": {
+        "anchor": "pointures",
+        "heading": "les pointures, par catégorie",
+        "text": "<p>Calculé à partir du catalogue en ligne. Touchez une pointure en stock pour voir les modèles disponibles dans cette taille.</p>",
+        "measurements": "",
+        "note": "<p>Les pointures indiquées sont celles des fiches produit. Une pointure barrée sur une fiche est épuisée pour ce modèle.</p>",
+        "pad_top": 48,
+        "pad_bottom": 32
+      },
+      "blocks": {
+        "b1": { "type": "category", "settings": { "collection": "baskets-homme", "label": "Baskets" } },
+        "b2": { "type": "category", "settings": { "collection": "mocassins-homme", "label": "Mocassins" } },
+        "b3": { "type": "category", "settings": { "collection": "bottines-homme", "label": "Bottines" } },
+        "b4": { "type": "category", "settings": { "collection": "sandales-homme", "label": "Sandales" } },
+        "b5": { "type": "category", "settings": { "collection": "sabot-homme", "label": "Sabots" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4", "b5"]
+    },
+    "choose": {
+      "type": "content-steps",
+      "settings": { "anchor": "choisir", "eyebrow": "Avant de commander", "heading": "bien choisir", "text": "", "columns": false, "surface": false, "pad_top": 32, "pad_bottom": 48 },
+      "blocks": {
+        "c1": { "type": "step", "settings": { "title": "Partez de la paire que vous portez le plus", "text": "<p>Regardez la pointure inscrite à l'intérieur de vos chaussures habituelles : c'est le meilleur point de départ, à comparer avec votre mesure.</p>", "product": "basket-homme-0011-cuir-blanc", "image_position": 1, "link_label": "Voir les baskets", "link": "shopify://collections/baskets-homme" } },
+        "c2": { "type": "step", "settings": { "title": "Mocassins et sabots se portent pieds nus ou presque", "text": "<p>Mesurez votre pied avec des chaussettes fines, comme vous les porterez.</p>", "product": "mocassins-souples-en-daim-bleu-marine", "image_position": 1, "link_label": "Voir les mocassins", "link": "shopify://collections/mocassins-homme" } },
+        "c3": { "type": "step", "settings": { "title": "Un doute ? Demandez-nous", "text": "<p>Envoyez-nous sur WhatsApp le modèle qui vous intéresse et la longueur de votre pied : nous vous répondons avant que vous commandiez.</p>", "link_label": "Écrire sur WhatsApp", "link": "https://wa.me/212633909991" } }
+      },
+      "block_order": ["c1", "c2", "c3"]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "heading": "questions sur les pointures", "text": "", "open_first": false, "pad_top": 32, "pad_bottom": 72 },
+      "blocks": {
+        "q1": { "type": "question", "settings": { "question": "Que signifie une pointure barrée sur une fiche produit ?", "answer": "<p>Elle est épuisée pour ce modèle. Les autres pointures restent disponibles à la commande.</p>" } },
+        "q2": { "type": "question", "settings": { "question": "Comment voir uniquement les modèles disponibles dans ma pointure ?", "answer": "<p>Sur chaque catégorie, touchez votre pointure dans la barre au-dessus des produits. Votre choix est aussi repéré d'un point sur les fiches produit.</p>" } },
+        "q3": { "type": "question", "settings": { "question": "Toutes les catégories vont-elles du 39 au 45 ?", "answer": "<p>Non : consultez le tableau ci-dessus, calculé à partir du catalogue, qui se met à jour avec les stocks.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3"]
+    }
+  },
+  "order": ["hero", "measure", "sizes", "choose", "faq"]
+}

@@ -68,7 +68,7 @@
         {%- for media in product.media -%}
           <li class="pdp__slide{% if forloop.first %} pdp__slide--lead{% endif %}" data-media-id="{{ media.id }}" id="media-{{ section.id }}-{{ forloop.index }}">
             {%- if media.media_type == 'image' -%}
-              <button type="button" class="pdp__zoom-btn media media--packshot" data-zoom-open="{{ forloop.index0 }}" aria-label="{{ 'accessibility.open_zoom' | t: index: forloop.index }}">
+              <button type="button" class="pdp__zoom-btn" style="--ratio: {{ media.preview_image.aspect_ratio }}" data-zoom-open="{{ forloop.index0 }}" aria-label="{{ 'accessibility.open_zoom' | t: index: forloop.index }}">
                 {%- liquid
                   if forloop.first
                     assign img_loading = 'eager'
@@ -142,7 +142,7 @@
                 <span class="pdp__selected" data-selected-size>{% if current_variant and size_index != null %} : <strong>{{ current_variant.options[size_index] }}</strong>{% endif %}</span>
               </legend>
               {%- if settings.size_guide_page != blank and size_index != null -%}
-                <button type="button" class="link small" data-drawer-open="size-guide" aria-controls="size-guide">{% render 'icon', name: 'ruler', class: 'icon--sm' %} {{ 'products.product.size_guide' | t }}</button>
+                <a class="link small" href="{{ settings.size_guide_page.url }}">{% render 'icon', name: 'ruler', class: 'icon--sm' %} {{ 'products.product.size_guide' | t }}</a>
               {%- endif -%}
             </div>
             <div class="pdp__size-grid" role="radiogroup" aria-labelledby="size-legend-{{ section.id }}" aria-describedby="size-error-{{ section.id }}">
@@ -198,20 +198,39 @@
               <div class="acc__body rte">{{ product.description }}</div>
             </details>
           {%- endif -%}
-          {%- if settings.delivery_page != blank -%}
+          {%- if settings.pdp_delivery_text != blank or settings.delivery_page != blank -%}
             <details class="acc">
               <summary class="acc__title">{{ 'products.product.delivery' | t }}{% render 'icon', name: 'plus', class: 'icon--sm' %}</summary>
-              <div class="acc__body rte">{{ settings.delivery_page.content }}</div>
+              <div class="acc__body rte">
+                {{ settings.pdp_delivery_text }}
+                {%- if settings.delivery_page != blank -%}{{ settings.delivery_page.content }}{%- endif -%}
+                {%- if settings.faq_page != blank -%}<p><a href="{{ settings.faq_page.url }}">{{ 'products.product.faq_link' | t }}</a></p>{%- endif -%}
+              </div>
             </details>
           {%- endif -%}
-          {%- if settings.care_article != blank and size_index != null -%}
+          {%- liquid
+            assign care_url = settings.care_page.url | default: settings.care_article.url
+            assign mat = way_material | append: ' ' | append: product.title | downcase
+            assign care_kind = 'general'
+            if mat contains 'daim' or mat contains 'nubuck'
+              assign care_kind = 'suede'
+            elsif mat contains 'cuir'
+              assign care_kind = 'leather'
+            endif
+          -%}
+          {%- if size_index != null and care_url != blank -%}
             <details class="acc">
               <summary class="acc__title">{{ 'products.product.care' | t }}{% render 'icon', name: 'plus', class: 'icon--sm' %}</summary>
               <div class="acc__body rte">
-                <p>{{ settings.care_article.excerpt_or_content | strip_html | truncatewords: 40 }}</p>
-                <p><a href="{{ settings.care_article.url }}">{{ 'products.product.care_link' | t }}</a></p>
+                <p>{%- case care_kind -%}{%- when 'suede' -%}{{ 'products.care.suede' | t }}{%- when 'leather' -%}{{ 'products.care.leather' | t }}{%- else -%}{{ 'products.care.general' | t }}{%- endcase -%}</p>
+                <p><a href="{{ care_url }}">{{ 'products.product.care_link' | t }}</a></p>
               </div>
             </details>
+          {%- endif -%}
+          {%- if settings.style_page != blank and size_index != null -%}
+            <a class="pdp__guide-link" href="{{ settings.style_page.url }}">
+              <span>{{ 'products.product.style_link' | t }}</span>{% render 'icon', name: 'arrow-right', class: 'icon--sm' %}
+            </a>
           {%- endif -%}
         </div>
       </div>
@@ -245,18 +264,7 @@
     </div>
   </div>
 
-  {%- if settings.size_guide_page != blank -%}
-    <div class="drawer drawer--right" id="size-guide" data-drawer aria-hidden="true">
-      <button type="button" class="drawer__overlay" data-drawer-close tabindex="-1" aria-label="{{ 'general.close' | t }}"></button>
-      <div class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="size-guide-title" tabindex="-1">
-        <div class="drawer__head">
-          <h2 class="drawer__title" id="size-guide-title">{{ settings.size_guide_page.title }}</h2>
-          <button type="button" class="icon-btn" data-drawer-close aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button>
-        </div>
-        <div class="drawer__body rte">{{ settings.size_guide_page.content }}</div>
-      </div>
-    </div>
-  {%- endif -%}
+
 
   <script type="application/json" data-product-json>
     {

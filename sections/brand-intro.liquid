@@ -1,0 +1,68 @@
+{%- comment -%} Short brand statement + verified facts (blocks) + link. Used on the homepage and the About page. {%- endcomment -%}
+{%- liquid
+  assign img = section.settings.image
+  if img == blank and section.settings.product != blank
+    assign idx = section.settings.image_position | minus: 1
+    assign img = section.settings.product.media[idx].preview_image | default: section.settings.product.featured_image
+  endif
+-%}
+<section class="section brand{% if section.settings.surface %} brand--surface{% endif %}{% if img == blank %} brand--text-only{% endif %}" style="--pad-top: {{ section.settings.pad_top }}px; --pad-bottom: {{ section.settings.pad_bottom }}px;" aria-labelledby="brand-title-{{ section.id }}">
+  <div class="container brand__grid">
+    {%- if img != blank -%}
+      <div class="brand__visual">
+        <div class="media media--tile media--photo">
+          {{ img | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '400, 600, 900, 1200', sizes: '(min-width: 990px) 40vw, 92vw', alt: section.settings.image_alt }}
+        </div>
+        {%- if section.settings.image_caption != blank -%}<p class="small muted brand__caption">{{ section.settings.image_caption }}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
+    <div class="brand__body">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow muted">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="h1 lower" id="brand-title-{{ section.id }}">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div class="brand__text">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.blocks.size > 0 -%}
+        <dl class="brand__facts" style="--n: {{ section.blocks.size }}">
+          {%- for block in section.blocks -%}
+            <div class="brand__fact" {{ block.shopify_attributes }}>
+              <dt>{{ block.settings.value }}</dt>
+              <dd class="muted small">{{ block.settings.label }}</dd>
+            </div>
+          {%- endfor -%}
+        </dl>
+      {%- endif -%}
+      {%- if section.settings.link_label != blank and section.settings.link != blank -%}
+        <a class="link-arrow" href="{{ section.settings.link }}">{{ section.settings.link_label }}{% render 'icon', name: 'arrow-right', class: 'icon--sm' %}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Présentation",
+  "class": "section-brand",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Surtitre" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "zayou, en bref." },
+    { "type": "richtext", "id": "text", "label": "Texte", "info": "Uniquement des informations vérifiées." },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "product", "id": "product", "label": "Ou : photo d'un produit" },
+    { "type": "range", "id": "image_position", "label": "Numéro de la photo", "min": 1, "max": 10, "step": 1, "default": 1 },
+    { "type": "text", "id": "image_alt", "label": "Texte alternatif" },
+    { "type": "text", "id": "image_caption", "label": "Légende de l'image" },
+    { "type": "text", "id": "link_label", "label": "Texte du lien" },
+    { "type": "url", "id": "link", "label": "Lien" },
+    { "type": "checkbox", "id": "surface", "label": "Fond grège", "default": false },
+    { "type": "range", "id": "pad_top", "label": "Marge haute", "min": 0, "max": 96, "step": 8, "unit": "px", "default": 56 },
+    { "type": "range", "id": "pad_bottom", "label": "Marge basse", "min": 0, "max": 96, "step": 8, "unit": "px", "default": 56 }
+  ],
+  "blocks": [
+    { "type": "fact", "name": "Chiffre / fait", "settings": [
+      { "type": "text", "id": "value", "label": "Valeur", "default": "39 – 45" },
+      { "type": "text", "id": "label", "label": "Libellé", "default": "pointures" }
+    ] }
+  ],
+  "presets": [{ "name": "Présentation" }]
+}
+{% endschema %}

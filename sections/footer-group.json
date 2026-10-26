@@ -4,14 +4,15 @@
   "sections": {
     "footer": {
       "type": "footer",
-      "settings": { "text": "<p>Chaussures pour homme. Livraison partout au Maroc.</p>", "payment_text": "Paiement à la livraison", "show_wordmark": true },
+      "settings": { "text": "<p>Chaussures pour homme. Livraison partout au Maroc, paiement à la livraison.</p>", "payment_text": "Paiement à la livraison", "show_wordmark": true },
       "blocks": {
         "shop": { "type": "menu", "settings": { "title": "Boutique", "menu": "main-menu", "show_policies": false } },
-        "help": { "type": "menu", "settings": { "title": "Informations", "menu": "footer", "show_policies": true } },
-        "contact": { "type": "contact", "settings": { "title": "Contact", "contact_page": "contact" } },
+        "help": { "type": "pages", "settings": { "title": "Aide", "page_1": "guide-des-pointures", "page_2": "entretien", "page_3": "faq", "page_4": "contact" } },
+        "brand": { "type": "pages", "settings": { "title": "La marque", "page_1": "a-propos", "page_2": "inspirations", "blog": "infos", "blog_label": "Journal" } },
+        "contact": { "type": "contact", "settings": { "title": "Contact", "contact_page": "" } },
         "news": { "type": "newsletter", "settings": { "title": "Newsletter", "text": "Les nouveautés zayou, par e-mail." } }
       },
-      "block_order": ["shop", "help", "contact", "news"]
+      "block_order": ["shop", "help", "brand", "contact", "news"]
     }
   },
   "order": ["footer"]

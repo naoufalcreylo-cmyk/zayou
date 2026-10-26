@@ -1,0 +1,71 @@
+{%- comment -%}
+  Cards towards pages, the blog or any URL. A card whose page does not exist in the store is not shown (no dead links).
+{%- endcomment -%}
+<section class="section link-cards"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %} style="--pad-top: {{ section.settings.pad_top }}px; --pad-bottom: {{ section.settings.pad_bottom }}px;" aria-labelledby="lc-title-{{ section.id }}">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head__text">
+        <h2 class="h2 lower" id="lc-title-{{ section.id }}">{{ section.settings.heading }}</h2>
+        {%- if section.settings.text != blank -%}<div class="muted">{{ section.settings.text }}</div>{%- endif -%}
+      </div>
+    </div>
+    <ul class="link-cards__list" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign url = block.settings.link
+          assign title = block.settings.title
+          if block.settings.page != blank
+            assign url = block.settings.page.url
+            assign title = title | default: block.settings.page.title
+          endif
+          assign img = block.settings.image
+          if img == blank and block.settings.product != blank
+            assign idx = block.settings.image_position | minus: 1
+            assign img = block.settings.product.media[idx].preview_image | default: block.settings.product.featured_image
+          endif
+        -%}
+        {%- if url != blank -%}
+          <li {{ block.shopify_attributes }}>
+            <a class="link-card" href="{{ url }}">
+              <span class="media media--tile{% if block.settings.photo %} media--photo{% else %} media--packshot{% endif %}">
+                {%- if img != blank -%}{{ img | image_url: width: 800 | image_tag: loading: 'lazy', widths: '360, 540, 800', sizes: '(min-width: 990px) 30vw, 70vw', alt: '' }}{%- endif -%}
+              </span>
+              {%- if block.settings.eyebrow != blank -%}<span class="eyebrow muted">{{ block.settings.eyebrow }}</span>{%- endif -%}
+              <span class="link-card__title">{{ title }}</span>
+              {%- if block.settings.text != blank -%}<span class="muted small">{{ block.settings.text }}</span>{%- endif -%}
+            </a>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cartes de liens",
+  "class": "section-link-cards",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Ancre" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "conseils & guides" },
+    { "type": "richtext", "id": "text", "label": "Texte" },
+    { "type": "range", "id": "pad_top", "label": "Marge haute", "min": 0, "max": 96, "step": 8, "unit": "px", "default": 56 },
+    { "type": "range", "id": "pad_bottom", "label": "Marge basse", "min": 0, "max": 96, "step": 8, "unit": "px", "default": 56 }
+  ],
+  "blocks": [
+    { "type": "card", "name": "Carte", "settings": [
+      { "type": "page", "id": "page", "label": "Page" },
+      { "type": "url", "id": "link", "label": "Ou : lien" },
+      { "type": "text", "id": "eyebrow", "label": "Surtitre" },
+      { "type": "text", "id": "title", "label": "Titre (par défaut : titre de la page)" },
+      { "type": "text", "id": "text", "label": "Texte" },
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "product", "id": "product", "label": "Ou : photo d'un produit" },
+      { "type": "range", "id": "image_position", "label": "Numéro de la photo", "min": 1, "max": 10, "step": 1, "default": 1 },
+      { "type": "checkbox", "id": "photo", "label": "Photo d'ambiance (remplit le carré)", "default": true }
+    ] }
+  ],
+  "presets": [{ "name": "Cartes de liens", "blocks": [{ "type": "card" }, { "type": "card" }, { "type": "card" }] }]
+}
+{% endschema %}

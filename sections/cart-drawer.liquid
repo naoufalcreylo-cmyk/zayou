@@ -14,13 +14,7 @@
           <p>{{ 'cart.empty' | t }}</p>
           {%- if section.settings.empty_menu.links.size > 0 -%}
             <p class="small muted">{{ 'cart.empty_hint' | t }}</p>
-            <div class="cart-empty__links">
-              {%- for link in section.settings.empty_menu.links -%}
-                {%- unless link.type == 'frontpage_link' or link.type == 'collection_link' and link.object.products_count == 0 -%}
-                  <a class="chip-link" href="{{ link.url }}">{{ link.title }}</a>
-                {%- endunless -%}
-              {%- endfor -%}
-            </div>
+            {% render 'empty-cart-tiles', menu: section.settings.empty_menu %}
           {%- endif -%}
         </div>
       {%- endif -%}

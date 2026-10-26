@@ -13,7 +13,8 @@
   {%- else -%}
     <div class="empty-state">
       <p>{{ 'cart.empty' | t }}</p>
-      <a class="btn" href="{{ routes.all_products_collection_url }}">{{ 'general.continue_shopping' | t }}</a>
+      <p class="small muted">{{ 'cart.empty_hint' | t }}</p>
+      {% render 'empty-cart-tiles' %}
     </div>
   {%- endif -%}
 </div>
