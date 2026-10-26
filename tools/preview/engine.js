@@ -126,7 +126,8 @@ engine.registerTag('form', blockTag('form', function* (ctx, body, em) {
   const a = { method: 'post', action: FORM_ACTION[type] || '/', 'accept-charset': 'UTF-8', ...(type === 'product' ? { enctype: 'multipart/form-data' } : {}), ...attrs };
   if (attrs.return_to) delete a.return_to;
   em.write(`<form ${Object.entries(a).filter(([, v]) => v !== '' && v != null).map(([k, v]) => `${k}="${escAttr(v)}"`).join(' ')}><input type="hidden" name="form_type" value="${type}"><input type="hidden" name="utf8" value="✓">`);
-  ctx.push({ form: { errors: null, 'posted_successfully?': false, email: '', body: '', name: '', id: attrs.id } });
+  const q = ctx.globals._query || {}; const posted = (type === 'customer' && q.customer_posted === 'true') || (type === 'contact' && q.contact_posted === 'true');
+  ctx.push({ form: { errors: null, 'posted_successfully?': posted, email: '', body: '', name: '', id: attrs.id } });
   yield body(); ctx.pop(); em.write('</form>');
 }));
 // {% paginate collection.products by 24 %}
