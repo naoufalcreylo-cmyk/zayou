@@ -165,8 +165,10 @@ const ok = (name, cond, info = '') => { results.push(`${cond ? 'PASS' : 'FAIL'} 
   await p.goto(BASE + '/', { waitUntil: 'networkidle' });
   const tiles = await p.$$eval('.card__media .media, .categories__media, .detail .media, .link-card .media', els => els.map(e => { const r = e.getBoundingClientRect(); return { sq: Math.abs(r.width - r.height) < 2, rad: parseFloat(getComputedStyle(e).borderTopLeftRadius) }; }));
   ok('Image system: home tiles are square with 12–16px radius', tiles.length > 10 && tiles.every(t => t.sq && t.rad >= 12 && t.rad <= 16), `${tiles.length} tiles`);
+  await p.waitForFunction(() => document.querySelector('[data-tabs]') && document.querySelector('[data-tabs]')._tabs);
   await p.click('.styles__tab:nth-child(2)');
-  ok('Styles: tab switches panel', await p.isVisible('.style:nth-of-type(2)') && (await p.getAttribute('.styles__tab:nth-child(2)', 'aria-selected')) === 'true');
+  const panel2 = await p.getAttribute('.styles__tab:nth-child(2)', 'aria-controls');
+  ok('Styles: tab switches panel', await p.isVisible('#' + panel2) && !(await p.isVisible('#' + (await p.getAttribute('.styles__tab:nth-child(1)', 'aria-controls')))) && (await p.getAttribute('.styles__tab:nth-child(2)', 'aria-selected')) === 'true');
   await p.keyboard.press('ArrowRight');
   ok('Styles: arrow keys move between tabs', (await p.getAttribute('.styles__tab:nth-child(3)', 'aria-selected')) === 'true');
   await p.fill('#footer-email', 'test@example.com'); await Promise.all([p.waitForNavigation(), p.click('.footer__news-form button')]);
