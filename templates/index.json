@@ -3,29 +3,32 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "layout": "split",
-        "product": "crest-tabac",
-        "image_position": 4,
-        "image_alt": "Les cinq coloris de la basket Crest alignés",
-        "eyebrow": "",
-        "heading": "bien chaussé, tous les jours.",
+        "layout": "diptych",
+        "product": "mocassins-souples-en-daim-3",
+        "image_position": 2,
+        "image_alt": "Mocassins souples en daim noir posés sur un parquet",
+        "product_2": "mocassins-souples-en-daim-bleu-marine",
+        "image_position_2": 2,
+        "image_alt_2": "Mocassins souples en daim bleu marine",
+        "eyebrow": "La saison des mocassins",
+        "heading": "souples, du matin au soir.",
         "lowercase": true,
-        "text": "<p>Baskets, mocassins, bottines et sandales pour homme. Livraison partout au Maroc, paiement à la livraison.</p>",
-        "button_label": "Découvrir les baskets",
-        "button_link": "shopify://collections/baskets-homme",
-        "button2_label": "Mocassins",
-        "button2_link": "shopify://collections/mocassins-homme"
+        "text": "<p>Mocassins en daim et en cuir, du 39 au 43. Livraison partout au Maroc, paiement à la livraison.</p>",
+        "button_label": "Découvrir les mocassins",
+        "button_link": "shopify://collections/mocassins-homme",
+        "button2_label": "Toutes les baskets",
+        "button2_link": "shopify://collections/baskets-homme"
       }
     },
     "categories": {
       "type": "category-tiles",
-      "settings": { "heading": "par catégorie", "link_label": "", "pad_top": 48, "pad_bottom": 24 },
+      "settings": { "heading": "par catégorie", "link_label": "", "pad_top": 40, "pad_bottom": 24 },
       "blocks": {
-        "c1": { "type": "category", "settings": { "collection": "baskets-homme", "label": "baskets", "product": "basket-homme-0013-cuir-tabac" } },
+        "c1": { "type": "category", "settings": { "collection": "baskets-homme", "label": "baskets", "product": "basket-homme-0013-cuir-tabac", "image_position": 1 } },
         "c2": { "type": "category", "settings": { "collection": "mocassins-homme", "label": "mocassins", "product": "mocassins-souples-en-daim-5", "image_position": 2 } },
-        "c3": { "type": "category", "settings": { "collection": "bottines-homme", "label": "bottines", "product": "bottine-homme-002-cuir-tabac" } },
-        "c4": { "type": "category", "settings": { "collection": "sandales-homme", "label": "sandales", "product": "013-sandales-homme-en-cuir-noir" } },
-        "c5": { "type": "category", "settings": { "collection": "sabot-homme", "label": "sabots", "product": "sabot-pantoufle-marron-001" } }
+        "c3": { "type": "category", "settings": { "collection": "bottines-homme", "label": "bottines", "product": "bottine-homme-002-cuir-tabac", "image_position": 1 } },
+        "c4": { "type": "category", "settings": { "collection": "sandales-homme", "label": "sandales", "product": "013-sandales-homme-en-cuir-noir", "image_position": 1 } },
+        "c5": { "type": "category", "settings": { "collection": "sabot-homme", "label": "sabots", "product": "sabot-pantoufle-marron-001", "image_position": 1 } }
       },
       "block_order": ["c1", "c2", "c3", "c4", "c5"]
     },
@@ -33,40 +36,29 @@
       "type": "product-rail",
       "settings": {
         "eyebrow": "",
-        "heading": "la sélection",
+        "heading": "la sélection zayou",
         "text": "",
-        "products": ["crest-tabac", "nomad-gris", "basket-homme-0013-cuir-tabac", "bottine-homme-002-cuir-tabac", "eclipse-beige", "mocassins-souples-en-cuir-1", "streamline-noir", "zenith-blanche"],
+        "products": ["crest-tabac", "mocassins-souples-en-daim-bleu-marine", "bottine-homme-002-cuir-tabac", "nomad-gris", "basket-homme-0013-cuir-tabac", "eclipse-beige", "mocassins-souples-en-cuir-1", "streamline-noir"],
         "limit": 8,
         "grid_desktop": false,
         "cols_desktop": "4",
         "link_label": "Toutes les baskets",
         "link": "shopify://collections/baskets-homme",
-        "pad_top": 40,
-        "pad_bottom": 56
+        "pad_top": 48,
+        "pad_bottom": 48
       }
     },
-    "spotlight": {
-      "type": "model-spotlight",
-      "settings": {
-        "product": "crest-tabac",
-        "eyebrow": "Un modèle, toute la gamme",
-        "heading": "crest",
-        "text": "<p>Basket basse Broski à semelle blanche contrastée. Choisissez votre coloris.</p>",
-        "lineup_position": 4,
-        "pad_top": 56,
-        "pad_bottom": 56
-      }
-    },
-    "moments": {
-      "type": "editorial-moments",
-      "settings": { "heading": "du lundi au dimanche.", "text": "", "pad_top": 56, "pad_bottom": 56 },
+    "styles": {
+      "type": "style-finder",
+      "settings": { "layout": "tabs", "eyebrow": "", "heading": "trouvez votre style", "text": "", "link_label": "Toutes nos inspirations", "link": "shopify://pages/inspirations", "pad_top": 48, "pad_bottom": 56 },
       "blocks": {
-        "m1": { "type": "moment", "settings": { "product": "basket-homme-006-daim-tabac", "image_position": 2, "image_alt": "Baskets en daim tabac portées", "title": "en semaine", "text": "Une basket en cuir ou en daim, pour tous les jours.", "link_label": "Les baskets", "link": "shopify://collections/baskets-homme" } },
-        "m2": { "type": "moment", "settings": { "product": "mocassins-souples-en-cuir-1", "image_position": 1, "image_alt": "Mocassins souples en cuir noir portés", "title": "le soir", "text": "Le mocassin souple, pour sortir.", "link_label": "Les mocassins", "link": "shopify://collections/mocassins-homme" } },
-        "m3": { "type": "moment", "settings": { "product": "sandales-en-cuir-noir", "image_position": 2, "image_alt": "Sandales en cuir noir portées", "title": "le week-end", "text": "Sandales en cuir ou en daim.", "link_label": "Les sandales", "link": "shopify://collections/sandales-homme" } },
-        "m4": { "type": "moment", "settings": { "product": "sabot-pantoufle-marron-001", "image_position": 1, "image_alt": "Sabot pantoufle marron", "title": "à la maison", "text": "Le sabot pantoufle.", "link_label": "Les sabots", "link": "shopify://collections/sabot-homme" } }
+        "s1": { "type": "style", "settings": { "title": "le casual net", "text": "<p>Une basket blanche en cuir et un pantalon droit qui s'arrête juste au-dessus de la chaussure : la base d'une tenue nette, du bureau au week-end.</p>", "image_product": "basket-homme-007-cuir-blanc", "image_position": 2, "image_alt": "Baskets blanches en cuir portées avec un pantalon gris", "products": ["basket-homme-007-cuir-blanc", "basket-homme-0011-cuir-blanc", "zenith-blanche", "basket-homme-004-cuir-blanc"], "link_label": "Toutes les baskets", "link": "shopify://collections/baskets-homme" } },
+        "s2": { "type": "style", "settings": { "title": "le mocassin souple", "text": "<p>Avec un chino ou un pantalon de lin légèrement raccourci, sans chaussettes visibles. Le daim beige ou tabac adoucit une tenue claire.</p>", "image_product": "mocassins-souples-en-daim-9", "image_position": 5, "image_alt": "Mocassins en daim beige portés avec un pantalon gris clair", "products": ["mocassins-souples-en-daim-9", "mocassins-souples-en-daim-3", "mocassins-souples-en-daim-bleu-marine", "mocassins-souples-en-daim-7"], "link_label": "Tous les mocassins", "link": "shopify://collections/mocassins-homme" } },
+        "s3": { "type": "style", "settings": { "title": "la bottine chelsea", "text": "<p>Avec un jean brut ou un pantalon en laine, l'ourlet posé sur la tige. Noire pour le soir, tabac pour la journée.</p>", "image_product": "bottine-homme-002-cuir-tabac", "image_position": 1, "image_alt": "Bottine chelsea en cuir tabac", "products": ["bottine-homme-002-cuir-tabac", "bottine-homme-001-cuir-noir-1", "bottine-homme-002-cuir-noir-1"], "link_label": "Toutes les bottines", "link": "shopify://collections/bottines-homme" } },
+        "s4": { "type": "style", "settings": { "title": "l'urbain technique", "text": "<p>Mesh, semelle épaisse et coloris contrastés : les modèles Broski se portent avec un jogging ajusté, un cargo ou un jean brut.</p>", "image_product": "eclipse-beige", "image_position": 4, "image_alt": "Semelle à effet éclaboussures de la basket Eclipse", "products": ["eclipse-bleu", "eclipse-vert", "nomad-gris", "eclipse-beige"], "link_label": "Voir les modèles Broski", "link": "/collections/vendors?q=Broski" } },
+        "s5": { "type": "style", "settings": { "title": "les beaux jours", "text": "<p>Sandales en cuir ou en daim, avec un pantalon en lin ou un short à pinces. Le noir va avec tout, le tabac réchauffe le blanc et le beige.</p>", "image_product": "sandales-en-cuir-noir-007", "image_position": 1, "image_alt": "Sandales en cuir noir portées avec un pantalon beige", "products": ["013-sandales-homme-en-cuir-noir", "sandales-en-cuir-marron-7", "sandales-homme-009-daim-tabac", "sandales-en-cuir-noir-007"], "link_label": "Toutes les sandales", "link": "shopify://collections/sandales-homme" } }
       },
-      "block_order": ["m1", "m2", "m3", "m4"]
+      "block_order": ["s1", "s2", "s3", "s4", "s5"]
     },
     "size_finder": {
       "type": "size-finder",
@@ -78,16 +70,63 @@
         "pad_bottom": 48
       }
     },
-    "services": {
-      "type": "service-strip",
-      "settings": { "label": "Nos services", "pad_top": 32, "pad_bottom": 64 },
+    "spotlight": {
+      "type": "model-spotlight",
+      "settings": {
+        "product": "crest-tabac",
+        "eyebrow": "Un modèle, toute la gamme",
+        "heading": "crest",
+        "text": "<p>Basket basse Broski à semelle blanche contrastée. Choisissez votre coloris.</p>",
+        "lineup_position": 4,
+        "pad_top": 64,
+        "pad_bottom": 56
+      }
+    },
+    "details": {
+      "type": "detail-mosaic",
+      "settings": { "heading": "dans le détail.", "text": "<p>Gros plans de nos photos produit : ce que l'on voit de près, avant de commander.</p>", "pad_top": 56, "pad_bottom": 56 },
       "blocks": {
-        "s1": { "type": "service", "settings": { "icon": "truck", "title": "Livraison partout au Maroc", "text": "" } },
-        "s2": { "type": "service", "settings": { "icon": "cash", "title": "Paiement à la livraison", "text": "<p>Vous réglez à la réception de votre commande.</p>" } },
-        "s3": { "type": "service", "settings": { "icon": "whatsapp", "title": "Une question ?", "text": "<p>Écrivez-nous sur <a href=\"https://wa.me/212633909991\">WhatsApp</a>.</p>" } }
+        "d1": { "type": "detail", "settings": { "product": "mocassins-souples-en-daim-bleu-marine", "image_position": 3, "image_alt": "Mocassin en daim bleu marine plié dans une main", "caption": "Souple au point de se plier dans la main" } },
+        "d2": { "type": "detail", "settings": { "product": "crest-kaki", "image_position": 2, "image_alt": "Gros plan sur les lacets de la basket Crest kaki", "caption": "Lacets épais, finition mate" } },
+        "d3": { "type": "detail", "settings": { "product": "crest-kaki", "image_position": 4, "image_alt": "Talon de la basket Crest marqué Broski", "caption": "Marquage Broski au talon" } },
+        "d4": { "type": "detail", "settings": { "product": "eclipse-beige", "image_position": 3, "image_alt": "Mesh et semelle mouchetée de la basket Eclipse", "caption": "Dessus en mesh, semelle à effet éclaboussures" } },
+        "d5": { "type": "detail", "settings": { "product": "nomad-gris", "image_position": 3, "image_alt": "Gros plan sur la basket Nomad grise", "caption": "Semelle épaisse aux tons beiges" } }
       },
-      "block_order": ["s1", "s2", "s3"]
+      "block_order": ["d1", "d2", "d3", "d4", "d5"]
+    },
+    "brand": {
+      "type": "brand-intro",
+      "settings": {
+        "eyebrow": "La marque",
+        "heading": "zayou, en bref.",
+        "text": "<p>zayou est une marque marocaine de chaussures pour homme. Baskets, mocassins souples, bottines, sandales et sabots : des modèles simples à porter, du lundi au dimanche.</p>",
+        "product": "basket-homme-006-daim-tabac",
+        "image_position": 2,
+        "image_alt": "Baskets en daim tabac portées avec un pantalon noir",
+        "link_label": "À propos de zayou",
+        "link": "shopify://pages/a-propos",
+        "surface": true,
+        "pad_top": 64,
+        "pad_bottom": 64
+      },
+      "blocks": {
+        "f1": { "type": "fact", "settings": { "value": "5", "label": "catégories de chaussures" } },
+        "f2": { "type": "fact", "settings": { "value": "39 – 45", "label": "pointures, selon les modèles" } },
+        "f3": { "type": "fact", "settings": { "value": "Partout", "label": "livraison au Maroc" } },
+        "f4": { "type": "fact", "settings": { "value": "À la livraison", "label": "paiement" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4"]
+    },
+    "guides": {
+      "type": "link-cards",
+      "settings": { "heading": "conseils & guides", "text": "", "pad_top": 64, "pad_bottom": 72 },
+      "blocks": {
+        "g1": { "type": "card", "settings": { "page": "guide-des-pointures", "eyebrow": "Guide", "title": "Trouver sa pointure", "text": "Mesurer son pied et voir les pointures de chaque catégorie.", "product": "basket-homme-0012-cuir-tabac", "image_position": 2, "photo": false } },
+        "g2": { "type": "card", "settings": { "page": "entretien", "eyebrow": "Conseils", "title": "Entretenir cuir, daim et mesh", "text": "Les bons gestes selon la matière de votre paire.", "product": "mocassins-souples-en-cuir", "image_position": 3, "photo": true } },
+        "g3": { "type": "card", "settings": { "page": "inspirations", "eyebrow": "Inspirations", "title": "Comment porter nos modèles", "text": "Cinq façons de porter baskets, mocassins, bottines et sandales.", "product": "mocassins-souples-en-daim-5", "image_position": 1, "photo": true } }
+      },
+      "block_order": ["g1", "g2", "g3"]
     }
   },
-  "order": ["hero", "categories", "selection", "spotlight", "moments", "size_finder", "services"]
+  "order": ["hero", "categories", "selection", "styles", "size_finder", "spotlight", "details", "brand", "guides"]
 }

@@ -1,0 +1,100 @@
+{%- comment -%}
+  Styles: a real photo (worn shot or detail) + a short note + real products + a destination.
+  layout "tabs" (homepage) shows one style at a time; "stacked" (Inspirations page) lists them all, alternating sides.
+{%- endcomment -%}
+{%- assign layout = section.settings.layout -%}
+<section class="section styles styles--{{ layout }}" style="--pad-top: {{ section.settings.pad_top }}px; --pad-bottom: {{ section.settings.pad_bottom }}px;" aria-labelledby="styles-title-{{ section.id }}"{% if layout == 'tabs' %} data-tabs{% endif %}>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head__text">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow muted">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        <h2 class="h2 lower" id="styles-title-{{ section.id }}">{{ section.settings.heading }}</h2>
+        {%- if section.settings.text != blank -%}<div class="muted">{{ section.settings.text }}</div>{%- endif -%}
+      </div>
+      {%- if section.settings.link_label != blank and section.settings.link != blank -%}
+        <a class="link-arrow small" href="{{ section.settings.link }}">{{ section.settings.link_label }}{% render 'icon', name: 'arrow-right', class: 'icon--sm' %}</a>
+      {%- endif -%}
+    </div>
+
+    {%- if layout == 'tabs' -%}
+      <div class="styles__tabs" role="tablist" aria-label="{{ section.settings.heading | escape }}">
+        {%- for block in section.blocks -%}
+          <button type="button" role="tab" class="chip-link styles__tab{% if forloop.first %} is-active{% endif %}" id="tab-{{ block.id }}" aria-controls="panel-{{ block.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"{% unless forloop.first %} tabindex="-1"{% endunless %}>{{ block.settings.title }}</button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign img = block.settings.image
+        if img == blank and block.settings.image_product != blank
+          assign idx = block.settings.image_position | minus: 1
+          assign img = block.settings.image_product.media[idx].preview_image | default: block.settings.image_product.featured_image
+        endif
+      -%}
+      <div class="style{% cycle '', ' style--reverse' %}" id="{% if layout == 'tabs' %}panel-{% endif %}{{ block.id }}" {{ block.shopify_attributes }}
+        {%- if layout == 'tabs' %} role="tabpanel" aria-labelledby="tab-{{ block.id }}"{% unless forloop.first %} hidden{% endunless %}{% endif %}>
+        <div class="style__visual">
+          <a class="media media--tile media--photo" href="{{ block.settings.link | default: block.settings.image_product.url }}" tabindex="-1" aria-hidden="true">
+            {%- if img != blank -%}
+              {{ img | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '400, 600, 900, 1200', sizes: '(min-width: 990px) 40vw, 92vw', alt: block.settings.image_alt }}
+            {%- else -%}
+              {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </a>
+        </div>
+        <div class="style__body">
+          {%- if layout != 'tabs' -%}<span class="style__index" aria-hidden="true">{{ forloop.index | prepend: '0' }}</span>{%- endif -%}
+          <h3 class="h3 lower">{{ block.settings.title }}</h3>
+          {%- if block.settings.text != blank -%}<div class="style__text">{{ block.settings.text }}</div>{%- endif -%}
+          {%- if block.settings.products != blank -%}
+            <ul class="style__products" role="list">
+              {%- for product in block.settings.products limit: 4 -%}
+                <li>{% render 'product-card', product: product, sizes: '(min-width: 990px) 14vw, 45vw', show_quick_add: false %}</li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+          {%- if block.settings.link_label != blank and block.settings.link != blank -%}
+            <a class="btn btn--ghost style__cta" href="{{ block.settings.link }}">{{ block.settings.link_label }}{% render 'icon', name: 'arrow-right', class: 'icon--sm' %}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Styles",
+  "class": "section-styles",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "select", "id": "layout", "label": "Mise en page", "options": [ { "value": "tabs", "label": "Onglets (un style à la fois)" }, { "value": "stacked", "label": "Liste (tous les styles)" } ], "default": "tabs" },
+    { "type": "text", "id": "eyebrow", "label": "Surtitre" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "trouvez votre style" },
+    { "type": "richtext", "id": "text", "label": "Texte" },
+    { "type": "text", "id": "link_label", "label": "Texte du lien" },
+    { "type": "url", "id": "link", "label": "Lien" },
+    { "type": "range", "id": "pad_top", "label": "Marge haute", "min": 0, "max": 96, "step": 8, "unit": "px", "default": 56 },
+    { "type": "range", "id": "pad_bottom", "label": "Marge basse", "min": 0, "max": 96, "step": 8, "unit": "px", "default": 56 }
+  ],
+  "blocks": [
+    {
+      "type": "style",
+      "name": "Style",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Nom du style", "default": "le casual net" },
+        { "type": "richtext", "id": "text", "label": "Conseil" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "product", "id": "image_product", "label": "Ou : photo d'un produit" },
+        { "type": "range", "id": "image_position", "label": "Numéro de la photo", "min": 1, "max": 10, "step": 1, "default": 1 },
+        { "type": "text", "id": "image_alt", "label": "Texte alternatif" },
+        { "type": "product_list", "id": "products", "label": "Produits", "limit": 4 },
+        { "type": "text", "id": "link_label", "label": "Texte du bouton" },
+        { "type": "url", "id": "link", "label": "Lien du bouton" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Styles", "blocks": [{ "type": "style" }, { "type": "style" }] }]
+}
+{% endschema %}

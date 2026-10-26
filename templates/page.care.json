@@ -1,0 +1,228 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "Conseils",
+        "title": "entretenir sa paire",
+        "intro": "<p>Cuir lisse, daim, nubuck ou mesh : chaque matière se nettoie différemment. Repérez la matière dans le titre ou la description de votre modèle, puis suivez les gestes correspondants.</p>",
+        "product": "mocassins-souples-en-cuir",
+        "image_position": 3,
+        "image_alt": "Mocassins en cuir bordeaux avec embauchoirs"
+      },
+      "blocks": {
+        "a1": {
+          "type": "anchor",
+          "settings": {
+            "label": "Par matière",
+            "link": "#matieres"
+          }
+        },
+        "a2": {
+          "type": "anchor",
+          "settings": {
+            "label": "Les gestes de base",
+            "link": "#gestes"
+          }
+        },
+        "a3": {
+          "type": "anchor",
+          "settings": {
+            "label": "À lire",
+            "link": "#articles"
+          }
+        }
+      },
+      "block_order": [
+        "a1",
+        "a2",
+        "a3"
+      ]
+    },
+    "materials": {
+      "type": "content-steps",
+      "settings": {
+        "anchor": "matieres",
+        "eyebrow": "Par matière",
+        "heading": "le bon geste pour chaque matière",
+        "text": "<p>Testez toujours un produit d'entretien sur une petite zone peu visible avant de l'appliquer sur toute la chaussure.</p>",
+        "columns": false,
+        "surface": false,
+        "pad_top": 40,
+        "pad_bottom": 48
+      },
+      "blocks": {
+        "m1": {
+          "type": "step",
+          "settings": {
+            "title": "Cuir lisse",
+            "text": "<p>Dépoussiérez avec un chiffon doux ou une brosse à poils souples. Appliquez ensuite une crème nourrissante incolore ou de la même teinte, en couche fine, laissez pénétrer puis lustrez.</p><p>Bottines, baskets en cuir et mocassins en cuir sont concernés.</p>",
+            "product": "bottine-homme-002-cuir-tabac",
+            "image_position": 1,
+            "link_label": "Les bottines en cuir",
+            "link": "shopify://collections/bottines-homme"
+          }
+        },
+        "m2": {
+          "type": "step",
+          "settings": {
+            "title": "Daim et nubuck",
+            "text": "<p>Jamais d'eau ni de crème : utilisez une brosse spéciale daim (crêpe ou laiton) à sec, dans un seul sens, pour relever le velours. Une gomme pour daim enlève les petites marques.</p><p>Avant la première sortie, une bombe imperméabilisante protège des taches.</p>",
+            "product": "mocassins-souples-en-daim-7",
+            "image_position": 1,
+            "link_label": "Les mocassins en daim",
+            "link": "shopify://collections/mocassins-homme"
+          }
+        },
+        "m3": {
+          "type": "step",
+          "settings": {
+            "title": "Mesh et matières synthétiques",
+            "text": "<p>Une brosse souple et de l'eau tiède légèrement savonneuse suffisent. Tamponnez sans frotter fort, rincez avec un chiffon humide et laissez sécher à l'air libre.</p><p>C'est le cas des modèles Broski dont la fiche indique « mesh » ou « cuir synthétique ».</p>",
+            "product": "eclipse-bleu",
+            "image_position": 1,
+            "link_label": "Les modèles Broski",
+            "link": "/collections/vendors?q=Broski"
+          }
+        },
+        "m4": {
+          "type": "step",
+          "settings": {
+            "title": "Semelles blanches",
+            "text": "<p>Une brosse à dents et un peu de savon de Marseille dilué retirent l'essentiel des traces. Insistez sur les bords, essuyez, puis laissez sécher.</p>",
+            "product": "zenith-blanche",
+            "image_position": 1,
+            "link_label": "Les baskets blanches",
+            "link": "/search?q=blanc"
+          }
+        },
+        "m5": {
+          "type": "step",
+          "settings": {
+            "title": "Sandales et sabots",
+            "text": "<p>Essuyez les semelles intérieures avec un chiffon à peine humide et laissez-les sécher à l'ombre. Pour les sabots en feutre, une brosse souple suffit.</p>",
+            "product": "sabot-pantoufle-gris-001",
+            "image_position": 1,
+            "link_label": "Les sabots",
+            "link": "shopify://collections/sabot-homme"
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5"
+      ]
+    },
+    "basics": {
+      "type": "content-steps",
+      "settings": {
+        "anchor": "gestes",
+        "eyebrow": "Pour toutes les paires",
+        "heading": "les gestes de base",
+        "text": "",
+        "columns": true,
+        "surface": true,
+        "pad_top": 48,
+        "pad_bottom": 48
+      },
+      "blocks": {
+        "b1": {
+          "type": "step",
+          "settings": {
+            "title": "Alternez",
+            "text": "<p>Laissez reposer une paire un jour entre deux ports : elle sèche et garde sa forme.</p>"
+          }
+        },
+        "b2": {
+          "type": "step",
+          "settings": {
+            "title": "Séchez loin de la chaleur",
+            "text": "<p>Jamais sur un radiateur ni au soleil direct. Du papier journal à l'intérieur absorbe l'humidité.</p>"
+          }
+        },
+        "b3": {
+          "type": "step",
+          "settings": {
+            "title": "Gardez la forme",
+            "text": "<p>Des embauchoirs ou du papier froissé évitent les plis, surtout pour les mocassins.</p>"
+          }
+        },
+        "b4": {
+          "type": "step",
+          "settings": {
+            "title": "Rangez à l'abri",
+            "text": "<p>Dans un sac en tissu ou leur boîte, à l'abri de la lumière et de la poussière.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "articles": {
+      "type": "link-cards",
+      "settings": {
+        "heading": "à lire",
+        "text": "",
+        "pad_top": 56,
+        "pad_bottom": 72,
+        "anchor": "articles"
+      },
+      "blocks": {
+        "r1": {
+          "type": "card",
+          "settings": {
+            "link": "/blogs/infos/comment-entretenir-vos-chaussures-en-cuir-pour-quelles-demeurent-comme-neuves",
+            "eyebrow": "Journal",
+            "title": "Comment entretenir vos chaussures en cuir",
+            "text": "Nettoyage, nourrissage, rangement : la méthode complète.",
+            "product": "mocassins-souples-en-cuir",
+            "image_position": 6,
+            "photo": false
+          }
+        },
+        "r2": {
+          "type": "card",
+          "settings": {
+            "link": "/blogs/infos/les-differents-types-de-cuir-utilises-dans-la-fabrication-des-chaussures",
+            "eyebrow": "Journal",
+            "title": "Les différents types de cuir",
+            "text": "Reconnaître les cuirs utilisés en chaussure.",
+            "product": "crest-kaki",
+            "image_position": 2,
+            "photo": true
+          }
+        },
+        "r3": {
+          "type": "card",
+          "settings": {
+            "link": "/blogs/infos/les-chaussures-en-cuir-histoire-et-evolution",
+            "eyebrow": "Journal",
+            "title": "Les chaussures en cuir : histoire et évolution",
+            "text": "Des premières sandales aux modèles d'aujourd'hui.",
+            "product": "sandales-en-cuir-noir",
+            "image_position": 1,
+            "photo": false
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "materials",
+    "basics",
+    "articles"
+  ]
+}

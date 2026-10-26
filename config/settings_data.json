@@ -21,7 +21,7 @@
     "cart_note": "Paiement à la livraison disponible",
     "whatsapp_number": "+212633909991",
     "phone": "+212 644-522326",
-    "pdp_delivery_text": "<p>Livraison partout au Maroc. Paiement à la livraison.</p>",
+    "pdp_delivery_text": "<p>Livraison partout au Maroc. Paiement à la livraison : vous réglez à la réception de votre commande.</p>",
     "care_article": "infos/comment-entretenir-vos-chaussures-en-cuir-pour-quelles-demeurent-comme-neuves",
     "social_instagram": "https://www.instagram.com/bonplanmaroc.ma/",
     "social_facebook": "https://www.facebook.com/bonplanmaroc.ma",
@@ -33,6 +33,10 @@
         "disabled": false,
         "settings": {}
       }
-    }
+    },
+    "size_guide_page": "guide-des-pointures",
+    "care_page": "entretien",
+    "style_page": "inspirations",
+    "faq_page": "faq"
   }
 }

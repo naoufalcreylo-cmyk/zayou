@@ -1,0 +1,85 @@
+{%- comment -%}
+  Sizes per category, computed live from the catalogue (variant option "Taille"/"Pointure"): offered sizes, and sizes in stock today.
+  This is not a measurement chart: a foot-length table appears only if the merchant fills the "measurements" setting with verified data.
+{%- endcomment -%}
+<section class="section sizes-table" id="{{ section.settings.anchor | default: section.id }}" style="--pad-top: {{ section.settings.pad_top }}px; --pad-bottom: {{ section.settings.pad_bottom }}px;" aria-labelledby="st-title-{{ section.id }}">
+  <div class="container">
+    <div class="steps__head">
+      <h2 class="h2 lower" id="st-title-{{ section.id }}">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div class="muted steps__lede">{{ section.settings.text }}</div>{%- endif -%}
+    </div>
+    <div class="table-wrap">
+      <table class="table sizes-table__table">
+        <thead>
+          <tr><th scope="col">{{ 'sizes.category' | t }}</th><th scope="col">{{ 'sizes.offered' | t }}</th><th scope="col">{{ 'sizes.in_stock' | t }}</th></tr>
+        </thead>
+        <tbody>
+          {%- for block in section.blocks -%}
+            {%- assign c = block.settings.collection -%}
+            {%- if c != blank and c.products_count > 0 -%}
+              {%- liquid
+                assign offered = ''
+                assign stocked = ''
+                for product in c.products
+                  assign si = null
+                  for option in product.options_with_values
+                    assign on = option.name | downcase
+                    if on contains 'taille' or on contains 'pointure'
+                      assign si = forloop.index0
+                    endif
+                  endfor
+                  if si != null
+                    for v in product.variants
+                      assign s = v.options[si]
+                      assign offered = offered | append: s | append: ','
+                      if v.available
+                        assign stocked = stocked | append: s | append: ','
+                      endif
+                    endfor
+                  endif
+                endfor
+                assign offered = offered | split: ',' | uniq | sort
+                assign stocked = stocked | split: ',' | uniq | sort
+              -%}
+              <tr {{ block.shopify_attributes }}>
+                <th scope="row"><a href="{{ c.url }}">{{ block.settings.label | default: c.title }}</a></th>
+                <td data-label="{{ 'sizes.offered' | t }}">{{ offered | join: ' · ' }}</td>
+                <td data-label="{{ 'sizes.in_stock' | t }}">
+                  {%- for s in stocked -%}<a class="sizes-table__chip" href="{{ c.url }}?{{ settings.size_filter_param | default: 'filter.v.option.taille' }}={{ s }}&filter.v.availability=1" data-size-pick="{{ s }}">{{ s }}</a>{%- endfor -%}
+                </td>
+              </tr>
+            {%- endif -%}
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+    {%- if section.settings.measurements != blank -%}
+      <div class="rte sizes-table__measures">{{ section.settings.measurements }}</div>
+    {%- endif -%}
+    {%- if section.settings.note != blank -%}<div class="small muted sizes-table__note">{{ section.settings.note }}</div>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pointures par catégorie",
+  "class": "section-sizes-table",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Ancre", "default": "pointures" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "les pointures, par catégorie" },
+    { "type": "richtext", "id": "text", "label": "Texte" },
+    { "type": "richtext", "id": "measurements", "label": "Tableau de mesures (longueur de pied par pointure)", "info": "À remplir uniquement avec les mesures vérifiées des modèles zayou. Masqué si vide." },
+    { "type": "richtext", "id": "note", "label": "Note" },
+    { "type": "range", "id": "pad_top", "label": "Marge haute", "min": 0, "max": 96, "step": 8, "unit": "px", "default": 48 },
+    { "type": "range", "id": "pad_bottom", "label": "Marge basse", "min": 0, "max": 96, "step": 8, "unit": "px", "default": 48 }
+  ],
+  "blocks": [
+    { "type": "category", "name": "Catégorie", "settings": [
+      { "type": "collection", "id": "collection", "label": "Collection" },
+      { "type": "text", "id": "label", "label": "Libellé" }
+    ] }
+  ],
+  "presets": [{ "name": "Pointures par catégorie" }]
+}
+{% endschema %}

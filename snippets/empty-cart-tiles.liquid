@@ -1,0 +1,16 @@
+{%- comment -%} Empty cart: square category tiles from a menu (empty collections skipped). {%- endcomment -%}
+{%- assign src = menu | default: linklists['main-menu'] -%}
+<ul class="empty-tiles" role="list">
+  {%- for link in src.links -%}
+    {%- if link.type == 'collection_link' and link.object.products_count > 0 -%}
+      <li>
+        <a class="empty-tiles__link" href="{{ link.url }}">
+          <span class="media media--tile media--packshot">
+            {%- if link.object.featured_image -%}{{ link.object.featured_image | image_url: width: 300 | image_tag: loading: 'lazy', widths: '150, 300', sizes: '120px', alt: '' }}{%- endif -%}
+          </span>
+          <span class="small">{{ link.title }}</span>
+        </a>
+      </li>
+    {%- endif -%}
+  {%- endfor -%}
+</ul>

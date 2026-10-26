@@ -1,5 +1,9 @@
 {
   "general": {
+    "404": {
+      "title": "Page introuvable",
+      "subtext": "Cette page n'existe pas ou a été déplacée."
+    },
     "close": "Fermer",
     "page": "Page {{ page }}",
     "announcements": "Annonces",
@@ -20,10 +24,7 @@
       "login_form_submit": "Entrer",
       "admin_link_html": "Vous êtes le propriétaire ? <a href=\"/admin\" class=\"link\">Connexion</a>"
     },
-    "404": {
-      "title": "Page introuvable",
-      "subtext": "Cette page n'existe pas ou a été déplacée."
-    }
+    "on_this_page": "Sur cette page"
   },
   "accessibility": {
     "skip_to_content": "Aller au contenu",
@@ -49,7 +50,10 @@
     "title": "Votre pointure",
     "saved": "Pointure {{ size }} mémorisée",
     "yours": "Votre pointure",
-    "clear": "Oublier ma pointure"
+    "clear": "Oublier ma pointure",
+    "category": "Catégorie",
+    "offered": "Pointures proposées",
+    "in_stock": "En stock aujourd’hui"
   },
   "newsletter": {
     "label": "Adresse e-mail",
@@ -106,7 +110,8 @@
     "density": "Affichage",
     "density_large": "Grandes vignettes",
     "density_small": "Petites vignettes",
-    "all": "Tout"
+    "all": "Tout",
+    "categories": "Catégories"
   },
   "products": {
     "card": {
@@ -142,7 +147,7 @@
       "details": "Caractéristiques",
       "delivery": "Livraison et paiement",
       "care": "Entretien",
-      "care_link": "Lire nos conseils d'entretien",
+      "care_link": "Tous nos conseils d’entretien",
       "share": "Partager",
       "vendor": "Marque",
       "material": "Matière",
@@ -155,7 +160,14 @@
       "related": "Vous aimerez aussi",
       "recently_viewed": "Vus récemment",
       "other_colors": "Autres coloris de ce modèle",
-      "in_cart": "Ajouté au panier"
+      "in_cart": "Ajouté au panier",
+      "faq_link": "Questions fréquentes : commande, paiement, livraison",
+      "style_link": "Comment porter ce modèle"
+    },
+    "care": {
+      "leather": "Cuir lisse : dépoussiérez avec un chiffon doux, puis nourrissez avec une crème incolore ou de la même teinte, en couche fine.",
+      "suede": "Daim et nubuck : jamais d’eau ni de crème. Brossez à sec avec une brosse spéciale daim et protégez avec un imperméabilisant avant la première sortie.",
+      "general": "Brosse souple et eau tiède légèrement savonneuse, puis séchage à l’air libre, loin de toute source de chaleur."
     }
   },
   "cart": {

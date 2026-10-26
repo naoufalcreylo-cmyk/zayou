@@ -345,7 +345,7 @@ input:focus-visible + .size-btn { outline: 2px solid var(--ink); outline-offset:
 .footer { border-top: 1px solid var(--line); padding-top: 56px; font-size: 14px; }
 .footer__grid { display: grid; gap: 36px; }
 @media (min-width: 750px) { .footer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 1200px) { .footer__grid { grid-template-columns: 1.5fr repeat(3, minmax(0, 1fr)) 1.6fr; gap: 40px; } }
+@media (min-width: 1200px) { .footer__grid { grid-template-columns: 1.3fr repeat(4, minmax(0, 1fr)) 1.5fr; gap: 36px; } }
 .footer__brand { display: grid; gap: 16px; align-content: start; }
 .footer__logo { width: 132px; }
 .footer__title { font-weight: 600; margin-bottom: 14px; font-size: 14px; }
@@ -402,3 +402,20 @@ input:focus-visible + .size-btn { outline: 2px solid var(--ink); outline-offset:
 .card__visual { position: relative; }
 @media (max-width: 749px) { .card__meta { flex-wrap: wrap; row-gap: 2px; } .card__ways { width: 100%; } }
 .header__logo { padding-block: 6px; }
+
+/* ---------- image system (v2): square tiles, 14px radius ----------
+   Cards, category and editorial tiles are 1:1 with rounded corners. Packshots are contained (never cropped),
+   lifestyle/detail photos cover the square. Product-page galleries keep the original photos untouched. */
+:root { --radius: 14px; --radius-sm: 8px; }
+.media--tile, .card__media .media, .categories__media, .cart-line__media .media, .predictive__product .media, .nav__feature .media { border-radius: var(--radius); }
+.cart-line__media .media, .spotlight__swatch .media, .pdp__way .media, .qa__head .media { border-radius: var(--radius-sm); }
+.media--photo > img { object-fit: cover; mix-blend-mode: normal; }
+.media--tile { --ratio: 1; }
+.media--packshot > img { padding: 4%; }
+.card__badge { top: 12px; left: 12px; }
+.card__quick { right: 10px; bottom: 10px; }
+@media (hover: hover) and (min-width: 990px) { .card__sizes { left: 10px; right: 10px; bottom: 10px; border-radius: var(--radius-sm); } }
+.empty-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 10px; list-style: none; padding: 0; margin: 4px 0 0; width: 100%; }
+@media (min-width: 750px) { .empty-state .empty-tiles { grid-template-columns: repeat(5, minmax(0, 120px)); } }
+.empty-tiles__link { display: grid; gap: 6px; text-decoration: none; font-weight: 500; }
+.empty-tiles__link:hover span:last-child { text-decoration: underline; }

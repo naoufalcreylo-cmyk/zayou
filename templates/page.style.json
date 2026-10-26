@@ -1,0 +1,46 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "Inspirations",
+        "title": "comment porter nos modèles",
+        "intro": "<p>Cinq façons de porter baskets, mocassins, bottines et sandales, avec les modèles à commander pour chacune.</p>",
+        "product": "mocassins-souples-en-daim-5",
+        "image_position": 1,
+        "image_alt": "Mocassins en daim marron portés avec un pantalon gris clair"
+      },
+      "blocks": {
+        "a1": { "type": "anchor", "settings": { "label": "Le casual net", "link": "#look-1" } },
+        "a2": { "type": "anchor", "settings": { "label": "Le mocassin souple", "link": "#look-2" } },
+        "a3": { "type": "anchor", "settings": { "label": "La bottine chelsea", "link": "#look-3" } },
+        "a4": { "type": "anchor", "settings": { "label": "L'urbain technique", "link": "#look-4" } },
+        "a5": { "type": "anchor", "settings": { "label": "Les beaux jours", "link": "#look-5" } }
+      },
+      "block_order": ["a1", "a2", "a3", "a4", "a5"]
+    },
+    "looks": {
+      "type": "style-finder",
+      "settings": { "layout": "stacked", "eyebrow": "", "heading": "cinq tenues, cinq paires", "text": "", "link_label": "", "link": "", "pad_top": 32, "pad_bottom": 56 },
+      "blocks": {
+        "look-1": { "type": "style", "settings": { "title": "le casual net", "text": "<p>La basket blanche en cuir est la paire la plus facile à porter. Associez-la à un pantalon droit qui tombe juste au-dessus de la chaussure, à un chino beige ou à un jean brut, avec une chemise en oxford ou un polo uni.</p><p>Gardez les semelles propres : c'est ce qui fait la différence.</p>", "image_product": "basket-homme-007-cuir-blanc", "image_position": 2, "image_alt": "Baskets blanches en cuir portées avec un pantalon gris", "products": ["basket-homme-007-cuir-blanc", "basket-homme-0011-cuir-blanc", "zenith-blanche", "basket-homme-004-cuir-blanc"], "link_label": "Toutes les baskets", "link": "shopify://collections/baskets-homme" } },
+        "look-2": { "type": "style", "settings": { "title": "le mocassin souple", "text": "<p>Le mocassin se porte avec un pantalon légèrement raccourci, qui laisse voir la cheville : chino, lin, ou pantalon de costume sans revers. Des chaussettes invisibles gardent la ligne nette.</p><p>Le daim beige ou tabac adoucit les tenues claires ; le bleu marine et le noir s'accordent avec les tons sombres.</p>", "image_product": "mocassins-souples-en-daim-9", "image_position": 5, "image_alt": "Mocassins en daim beige portés avec un pantalon gris clair", "products": ["mocassins-souples-en-daim-9", "mocassins-souples-en-daim-3", "mocassins-souples-en-daim-bleu-marine", "mocassins-souples-en-daim-7"], "link_label": "Tous les mocassins", "link": "shopify://collections/mocassins-homme" } },
+        "look-3": { "type": "style", "settings": { "title": "la bottine chelsea", "text": "<p>La bottine chelsea s'enfile sans lacets et se porte sous un jean brut ou un pantalon en laine, l'ourlet posé sur la tige. Le noir accompagne une veste sombre le soir ; le tabac réchauffe un jean et un pull écru.</p>", "image_product": "bottine-homme-002-cuir-tabac", "image_position": 1, "image_alt": "Bottine chelsea en cuir tabac", "products": ["bottine-homme-002-cuir-tabac", "bottine-homme-001-cuir-noir-1", "bottine-homme-002-cuir-noir-1"], "link_label": "Toutes les bottines", "link": "shopify://collections/bottines-homme" } },
+        "look-4": { "type": "style", "settings": { "title": "l'urbain technique", "text": "<p>Mesh, semelles épaisses et coloris contrastés : les modèles Broski Eclipse et Nomad vont avec un jogging ajusté, un cargo ou un jean brut. Reprenez une couleur de la basket dans la tenue (un sweat vert avec l'Eclipse verte, par exemple).</p>", "image_product": "eclipse-beige", "image_position": 4, "image_alt": "Semelle à effet éclaboussures de la basket Eclipse", "products": ["eclipse-bleu", "eclipse-vert", "nomad-gris", "eclipse-beige"], "link_label": "Voir les modèles Broski", "link": "/collections/vendors?q=Broski" } },
+        "look-5": { "type": "style", "settings": { "title": "les beaux jours", "text": "<p>Les sandales en cuir se portent avec un pantalon en lin, un chino court ou un short à pinces. Le noir va avec tout ; le tabac et le daim réchauffent les tenues blanches et beiges.</p>", "image_product": "sandales-en-cuir-noir-007", "image_position": 1, "image_alt": "Sandales en cuir noir portées avec un pantalon beige", "products": ["013-sandales-homme-en-cuir-noir", "sandales-en-cuir-marron-7", "sandales-homme-009-daim-tabac", "sandales-en-cuir-noir-007"], "link_label": "Toutes les sandales", "link": "shopify://collections/sandales-homme" } }
+      },
+      "block_order": ["look-1", "look-2", "look-3", "look-4", "look-5"]
+    },
+    "guides": {
+      "type": "link-cards",
+      "settings": { "heading": "avant de commander", "text": "", "pad_top": 40, "pad_bottom": 72 },
+      "blocks": {
+        "g1": { "type": "card", "settings": { "page": "guide-des-pointures", "eyebrow": "Guide", "title": "Trouver sa pointure", "text": "Mesurer son pied et voir les pointures en stock.", "product": "basket-homme-0012-cuir-tabac", "image_position": 2, "photo": false } },
+        "g2": { "type": "card", "settings": { "page": "entretien", "eyebrow": "Conseils", "title": "Entretenir sa paire", "text": "Les bons gestes selon la matière.", "product": "mocassins-souples-en-cuir", "image_position": 3, "photo": true } },
+        "g3": { "type": "card", "settings": { "page": "faq", "eyebrow": "Aide", "title": "Questions fréquentes", "text": "Commande, paiement, livraison.", "product": "basket-homme-004-cuir-blanc", "image_position": 2, "photo": true } }
+      },
+      "block_order": ["g1", "g2", "g3"]
+    }
+  },
+  "order": ["hero", "looks", "guides"]
+}

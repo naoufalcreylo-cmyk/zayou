@@ -320,6 +320,19 @@
     });
   }
 
+  // ---------- generic tabs ([data-tabs] with role=tab / role=tabpanel) ----------
+  function initTabs(root = document) {
+    $$('[data-tabs]', root).forEach(box => {
+      if (box._tabs) return; box._tabs = true;
+      const tabs = $$('[role="tab"]', box);
+      const show = t => tabs.forEach(x => { const on = x === t; x.setAttribute('aria-selected', on ? 'true' : 'false'); x.tabIndex = on ? 0 : -1; x.classList.toggle('is-active', on); const p = document.getElementById(x.getAttribute('aria-controls')); if (p) p.hidden = !on; });
+      tabs.forEach((t, i) => {
+        t.addEventListener('click', () => show(t));
+        t.addEventListener('keydown', e => { if (!/Arrow(Left|Right)|Home|End/.test(e.key)) return; e.preventDefault(); const j = e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : (i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length; tabs[j].focus(); show(tabs[j]); });
+      });
+    });
+  }
+
   // ---------- product recommendations ----------
   function initRecos(root = document) {
     $$('[data-recos]', root).forEach(async el => {
@@ -333,7 +346,7 @@
   }
 
   // ---------- init ----------
-  function init(root = document) { initRails(root); initSpotlights(root); initRecos(root); Size.paint(root); }
+  function init(root = document) { initRails(root); initSpotlights(root); initTabs(root); initRecos(root); Size.paint(root); }
   document.addEventListener('DOMContentLoaded', () => { hoistDrawers(); initHeader(); initSearch(); init(); });
   document.addEventListener('shopify:section:load', e => { hoistDrawers(e.target); init(e.target); if (e.target.querySelector('[data-header]')) initHeader(); });
   window.addEventListener('pageshow', e => { if (e.persisted) Cart.refreshCount(); });
