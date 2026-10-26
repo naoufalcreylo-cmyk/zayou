@@ -1,0 +1,52 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "Aide",
+        "title": "questions fréquentes",
+        "intro": "<p>Commande, paiement, livraison et pointures. Vous ne trouvez pas votre réponse ? Écrivez-nous sur WhatsApp.</p>"
+      },
+      "blocks": {
+        "a1": { "type": "anchor", "settings": { "label": "Commander", "link": "#commander" } },
+        "a2": { "type": "anchor", "settings": { "label": "Pointures", "link": "#pointures" } },
+        "a3": { "type": "anchor", "settings": { "label": "Nous contacter", "link": "/pages/contact" } }
+      },
+      "block_order": ["a1", "a2", "a3"]
+    },
+    "order": {
+      "type": "faq",
+      "settings": { "anchor": "commander", "heading": "commander & payer", "text": "", "open_first": true, "pad_top": 24, "pad_bottom": 32 },
+      "blocks": {
+        "q1": { "type": "question", "settings": { "question": "Comment passer commande ?", "answer": "<p>Sur la fiche du modèle, choisissez votre pointure puis le bouton de commande. Un formulaire court vous demande votre nom, votre téléphone, votre ville et votre adresse de livraison.</p>" } },
+        "q2": { "type": "question", "settings": { "question": "Comment payer ma commande ?", "answer": "<p>Le paiement se fait à la livraison : vous réglez à la réception de votre commande.</p>" } },
+        "q3": { "type": "question", "settings": { "question": "Livrez-vous dans toutes les villes ?", "answer": "<p>Oui, nous livrons partout au Maroc.</p>" } },
+        "q4": { "type": "question", "settings": { "question": "Puis-je commander plusieurs paires en une fois ?", "answer": "<p>Oui : ajoutez chaque paire au panier avec sa pointure, puis validez depuis le panier.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"]
+    },
+    "sizes": {
+      "type": "faq",
+      "settings": { "anchor": "pointures", "heading": "pointures & modèles", "text": "<p>Voir aussi le <a href=\"/pages/guide-des-pointures\">guide des pointures</a>.</p>", "open_first": false, "pad_top": 32, "pad_bottom": 32 },
+      "blocks": {
+        "q1": { "type": "question", "settings": { "question": "Quelles pointures proposez-vous ?", "answer": "<p>Du 39 au 45 selon les modèles. Le guide des pointures indique, catégorie par catégorie, les pointures proposées et celles en stock.</p>" } },
+        "q2": { "type": "question", "settings": { "question": "Comment choisir ma pointure ?", "answer": "<p>Mesurez votre pied en suivant notre guide et comparez avec la pointure de vos chaussures habituelles. En cas de doute, envoyez-nous le modèle et votre mesure sur WhatsApp avant de commander.</p>" } },
+        "q3": { "type": "question", "settings": { "question": "Une pointure apparaît barrée : est-elle disponible ?", "answer": "<p>Non, une pointure barrée est épuisée pour ce modèle. Les autres pointures restent disponibles.</p>" } },
+        "q4": { "type": "question", "settings": { "question": "Le modèle existe-t-il dans une autre couleur ?", "answer": "<p>Les coloris d'un même modèle sont affichés sur sa fiche, sous « Couleur ». La pointure choisie est conservée quand vous passez d'un coloris à l'autre.</p>" } },
+        "q5": { "type": "question", "settings": { "question": "Comment entretenir mes chaussures ?", "answer": "<p>Cela dépend de la matière (cuir lisse, daim, nubuck, mesh) : suivez nos <a href=\"/pages/entretien\">conseils d'entretien</a>.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5"]
+    },
+    "contact": {
+      "type": "service-strip",
+      "settings": { "label": "Nous contacter", "pad_top": 40, "pad_bottom": 72 },
+      "blocks": {
+        "s1": { "type": "service", "settings": { "icon": "whatsapp", "title": "WhatsApp", "text": "<p><a href=\"https://wa.me/212633909991\">+212 633 909 991</a></p>" } },
+        "s2": { "type": "service", "settings": { "icon": "phone", "title": "Téléphone", "text": "<p><a href=\"tel:+212644522326\">+212 644-522326</a></p>" } },
+        "s3": { "type": "service", "settings": { "icon": "chat", "title": "Formulaire", "text": "<p><a href=\"/pages/contact\">Page contact</a></p>" } }
+      },
+      "block_order": ["s1", "s2", "s3"]
+    }
+  },
+  "order": ["hero", "order", "sizes", "contact"]
+}

@@ -34,6 +34,33 @@
                 </ul>
               </details>
             </div>
+          {%- when 'pages' -%}
+            {%- liquid
+              assign page_links = ''
+              for i in (1..6)
+                assign key = 'page_' | append: i
+                if block.settings[key] != blank
+                  assign page_links = page_links | append: i | append: ','
+                endif
+              endfor
+            -%}
+            {%- if page_links != blank or block.settings.blog != blank -%}
+              <div class="footer__col" {{ block.shopify_attributes }}>
+                <details open>
+                  <summary><h2 class="footer__title">{{ block.settings.title }}</h2>{% render 'icon', name: 'plus', class: 'icon--sm' %}</summary>
+                  <ul class="footer__links" role="list">
+                    {%- assign idxs = page_links | split: ',' -%}
+                    {%- for i in idxs -%}
+                      {%- assign key = 'page_' | append: i -%}
+                      <li><a href="{{ block.settings[key].url }}">{{ block.settings[key].title }}</a></li>
+                    {%- endfor -%}
+                    {%- if block.settings.blog != blank -%}
+                      <li><a href="{{ block.settings.blog.url }}">{{ block.settings.blog_label | default: block.settings.blog.title }}</a></li>
+                    {%- endif -%}
+                  </ul>
+                </details>
+              </div>
+            {%- endif -%}
           {%- when 'contact' -%}
             <div class="footer__col" {{ block.shopify_attributes }}>
               <details open>
@@ -86,6 +113,9 @@
 
     <div class="footer__bottom">
       <span>© {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+      {%- if shop.policies.size > 0 -%}
+        <span class="footer__legal">{%- for policy in shop.policies -%}<a href="{{ policy.url }}">{{ policy.title }}</a>{% unless forloop.last %} · {% endunless %}{%- endfor -%}</span>
+      {%- endif -%}
       {%- if section.settings.payment_text != blank -%}<span>{{ section.settings.payment_text }}</span>{%- endif -%}
       <span>{{ powered_by_link }}</span>
     </div>
@@ -96,7 +126,7 @@
 {
   "name": "Pied de page",
   "class": "section-footer",
-  "max_blocks": 6,
+  "max_blocks": 7,
   "settings": [
     { "type": "richtext", "id": "text", "label": "Texte de présentation", "default": "<p>Chaussures pour homme. Livraison partout au Maroc.</p>" },
     { "type": "text", "id": "payment_text", "label": "Mention de paiement", "default": "Paiement à la livraison" },
@@ -110,6 +140,22 @@
         { "type": "text", "id": "title", "label": "Titre" },
         { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" },
         { "type": "checkbox", "id": "show_policies", "label": "Ajouter les politiques publiées", "default": false }
+      ]
+    },
+    {
+      "type": "pages",
+      "name": "Pages",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titre", "default": "Aide" },
+        { "type": "paragraph", "content": "Une page qui n'existe pas dans la boutique n'est pas affichée." },
+        { "type": "page", "id": "page_1", "label": "Page 1" },
+        { "type": "page", "id": "page_2", "label": "Page 2" },
+        { "type": "page", "id": "page_3", "label": "Page 3" },
+        { "type": "page", "id": "page_4", "label": "Page 4" },
+        { "type": "page", "id": "page_5", "label": "Page 5" },
+        { "type": "page", "id": "page_6", "label": "Page 6" },
+        { "type": "blog", "id": "blog", "label": "Blog" },
+        { "type": "text", "id": "blog_label", "label": "Libellé du blog" }
       ]
     },
     {

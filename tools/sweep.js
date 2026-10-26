@@ -3,7 +3,7 @@
 const { chromium } = require('playwright-core'); const fs = require('fs'); const path = require('path');
 const BASE = process.env.BASE || 'http://localhost:4300';
 const axe = fs.readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
-const PAGES = ['/', '/collections/baskets-homme', '/collections/baskets-homme?filter.v.option.taille=42&filter.v.availability=1', '/products/crest-tabac', '/products/sandales-homme-009-daim-tabac', '/products/khamrah-100-ml', '/search?q=mocassin', '/search?q=zzzz', '/cart', '/pages/contact', '/blogs/infos', '/account/login', '/nope'];
+const PAGES = ['/', '/pages/a-propos', '/pages/guide-des-pointures', '/pages/entretien', '/pages/inspirations', '/pages/faq', '/collections/mocassins-homme', '/collections/vendors?q=Broski', '/collections/baskets-homme', '/collections/baskets-homme?filter.v.option.taille=42&filter.v.availability=1', '/products/crest-tabac', '/products/sandales-homme-009-daim-tabac', '/products/khamrah-100-ml', '/search?q=mocassin', '/search?q=zzzz', '/cart', '/pages/contact', '/blogs/infos', '/account/login', '/nope'];
 const WIDTHS = [360, 390, 768, 1024, 1440];
 (async () => {
   const b = await chromium.launch({ channel: 'chrome' }); const rows = []; const axeAll = {};

@@ -23,8 +23,9 @@ All findings come from the public storefront (`zayou-5.myshopify.com`) and its J
    - `basket-homme-023-cuir-marron` is titled "Basket Homme **024**".
    - Crest Tabac's description says "coloris Marron".
    - The perfume descriptions contain pasted WooCommerce/Bootstrap HTML (axe: invalid ARIA, heading order).
-   - Mocassins have no product type.
-6. **"L@coste simple"** (2 products) imitates a protected brand name. Rename or remove them; the theme doesn't feature them.
+   - Mocassins have no product type (and `basket-04` « Basket Daim Vert » has none either, so recommendations group it with the mocassins).
+   - Eclipse **Beige** description says « en Vert »; most mocassin descriptions are just « MOCASSINS SOUPLE NEW 2025 ».
+6. **Third-party marks in products/photos**: "L@coste simple" (2 products) imitates a protected brand name, and the *Premium Leather 008* sandal photos show an embossed eagle resembling a well-known fashion house's logo. Check the rights; the theme never features them editorially.
 7. **Vendor** "Bon Plan Maroc / BONPLAN / Bon Plan" is hidden on cards and product pages (setting). "Broski" is shown as a line name.
 
 ## Missing to complete the experience
@@ -38,3 +39,8 @@ All findings come from the public storefront (`zayou-5.myshopify.com`) and its J
 
 ## Optional data improvement
 `migration/colorways-metafields.csv` (Matrixify) writes `zayou.colorway`, `zayou.material` and `zayou.siblings` for 134 products, derived from titles. **Review the groupings first.** For example, "Basket Homme 006" groups 13 products, including the ST/SN/SB variants, whose meaning is unknown. Once imported, the metafields drive colourways instead of the generated map, and a colour filter can be added in Search & Discovery.
+
+## v2 (26/10/2026) — content and imagery
+- New pages built only from verified facts and general care/styling know-how: À propos, Guide des pointures (measuring method + sizes per category computed from the catalogue), Conseils d’entretien, Inspirations, FAQ, Contact. **No delivery times, return/exchange terms or size-measurement chart are published** — these need the owner (the size guide has a hidden slot for verified measurements).
+- No AI image was generated (no generation tool available). All imagery is the store’s own photography; prompts and slots for the missing campaign images are in `docs/ai-visual-brief.md`.
+- Product-page galleries show the original photos unchanged (verified by test: original files, natural ratio, no crop, no blending, no rounding).

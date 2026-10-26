@@ -1,1 +1,24 @@
-{ "sections": { "main": { "type": "main-contact", "settings": {} } }, "order": ["main"] }
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "Aide",
+        "title": "nous contacter",
+        "intro": "<p>Une question sur une pointure, un modèle ou une commande ? Le plus rapide est WhatsApp. Vous pouvez aussi nous laisser un message ci-dessous.</p>"
+      }
+    },
+    "main": { "type": "main-contact", "settings": { "show_title": false } },
+    "faq": {
+      "type": "link-cards",
+      "settings": { "heading": "peut-être déjà répondu", "text": "", "pad_top": 24, "pad_bottom": 72 },
+      "blocks": {
+        "g1": { "type": "card", "settings": { "page": "faq", "eyebrow": "Aide", "title": "Questions fréquentes", "text": "Commande, paiement, livraison, pointures.", "product": "basket-homme-004-cuir-blanc", "image_position": 2, "photo": true } },
+        "g2": { "type": "card", "settings": { "page": "guide-des-pointures", "eyebrow": "Guide", "title": "Trouver sa pointure", "text": "Mesurer son pied et voir les pointures en stock.", "product": "basket-homme-0012-cuir-tabac", "image_position": 2, "photo": false } },
+        "g3": { "type": "card", "settings": { "page": "entretien", "eyebrow": "Conseils", "title": "Entretenir sa paire", "text": "Les bons gestes selon la matière.", "product": "mocassins-souples-en-cuir", "image_position": 3, "photo": true } }
+      },
+      "block_order": ["g1", "g2", "g3"]
+    }
+  },
+  "order": ["hero", "main", "faq"]
+}

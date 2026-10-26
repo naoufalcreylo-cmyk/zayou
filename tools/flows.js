@@ -156,6 +156,41 @@ const ok = (name, cond, info = '') => { results.push(`${cond ? 'PASS' : 'FAIL'} 
   ok('Mobile buy bar: without size it leads to the size picker', await p.isVisible('[data-size-error]'));
   await p.close();
 
+  // ---------- v2: editorial pages, image system, forms ----------
+  p = watch(await ctxDesk.newPage());
+  await p.goto(BASE + '/products/crest-tabac', { waitUntil: 'networkidle' });
+  const gallery = await p.$$eval('.pdp__slide img', imgs => imgs.map(i => { const cs = getComputedStyle(i), box = i.closest('.pdp__zoom-btn'); return { src: i.currentSrc || i.src, fit: cs.objectFit, blend: cs.mixBlendMode, radius: getComputedStyle(box).borderRadius, ratio: (i.naturalWidth / i.naturalHeight).toFixed(2), boxRatio: (box.clientWidth / box.clientHeight).toFixed(2) }; }));
+  ok('PDP gallery: original photos (no crop param, contain, no blend, no rounding, natural ratio)', gallery.length > 0 && gallery.every(g => !/crop=|height=/.test(g.src) && g.fit === 'contain' && g.blend === 'normal' && (g.radius === '0px' || g.radius === '') && Math.abs(g.ratio - g.boxRatio) < 0.02), JSON.stringify(gallery[0]));
+  ok('PDP: size guide links to the guide page', (await p.getAttribute('.pdp__sizes-head a', 'href')) === '/pages/guide-des-pointures');
+  await p.goto(BASE + '/', { waitUntil: 'networkidle' });
+  const tiles = await p.$$eval('.card__media .media, .categories__media, .detail .media, .link-card .media', els => els.map(e => { const r = e.getBoundingClientRect(); return { sq: Math.abs(r.width - r.height) < 2, rad: parseFloat(getComputedStyle(e).borderTopLeftRadius) }; }));
+  ok('Image system: home tiles are square with 12–16px radius', tiles.length > 10 && tiles.every(t => t.sq && t.rad >= 12 && t.rad <= 16), `${tiles.length} tiles`);
+  await p.click('.styles__tab:nth-child(2)');
+  ok('Styles: tab switches panel', await p.isVisible('.style:nth-of-type(2)') && (await p.getAttribute('.styles__tab:nth-child(2)', 'aria-selected')) === 'true');
+  await p.keyboard.press('ArrowRight');
+  ok('Styles: arrow keys move between tabs', (await p.getAttribute('.styles__tab:nth-child(3)', 'aria-selected')) === 'true');
+  await p.fill('#footer-email', 'test@example.com'); await Promise.all([p.waitForNavigation(), p.click('.footer__news-form button')]);
+  ok('Newsletter: Shopify customer form posts and confirms', await p.isVisible('.footer__news .form-message--success'));
+  await p.goto(BASE + '/pages/contact', { waitUntil: 'networkidle' });
+  await p.fill('#c-email', 'test@example.com'); await p.fill('#c-msg', 'Bonjour'); await Promise.all([p.waitForNavigation(), p.click('.contact-form button[type=submit]')]);
+  ok('Contact: form posts and confirms', await p.isVisible('.contact-form .form-message--success'));
+  await p.goto(BASE + '/collections/baskets-homme', { waitUntil: 'networkidle' });
+  ok('Collection: intro, category chips and editorial tiles', await p.isVisible('.collection__intro') && (await p.$$('.collection__nav .chip-link')).length >= 5 && (await p.$$('.grid-insert')).length === 2);
+  ok('Collection: editorial tile placed after product 7', await p.$eval('[data-product-grid] > li:nth-child(8)', li => li.classList.contains('grid-insert')));
+  await p.goto(BASE + '/pages/guide-des-pointures', { waitUntil: 'networkidle' });
+  const rows = await p.$$eval('.sizes-table__table tbody tr', trs => trs.map(t => t.textContent.replace(/\s+/g, ' ').trim()));
+  ok('Size guide: sizes per category computed from the catalogue', rows.length === 5 && /Mocassins 39 · 40 · 41 · 42 · 43/.test(rows.join('|')), rows[1]);
+  await p.click('.sizes-table__table tbody tr:first-child .sizes-table__chip'); await p.waitForLoadState('networkidle');
+  ok('Size guide: in-stock size chip opens the filtered collection', /filter\.v\.option\.taille=\d+/.test(p.url()) && (await p.$$('[data-product-grid] [data-product-card]')).length > 0);
+  await p.goto(BASE + '/pages/faq', { waitUntil: 'networkidle' });
+  ok('FAQ: accordions + FAQPage structured data', (await p.$$('.faq details')).length >= 9 && /FAQPage/.test(await p.content()));
+  await p.goto(BASE + '/collections/vendors?q=Broski', { waitUntil: 'networkidle' });
+  ok('Broski vendor collection lists the Broski models', (await p.$$('[data-product-card]')).length >= 15);
+  await p.goto(BASE + '/', { waitUntil: 'networkidle' });
+  const footerLinks = await p.$$eval('.footer a', as => as.map(a => a.textContent.trim()));
+  ok('Footer: shop, help, brand, legal and contact links', ['Guide des pointures', 'Conseils d’entretien', 'Questions fréquentes', 'À propos de zayou', 'Inspirations', 'Journal', 'Politique de confidentialité'].every(t => footerLinks.some(l => l.includes(t))));
+  await p.close();
+
   ok('No JavaScript errors', errors.length === 0, errors.slice(0, 3).join(' | '));
   console.log(results.join('\n')); console.log(`\n${results.length - failures}/${results.length} passed`);
   await browser.close(); process.exit(failures ? 1 : 0);

@@ -8,3 +8,7 @@ research/img/
 research/montage*.png*
 research/imglist.txt
 *.log
+research/allimg/
+research/big/
+research/articles/
+*.png.html

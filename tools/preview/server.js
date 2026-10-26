@@ -37,14 +37,17 @@ function buildLinklists() {
   return lists;
 }
 const linklists = buildLinklists();
-const pages = { contact: { id: 95380111425, handle: 'contact', title: 'Contact', url: '/pages/contact', template_suffix: 'contact', content: '' } };
+const PAGE = (id, handle, title, template_suffix) => ({ id, handle, title, url: '/pages/' + handle, template_suffix, content: '' });
+const pages = { contact: PAGE(95380111425, 'contact', 'Contact', 'contact'), 'a-propos': PAGE(1, 'a-propos', 'À propos de zayou', 'about'), 'guide-des-pointures': PAGE(2, 'guide-des-pointures', 'Guide des pointures', 'size-guide'),
+  entretien: PAGE(3, 'entretien', 'Conseils d’entretien', 'care'), inspirations: PAGE(4, 'inspirations', 'Inspirations', 'style'), faq: PAGE(5, 'faq', 'Questions fréquentes', 'faq') };
 // blog "infos": real titles and excerpts from the live homepage; full article bodies were not exported
 const ART = [
   ['les-differents-types-de-cuir-utilises-dans-la-fabrication-des-chaussures', 'Les Différents Types de Cuir Utilisés dans la Fabrication des Chaussures', 'Le cuir est un matériau privilégié dans la fabrication des chaussures en raison de sa durabilité, de son confort et de son esthétique. Il existe plusieurs types de cuir, chacun ayant des caractéri...'],
   ['comment-entretenir-vos-chaussures-en-cuir-pour-quelles-demeurent-comme-neuves', "Comment Entretenir Vos Chaussures en Cuir pour Qu'elles Demeurent Comme Neuves", "Investir dans une paire de chaussures en cuir de qualité est une décision judicieuse, mais pour en profiter pleinement, il est essentiel de bien les entretenir. Un entretien régulier permet non seu..."],
   ['les-chaussures-en-cuir-histoire-et-evolution', 'Les Chaussures en Cuir : Histoire et Évolution', "Les chaussures en cuir ont une longue histoire qui remonte à des milliers d'années. De simples sandales en cuir portées par nos ancêtres aux designs sophistiqués d'aujourd'hui, les chaussures en cu..."],
 ];
-const articles = {}; const blogArticles = ART.map(([h, title, ex], i) => (articles['infos/' + h] = { id: i + 1, handle: h, title, url: '/blogs/infos/' + h, excerpt: ex, excerpt_or_content: ex, content: '<p>' + ex + '</p>', published_at: '2025-01-21T10:00:00Z', image: null, author: 'Zayou' }));
+const ARTX = (() => { try { return require('../../data/articles.json'); } catch (e) { return {}; } })();
+const articles = {}; const blogArticles = ART.map(([h, title, ex], i) => (articles['infos/' + h] = { id: i + 1, handle: h, title, url: '/blogs/infos/' + h, excerpt: ex, excerpt_or_content: ex, content: (ARTX[h] && ARTX[h].content) || '<p>' + ex + '</p>', published_at: '2024-10-24T10:00:00Z', image: ARTX[h] && ARTX[h].image ? new D.Img(ARTX[h].image, { width: 520, height: 500 }) : null, author: 'Zayou' }));
 const blogs = { infos: { handle: 'infos', title: 'Conseils & entretien', url: '/blogs/infos', articles: blogArticles, articles_count: blogArticles.length } };
 
 // ---- settings ----------------------------------------------------------------------------------
@@ -53,7 +56,7 @@ function loadSettings() {
   const cur = typeof data.current === 'string' ? data.presets[data.current] : data.current;
   const groupDef = schema.flatMap(g => g.settings || []).find(s => s.type === 'color_scheme_group');
   const schemes = []; for (const [id, sc] of Object.entries(cur.color_schemes || {})) { const vals = {}; for (const d of groupDef.definition) if (d.id) vals[d.id] = sc.settings[d.id] ?? d.default ?? ''; const s = new D.Scheme(id, vals); schemes.push(s); schemes[id] = s; }
-  const ctx = { schemes, linklists, pages, articles };
+  const ctx = { schemes, linklists, pages, articles, blogs };
   const settings = D.resolveSettings(schema.flatMap(g => g.settings || []).filter(s => s.type !== 'color_scheme_group'), cur, ctx);
   settings.color_schemes = schemes;
   return { settings, ctx, cur };
@@ -120,6 +123,14 @@ function route(url) {
   const p = decodeURIComponent(url.pathname).replace(/\/$/, '') || '/'; let m;
   if (p === '/') return { page_type: 'index', title: shop.name };
   if (p === '/collections') return { page_type: 'list-collections', title: 'Collections' };
+  if ((p === '/collections/vendors' || p === '/collections/types') && url.searchParams.get('q')) {
+    const q = url.searchParams.get('q'); const key = p.endsWith('vendors') ? 'vendor' : 'type';
+    const handles = Object.values(D.productByHandle).filter(x => String(x[key]).toLowerCase() === q.toLowerCase()).map(x => x.handle);
+    const c = D.makeCollection({ handle: p.split('/').pop(), title: q, product_handles: handles }); c.url = p + '?q=' + encodeURIComponent(q);
+    c._query = Object.fromEntries([...new Set(url.searchParams.keys())].filter(k => k !== 'q').map(k => [k, url.searchParams.getAll(k)])); c.sort_by = url.searchParams.get('sort_by') || '';
+    c.filters = D.buildFilters(c, Object.fromEntries([...new Set(url.searchParams.keys())].filter(k => k.startsWith('filter.')).map(k => [k, url.searchParams.getAll(k)])), c.url);
+    return { page_type: 'collection', title: q, handle: c.handle, objects: { collection: c } };
+  }
   if ((m = p.match(/^\/collections\/([^/]+)$/))) { const c = D.collectionByHandle[m[1]]; if (!c) return null; c._query = Object.fromEntries([...new Set(url.searchParams.keys())].map(k => [k, url.searchParams.getAll(k)])); c.sort_by = url.searchParams.get('sort_by') || ''; c.filters = D.buildFilters(c, Object.fromEntries([...new Set(url.searchParams.keys())].filter(k => k.startsWith('filter.')).map(k => [k, url.searchParams.getAll(k)])), c.url);
     return { page_type: 'collection', title: c.title, handle: c.handle, suffix: c.template_suffix, objects: { collection: c } }; }
   if ((m = p.match(/^\/(?:collections\/[^/]+\/)?products\/([^/.]+)$/))) { const pr = D.productByHandle[m[1]]; if (!pr) return null; const vid = +url.searchParams.get('variant'); pr.selected_variant = pr.variants.find(v => v.id === vid) || null;
@@ -210,6 +221,9 @@ async function handle(req, res) {
       return json(out);
     }
     if (p === '/checkout' || p.startsWith('/checkouts')) return send(res, 200, '<!doctype html><meta charset=utf-8><title>Checkout</title><body style="font:16px system-ui;padding:40px"><h1>Checkout Shopify</h1><p>Le paiement est géré par Shopify et n\'est pas simulé dans l\'aperçu local.</p><p>Articles : ' + new Cart().item_count + '</p><a href="/cart">Retour au panier</a>');
+    if (p === '/contact' && req.method === 'POST') { const body = parseBody(await readBody(req), req.headers['content-type']); const back = new URL(req.headers.referer || origin() + '/');
+      const isCustomer = body.form_type === 'customer'; back.searchParams.set(isCustomer ? 'customer_posted' : 'contact_posted', 'true'); back.hash = isCustomer ? 'footer-newsletter' : 'contact-form';
+      return send(res, 302, '', 'text/plain', { Location: back.pathname + back.search + back.hash }); }
     if (p === '/localization' && req.method === 'POST') return send(res, 302, '', 'text/plain', { Location: req.headers.referer || '/' });
     if ((p === '/search/suggest' || p === '/search/suggest.json')) {
       const q = url.searchParams.get('q') || ''; const prods = searchProducts(q).slice(0, +url.searchParams.get('resources[limit]') || 10);

@@ -1,0 +1,71 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "La marque",
+        "title": "à propos de zayou",
+        "intro": "<p>zayou est une marque marocaine de chaussures pour homme. Nous proposons des modèles simples à porter — baskets, mocassins souples, bottines, sandales et sabots — du 39 au 45 selon les modèles, livrés partout au Maroc.</p>",
+        "product": "mocassins-souples-en-daim-3",
+        "image_position": 2,
+        "image_alt": "Mocassins souples en daim noir posés sur un parquet"
+      }
+    },
+    "brand": {
+      "type": "brand-intro",
+      "settings": {
+        "eyebrow": "Ce que nous proposons",
+        "heading": "des chaussures pour chaque jour de la semaine.",
+        "text": "<p>Une basket en cuir pour le bureau, un mocassin souple pour le soir, une sandale pour le week-end, un sabot pour la maison. Chaque modèle existe en plusieurs coloris, présentés côte à côte sur sa fiche produit.</p><p>Pour commander, choisissez votre pointure : vous réglez à la livraison.</p>",
+        "product": "crest-tabac",
+        "image_position": 4,
+        "image_alt": "Les cinq coloris de la basket Crest",
+        "link_label": "Voir la sélection",
+        "link": "shopify://collections/baskets-homme",
+        "surface": false,
+        "pad_top": 40,
+        "pad_bottom": 40
+      },
+      "blocks": {
+        "f1": { "type": "fact", "settings": { "value": "5", "label": "catégories de chaussures" } },
+        "f2": { "type": "fact", "settings": { "value": "39 – 45", "label": "pointures, selon les modèles" } },
+        "f3": { "type": "fact", "settings": { "value": "Partout", "label": "livraison au Maroc" } },
+        "f4": { "type": "fact", "settings": { "value": "À la livraison", "label": "paiement" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4"]
+    },
+    "categories": {
+      "type": "category-tiles",
+      "settings": { "heading": "nos catégories", "link_label": "", "pad_top": 40, "pad_bottom": 40 },
+      "blocks": {
+        "c1": { "type": "category", "settings": { "collection": "baskets-homme", "label": "baskets", "product": "basket-homme-0013-cuir-tabac", "image_position": 1 } },
+        "c2": { "type": "category", "settings": { "collection": "mocassins-homme", "label": "mocassins", "product": "mocassins-souples-en-daim-5", "image_position": 2 } },
+        "c3": { "type": "category", "settings": { "collection": "bottines-homme", "label": "bottines", "product": "bottine-homme-002-cuir-tabac", "image_position": 1 } },
+        "c4": { "type": "category", "settings": { "collection": "sandales-homme", "label": "sandales", "product": "013-sandales-homme-en-cuir-noir", "image_position": 1 } },
+        "c5": { "type": "category", "settings": { "collection": "sabot-homme", "label": "sabots", "product": "sabot-pantoufle-marron-001", "image_position": 1 } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4", "c5"]
+    },
+    "services": {
+      "type": "service-strip",
+      "settings": { "label": "Nos services", "pad_top": 24, "pad_bottom": 24 },
+      "blocks": {
+        "s1": { "type": "service", "settings": { "icon": "truck", "title": "Livraison partout au Maroc", "text": "" } },
+        "s2": { "type": "service", "settings": { "icon": "cash", "title": "Paiement à la livraison", "text": "<p>Vous réglez à la réception de votre commande.</p>" } },
+        "s3": { "type": "service", "settings": { "icon": "whatsapp", "title": "Conseil sur WhatsApp", "text": "<p>Une question sur une pointure ou un modèle : <a href=\"https://wa.me/212633909991\">écrivez-nous</a>.</p>" } }
+      },
+      "block_order": ["s1", "s2", "s3"]
+    },
+    "guides": {
+      "type": "link-cards",
+      "settings": { "heading": "pour bien choisir", "text": "", "pad_top": 56, "pad_bottom": 72 },
+      "blocks": {
+        "g1": { "type": "card", "settings": { "page": "guide-des-pointures", "eyebrow": "Guide", "title": "Trouver sa pointure", "text": "Mesurer son pied, comparer les catégories.", "product": "basket-homme-0012-cuir-tabac", "image_position": 2, "photo": false } },
+        "g2": { "type": "card", "settings": { "page": "entretien", "eyebrow": "Conseils", "title": "Entretenir sa paire", "text": "Cuir, daim, nubuck, mesh : les bons gestes.", "product": "mocassins-souples-en-cuir", "image_position": 3, "photo": true } },
+        "g3": { "type": "card", "settings": { "page": "faq", "eyebrow": "Aide", "title": "Questions fréquentes", "text": "Commande, paiement, livraison, pointures.", "product": "basket-homme-004-cuir-blanc", "image_position": 2, "photo": true } }
+      },
+      "block_order": ["g1", "g2", "g3"]
+    }
+  },
+  "order": ["hero", "brand", "categories", "services", "guides"]
+}

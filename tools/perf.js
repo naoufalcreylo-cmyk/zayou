@@ -2,7 +2,7 @@
 // Mobile profile: 390px, 4× CPU slowdown, ~1.6 Mbps / 150 ms RTT. Reports LCP, CLS, theme JS/CSS bytes, image bytes.
 const { chromium } = require('playwright-core');
 const BASE = process.env.BASE || 'http://localhost:4300';
-const PAGES = ['/', '/collections/baskets-homme', '/products/crest-tabac', '/search?q=basket'];
+const PAGES = ['/', '/collections/baskets-homme', '/products/crest-tabac', '/pages/inspirations', '/pages/guide-des-pointures'];
 (async () => {
   const b = await chromium.launch({ channel: 'chrome' });
   for (const u of PAGES) {

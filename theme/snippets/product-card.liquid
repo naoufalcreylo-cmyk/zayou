@@ -7,7 +7,10 @@
 {%- liquid
   assign loading = loading | default: 'lazy'
   assign img_sizes = sizes | default: '(min-width: 1200px) 23vw, (min-width: 750px) 31vw, 46vw'
-  assign quick = show_quick_add | default: settings.quick_add
+  assign quick = settings.quick_add
+  if show_quick_add == false
+    assign quick = false
+  endif
   assign first_image = product.featured_media.preview_image | default: product.featured_image
   assign second_image = null
   if settings.card_second_image and product.media.size > 1

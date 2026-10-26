@@ -158,7 +158,8 @@ function resolve(type, v, ctx) {
     case 'page': return v ? (ctx.pages && ctx.pages[v]) || { handle: v, title: v, url: '/pages/' + v, content: '' } : null;
     case 'video_url': return v ? { type: 'youtube', id: v } : null;
     case 'article': return v ? (ctx.articles && ctx.articles[v]) || null : null;
-    case 'metaobject': case 'metaobject_list': case 'video': case 'blog': return null;
+    case 'blog': return v ? (ctx.blogs && ctx.blogs[v]) || null : null;
+    case 'metaobject': case 'metaobject_list': case 'video': return null;
     default: return v;
   }
 }
@@ -175,4 +176,4 @@ function resolveSettings(schemaSettings, values, ctx) {
   return out;
 }
 
-module.exports = { UNPUB, Color, Scheme, Font, Img, hash, catalog, productByHandle, collectionByHandle, applyFilters, buildFilters, resolve, resolveSettings, ROOT, FILES_CDN };
+module.exports = { makeCollection, UNPUB, Color, Scheme, Font, Img, hash, catalog, productByHandle, collectionByHandle, applyFilters, buildFilters, resolve, resolveSettings, ROOT, FILES_CDN };

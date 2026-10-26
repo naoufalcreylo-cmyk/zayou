@@ -11,7 +11,7 @@ mkdir -p "$WT/api" "$WT/tools/preview" "$WT/data"
 cp "$ROOT"/deploy/vercel/{vercel.json,package.json,.gitignore} "$WT/"
 cp "$ROOT/deploy/vercel/api/index.js" "$WT/api/"
 cp "$ROOT"/tools/preview/{server,engine,drops}.js "$WT/tools/preview/"
-cp "$ROOT/data/catalog.json" "$WT/data/"
+cp "$ROOT"/data/{catalog,articles}.json "$WT/data/"
 git -C "$WT" add -A
 git -C "$WT" diff --cached --quiet || git -C "$WT" commit -m "Vercel demo: preview harness sync"
 echo "main updated in $WT — push with: git -C \"$WT\" push origin main"

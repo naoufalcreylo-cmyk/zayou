@@ -21,8 +21,9 @@ qa/shots/           screenshots
 | Command | What it checks |
 |---|---|
 | `node tools/theme-check.js` | Shopify Theme Check (official), whole theme |
-| `node tools/flows.js` | 43 interaction tests: size rules, cart, filters, load-more/back, quick add, search, mobile, **EasySell compatibility with the app's real helpers.js** |
-| `node tools/sweep.js` | 13 pages × 360/390/768/1024/1440: overflow, touch targets, axe-core |
+| `node tools/links.js` | crawls every internal link and anchor (no dead links) |
+| `node tools/flows.js` | 57 interaction tests: size rules, cart, filters, load-more/back, quick add, search, mobile, **EasySell compatibility with the app's real helpers.js** |
+| `node tools/sweep.js` | 20 pages × 360/390/768/1024/1440: overflow, touch targets, axe-core |
 | `node tools/perf.js` | throttled mobile LCP/CLS and asset weights |
 
 ## Regenerate after catalogue changes
@@ -34,3 +35,18 @@ qa/shots/           screenshots
 3. **Search & Discovery › Filters**: add the size option filter. The size option is named `Taille` on most products, `Pointure` on the sabots and `Pointures` on the bottines. Rename all of them to one name (e.g. `Pointure`), then set *Paramètres du thème › Pointures › Paramètre du filtre* to the matching param (`filter.v.option.pointure`). Without this filter, the homepage size finder and the size chips in collection toolbars have nothing to filter on.
 4. **Menu**: "best sellers" points to `all-in`, an empty collection. The theme hides it, but it should be fixed or removed. "Accueil" is hidden by a header setting.
 5. Check the theme-editor preview on a phone, then publish.
+
+## Content pages (v2)
+Their content lives in theme sections, editable in the theme editor. In Shopify admin, create one empty page per row and assign its template:
+
+| Page handle | Title | Template |
+|---|---|---|
+| `a-propos` | À propos de zayou | `page.about` |
+| `guide-des-pointures` | Guide des pointures | `page.size-guide` |
+| `entretien` | Conseils d’entretien | `page.care` |
+| `inspirations` | Inspirations | `page.style` |
+| `faq` | Questions fréquentes | `page.faq` |
+| `contact` (exists) | Contact | `page.contact` |
+
+**Create these pages before publishing.** Footer links, guide cards and the product-page links use page pickers and hide themselves while a page is missing, but some editorial links point to the page URLs directly (collection editorial tiles, the homepage « Toutes nos inspirations » and « À propos » links, links inside FAQ answers) and would 404 until the pages exist.
+Missing imagery and generation prompts: `docs/ai-visual-brief.md`.

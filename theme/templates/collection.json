@@ -1,6 +1,22 @@
 {
   "sections": {
-    "main": { "type": "main-collection", "settings": { "per_page": 24, "cols_desktop": "4", "show_description": true } }
+    "main": {
+      "type": "main-collection",
+      "settings": { "per_page": 24, "cols_desktop": "4", "show_description": true, "nav_menu": "main-menu" },
+      "blocks": {
+        "i-baskets": { "type": "intro", "settings": { "collection": "baskets-homme", "title": "baskets", "text": "<p>Cuir, daim, nubuck et mesh : de la basket blanche minimaliste aux modèles Broski, du 39 au 45.</p>", "product": "crest-tabac", "image_position": 4, "image_alt": "Les cinq coloris de la basket Crest" } },
+        "i-mocassins": { "type": "intro", "settings": { "collection": "mocassins-homme", "title": "mocassins", "text": "<p>Mocassins souples en daim et en cuir, à enfiler avec ou sans chaussettes invisibles. Du 39 au 43.</p>", "product": "mocassins-souples-en-daim-3", "image_position": 2, "image_alt": "Mocassins en daim noir sur un parquet" } },
+        "i-bottines": { "type": "intro", "settings": { "collection": "bottines-homme", "title": "bottines", "text": "<p>Bottines chelsea en cuir, noires ou tabac, du 39 au 44.</p>", "product": "bottine-homme-002-cuir-tabac", "image_position": 2, "image_alt": "Paire de bottines chelsea en cuir tabac" } },
+        "i-sandales": { "type": "intro", "settings": { "collection": "sandales-homme", "title": "sandales", "text": "<p>Sandales en cuir et en daim, à brides croisées ou en H, du 40 au 45.</p>", "product": "sandales-en-cuir-noir-007", "image_position": 1, "image_alt": "Sandales en cuir noir portées" } },
+        "i-sabots": { "type": "intro", "settings": { "collection": "sabot-homme", "title": "sabots", "text": "<p>Sabots pantoufles pour la maison, en quatre coloris.</p>", "product": "sabot-pantoufle-gris-001", "image_position": 2, "image_alt": "Sabot pantoufle gris" } },
+        "i-parfums": { "type": "intro", "settings": { "collection": "parfums", "title": "parfums", "text": "<p>Une sélection d'eaux de parfum pour homme et mixtes.</p>" } },
+        "t-baskets-1": { "type": "insert", "settings": { "collection": "baskets-homme", "position": 7, "product": "basket-homme-007-cuir-blanc", "image_position": 5, "image_alt": "Baskets blanches en cuir portées", "eyebrow": "Inspirations", "title": "Comment porter la basket blanche", "link_label": "Lire", "link": "/pages/inspirations#look-1" } },
+        "t-baskets-2": { "type": "insert", "settings": { "collection": "baskets-homme", "position": 18, "product": "basket-homme-0012-cuir-tabac", "image_position": 2, "image_alt": "Baskets en cuir tabac vues de dessus", "eyebrow": "Guide", "title": "Trouver sa pointure", "link_label": "Lire le guide", "link": "/pages/guide-des-pointures" } },
+        "t-mocassins": { "type": "insert", "settings": { "collection": "mocassins-homme", "position": 5, "product": "mocassins-souples-en-daim-3", "image_position": 4, "image_alt": "Mocassin en daim plié dans une main", "eyebrow": "Conseils", "title": "Entretenir le daim", "link_label": "Lire", "link": "/pages/entretien#matieres" } },
+        "t-sandales": { "type": "insert", "settings": { "collection": "sandales-homme", "position": 7, "product": "sandales-en-cuir-marron-7", "image_position": 1, "image_alt": "Sandales en daim portées avec un pantalon beige", "eyebrow": "Inspirations", "title": "Les sandales, comment les porter", "link_label": "Lire", "link": "/pages/inspirations#look-5" } }
+      },
+      "block_order": ["i-baskets", "i-mocassins", "i-bottines", "i-sandales", "i-sabots", "i-parfums", "t-baskets-1", "t-baskets-2", "t-mocassins", "t-sandales"]
+    }
   },
   "order": ["main"]
 }

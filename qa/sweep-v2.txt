@@ -1,0 +1,104 @@
+360	/	ok	small:link-arrow small:136x20,card__title:236x19,card__title:158x18,spotlight__name:94x19	noDimImg:0	axe:0
+360	/pages/a-propos	ok	small:link-arrow:328x23,A:160x16,A:125x16	noDimImg:0	axe:0
+360	/pages/guide-des-pointures	ok	small:A:51x18,A:70x18,A:56x18,A:61x18	noDimImg:0	axe:0
+360	/pages/entretien	ok	small:link-arrow small:194x20,A:160x16,A:125x16	noDimImg:0	axe:0
+360	/pages/inspirations	ok	small:card__title:158x18,A:160x16,A:125x16	noDimImg:0	axe:0
+360	/pages/faq	ok	small:A:160x16,A:125x16	noDimImg:0	axe:0
+360	/collections/mocassins-homme	ok	small:card__title:158x19,A:160x16,A:125x16	noDimImg:0	axe:0
+360	/collections/vendors?q=Broski	ok	small:card__title:158x19,A:160x16,A:125x16	noDimImg:0	axe:0
+360	/collections/baskets-homme	ok	small:A:160x16,A:125x16	noDimImg:0	axe:0
+360	/collections/baskets-homme?filter.v.option.taille=42&filter.v.availability=1	ok	small:link small:73x20,A:160x16,A:125x16	noDimImg:0	axe:0
+360	/products/crest-tabac	ok	small:link small:143x20,visually-hidden:1x1,A:263x18,card__title:236x19	noDimImg:0	axe:0
+360	/products/sandales-homme-009-daim-tabac	ok	small:link small:143x20,visually-hidden:1x1,A:263x18,card__title:236x19	noDimImg:0	axe:0
+360	/products/khamrah-100-ml	ok	small:A:263x18,card__title:236x19,A:160x16,A:125x16	noDimImg:0	axe:0
+360	/search?q=mocassin	ok	small:card__title:158x19,A:160x16,A:125x16	noDimImg:0	axe:0
+360	/search?q=zzzz	ok	small:A:160x16,A:125x16	noDimImg:0	axe:0
+360	/cart	ok	small:A:160x16,A:125x16	noDimImg:0	axe:0
+360	/pages/contact	ok	small:A:160x16,A:125x16	noDimImg:0	axe:0
+360	/blogs/infos	ok	small:A:160x16,A:125x16	noDimImg:0	axe:0
+360	/account/login	ok	small:link small:328x20,A:160x16,A:125x16	noDimImg:0	axe:0
+360	/nope	ok	small:A:160x16,A:125x16	noDimImg:0	axe:0
+390	/	ok	small:link-arrow small:136x20,card__title:258x19,card__title:173x18,spotlight__name:94x19	noDimImg:0	axe:0
+390	/pages/a-propos	ok	small:link-arrow:358x23,A:160x16,A:125x16	noDimImg:0	axe:0
+390	/pages/guide-des-pointures	ok	small:A:51x18,A:70x18,A:56x18,A:61x18	noDimImg:0	axe:0
+390	/pages/entretien	ok	small:link-arrow small:224x20,A:160x16,A:125x16	noDimImg:0	axe:0
+390	/pages/inspirations	ok	small:card__title:173x18,A:160x16,A:125x16	noDimImg:0	axe:0
+390	/pages/faq	ok	small:A:160x16,A:125x16	noDimImg:0	axe:0
+390	/collections/mocassins-homme	ok	small:card__title:173x19,A:160x16,A:125x16	noDimImg:0	axe:0
+390	/collections/vendors?q=Broski	ok	small:card__title:173x19,A:160x16,A:125x16	noDimImg:0	axe:0
+390	/collections/baskets-homme	ok	small:A:160x16,A:125x16	noDimImg:0	axe:0
+390	/collections/baskets-homme?filter.v.option.taille=42&filter.v.availability=1	ok	small:link small:73x20,A:160x16,A:125x16	noDimImg:0	axe:0
+390	/products/crest-tabac	ok	small:link small:143x20,visually-hidden:1x1,A:263x18,card__title:258x19	noDimImg:0	axe:0
+390	/products/sandales-homme-009-daim-tabac	ok	small:link small:143x20,visually-hidden:1x1,A:263x18,card__title:258x19	noDimImg:0	axe:0
+390	/products/khamrah-100-ml	ok	small:A:263x18,card__title:258x19,A:160x16,A:125x16	noDimImg:0	axe:2
+390	/search?q=mocassin	ok	small:card__title:173x19,A:160x16,A:125x16	noDimImg:0	axe:0
+390	/search?q=zzzz	ok	small:A:160x16,A:125x16	noDimImg:0	axe:0
+390	/cart	ok	small:A:160x16,A:125x16	noDimImg:0	axe:0
+390	/pages/contact	ok	small:A:160x16,A:125x16	noDimImg:0	axe:0
+390	/blogs/infos	ok	small:A:160x16,A:125x16	noDimImg:0	axe:0
+390	/account/login	ok	small:link small:358x20,A:160x16,A:125x16	noDimImg:0	axe:0
+390	/nope	ok	small:A:160x16,A:125x16	noDimImg:0	axe:0
+768	/	ok	small:link-arrow small:136x20,card__title:285x19,link-arrow small:165x20,card__title:348x18	noDimImg:0	axe:0
+768	/pages/a-propos	ok	small:link-arrow:712x23,SUMMARY:338x22,A:160x16,A:125x16	noDimImg:0	axe:0
+768	/pages/guide-des-pointures	ok	small:A:51x18,A:70x18,A:56x18,A:61x18	noDimImg:0	axe:0
+768	/pages/entretien	ok	small:link-arrow small:484x20,SUMMARY:338x22,A:160x16,A:125x16	noDimImg:0	axe:0
+768	/pages/inspirations	ok	small:card__title:348x18,SUMMARY:338x22,A:160x16,A:125x16	noDimImg:0	axe:0
+768	/pages/faq	ok	small:SUMMARY:338x22,A:160x16,A:125x16	noDimImg:0	axe:0
+768	/collections/mocassins-homme	ok	small:card__title:227x19,SUMMARY:338x22,A:160x16,A:125x16	noDimImg:0	axe:0
+768	/collections/vendors?q=Broski	ok	small:card__title:227x19,SUMMARY:338x22,A:160x16,A:125x16	noDimImg:0	axe:0
+768	/collections/baskets-homme	ok	small:card__title:227x19,SUMMARY:338x22,A:160x16,A:125x16	noDimImg:0	axe:0
+768	/collections/baskets-homme?filter.v.option.taille=42&filter.v.availability=1	ok	small:link small:73x20,card__title:227x19,SUMMARY:338x22,A:160x16	noDimImg:0	axe:0
+768	/products/crest-tabac	ok	small:link small:143x20,visually-hidden:1x1,A:263x18,card__title:285x19	noDimImg:0	axe:0
+768	/products/sandales-homme-009-daim-tabac	ok	small:link small:143x20,visually-hidden:1x1,A:263x18,card__title:285x19	noDimImg:0	axe:0
+768	/products/khamrah-100-ml	ok	small:A:263x18,card__title:285x19,SUMMARY:338x22,A:160x16	noDimImg:0	axe:0
+768	/search?q=mocassin	ok	small:card__title:227x19,SUMMARY:338x22,A:160x16,A:125x16	noDimImg:0	axe:0
+768	/search?q=zzzz	ok	small:card__title:227x19,SUMMARY:338x22,A:160x16,A:125x16	noDimImg:0	axe:0
+768	/cart	ok	small:SUMMARY:338x22,A:160x16,A:125x16	noDimImg:0	axe:0
+768	/pages/contact	ok	small:SUMMARY:338x22,A:160x16,A:125x16	noDimImg:0	axe:0
+768	/blogs/infos	ok	small:SUMMARY:338x22,A:160x16,A:125x16	noDimImg:0	axe:0
+768	/account/login	ok	small:link small:440x20,SUMMARY:338x22,A:160x16,A:125x16	noDimImg:0	axe:0
+768	/nope	ok	small:SUMMARY:338x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1024	/	ok	small:link-arrow small:136x20,card__title:230x19,link-arrow small:165x20,card__title:122x18	noDimImg:0	axe:0
+1024	/pages/a-propos	ok	small:link-arrow:489x23,SUMMARY:466x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1024	/pages/guide-des-pointures	ok	small:A:51x18,A:70x18,A:56x18,A:61x18	noDimImg:0	axe:0
+1024	/pages/entretien	ok	small:link-arrow small:740x20,SUMMARY:466x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1024	/pages/inspirations	ok	small:card__title:122x18,card__title:88x18,SUMMARY:466x22,A:160x16	noDimImg:0	axe:0
+1024	/pages/faq	ok	small:SUMMARY:466x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1024	/collections/mocassins-homme	ok	small:card__title:312x19,SUMMARY:466x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1024	/collections/vendors?q=Broski	ok	small:card__title:312x19,SUMMARY:466x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1024	/collections/baskets-homme	ok	small:card__title:312x19,SUMMARY:466x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1024	/collections/baskets-homme?filter.v.option.taille=42&filter.v.availability=1	ok	small:link small:73x20,card__title:312x19,SUMMARY:466x22,A:160x16	noDimImg:0	axe:0
+1024	/products/crest-tabac	ok	small:link small:143x20,visually-hidden:1x1,A:263x18,card__title:230x19	noDimImg:0	axe:0
+1024	/products/sandales-homme-009-daim-tabac	ok	small:link small:143x20,visually-hidden:1x1,A:263x18,card__title:230x19	noDimImg:0	axe:0
+1024	/products/khamrah-100-ml	ok	small:A:263x18,card__title:230x19,SUMMARY:466x22,A:160x16	noDimImg:0	axe:0
+1024	/search?q=mocassin	ok	small:card__title:312x19,SUMMARY:466x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1024	/search?q=zzzz	ok	small:card__title:312x19,SUMMARY:466x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1024	/cart	ok	small:SUMMARY:466x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1024	/pages/contact	ok	small:SUMMARY:466x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1024	/blogs/infos	ok	small:SUMMARY:466x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1024	/account/login	ok	small:link small:440x20,SUMMARY:466x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1024	/nope	ok	small:SUMMARY:466x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1440	/	ok	small:link-arrow small:136x20,card__title:323x19,link-arrow small:165x20,card__title:175x18	noDimImg:0	axe:0
+1440	/pages/a-propos	ok	small:link-arrow:698x23,SUMMARY:158x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1440	/pages/guide-des-pointures	ok	small:A:51x18,A:70x18,A:56x18,A:61x18	noDimImg:0	axe:0
+1440	/pages/entretien	ok	small:link-arrow small:1124x20,SUMMARY:158x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1440	/pages/inspirations	ok	small:card__title:175x18,card__title:121x18,SUMMARY:158x22,A:160x16	noDimImg:0	axe:0
+1440	/pages/faq	ok	small:SUMMARY:158x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1440	/collections/mocassins-homme	ok	small:card__title:323x19,SUMMARY:158x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1440	/collections/vendors?q=Broski	ok	small:card__title:323x19,SUMMARY:158x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1440	/collections/baskets-homme	ok	small:card__title:323x19,SUMMARY:158x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1440	/collections/baskets-homme?filter.v.option.taille=42&filter.v.availability=1	ok	small:link small:73x20,card__title:323x19,SUMMARY:158x22,A:160x16	noDimImg:0	axe:0
+1440	/products/crest-tabac	ok	small:link small:143x20,visually-hidden:1x1,A:263x18,card__title:323x19	noDimImg:0	axe:0
+1440	/products/sandales-homme-009-daim-tabac	ok	small:link small:143x20,visually-hidden:1x1,A:263x18,card__title:323x19	noDimImg:0	axe:0
+1440	/products/khamrah-100-ml	ok	small:A:263x18,card__title:323x19,SUMMARY:158x22,A:160x16	noDimImg:0	axe:2
+1440	/search?q=mocassin	ok	small:card__title:323x19,SUMMARY:158x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1440	/search?q=zzzz	ok	small:card__title:323x19,SUMMARY:158x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1440	/cart	ok	small:SUMMARY:158x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1440	/pages/contact	ok	small:SUMMARY:158x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1440	/blogs/infos	ok	small:SUMMARY:158x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1440	/account/login	ok	small:link small:440x20,SUMMARY:158x22,A:160x16,A:125x16	noDimImg:0	axe:0
+1440	/nope	ok	small:SUMMARY:158x22,A:160x16,A:125x16	noDimImg:0	axe:0
+
+axe violations:
+  critical aria-allowed-attr (2 page/width) e.g. #collapseExample on /products/khamrah-100-ml@390
+  moderate heading-order (2 page/width) e.g. .woocommerce-product-details__short-description > h6 on /products/khamrah-100-ml@390
