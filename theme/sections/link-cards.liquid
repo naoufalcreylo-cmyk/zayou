@@ -1,6 +1,15 @@
 {%- comment -%}
   Cards towards pages, the blog or any URL. A card whose page does not exist in the store is not shown (no dead links).
 {%- endcomment -%}
+{%- liquid
+  assign visible = 0
+  for block in section.blocks
+    if block.settings.page != blank or block.settings.link != blank
+      assign visible = visible | plus: 1
+    endif
+  endfor
+-%}
+{%- if visible > 0 -%}
 <section class="section link-cards"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %} style="--pad-top: {{ section.settings.pad_top }}px; --pad-bottom: {{ section.settings.pad_bottom }}px;" aria-labelledby="lc-title-{{ section.id }}">
   <div class="container">
     <div class="section-head">
@@ -40,6 +49,7 @@
     </ul>
   </div>
 </section>
+{%- endif -%}
 
 {% schema %}
 {
